@@ -1,0 +1,161 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			if userLevel || admin_role !== "Inactive"
+				h5 Administrator: #{ first_name } #{ last_name } #{ name }
+				h5 Administrator ID: #{ id }
+				h5 Administrator AdminID: #{ adminID }
+				h5 Administrator User ID: #{ user_id }
+			h5 Hello #{ first_name } #{ last_name } #{ name }
+			h1 Members
+			
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+							if userLevel
+								//- th (Admin Use THIS delete only!)
+								//- 	br
+								//- 	br
+								//- 	p Delete
+								th Delete
+								th Edit
+								th ID	
+							else if admin_role === 'Local Administrator' || admin_role === "Site Manager"
+								//- th Delete
+								th Edit
+								th ID
+							th First Name
+							th Last Name
+							th Dreams Completed
+							th Dreams Created
+							th Joined
+							if admin_role === 'Local Administrator' || userLevel
+								th Password
+							th Logged-In
+							//- th Time as Member
+							th E-mail 
+							if admin_role === 'Local Administrator' || userLevel
+								th Phone
+							th Project 
+							if admin_role === 'Local Administrator' || userLevel
+								th Address 1
+								th Address 2
+							th City
+							th State
+							th Zip Code
+							th Privacy
+							//- th Birthday
+							th Membership Status
+							th Membership Role 
+							if admin_role === 'Local Administrator' || userLevel
+								th Adminitrative Role
+
+					each member in members 
+						if admin_role === 'Local Administrator' || userLevel 
+							tr.small
+								if userLevel 
+									td 
+										form(action="/userUpdateMemberDatabase/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											button(type="submit") &times;
+									td 
+										form(action="/updateMemberProfileDB/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											input(type="text" name="member.id" value=member.id hidden)
+											button.btn(type="submit") &#9998;
+										//- button.btn.btn-sm
+										//- 	a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+									td #{member.id}
+								if !userLevel && admin_role === "Local Administrator"
+									//- if admin_role === 'Local Administrator'
+									//- td 
+									//- 	form(action="/updateMemberDatabase/" + member.id method="post") 
+									//- 		input(type="text" name="adminID" value=id hidden)
+									//- 		button(type="submit") &times;
+									td 
+										button.btn.btn-sm
+											a.link(href="/memberProfilePublic/" + member.id) &#9898;
+									td #{member.id}
+								td #{member.first_name}
+								td #{member.last_name}
+								td #{member.dreams_completed}
+								td #{member.dreams_created}
+								td #{member.date_member_joined.toDateString()}
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.password}
+								td #{member.loggedIn}
+								//- td #{member.time_as_member}
+								td #{member.email} 
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.phone}
+								td #{member.current_project}
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.address1}
+									td #{member.address2}
+								td #{member.city}
+								td #{member.state}
+								td #{member.zipCode}
+								td #{member.privacy}
+								//- td #{member.date_of_birth.toDateString()}
+								td #{member.membership_status}
+								td #{member.membership_role} 
+								if admin_role === 'Local Administrator' || userLevel 
+									td #{member.admin_role} 
+						else if member.privacy !== "Hide"
+							tr.small
+								if userLevel 
+									td 
+										form(action="/userUpdateMemberDatabase/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											button(type="submit") &times;
+									td 
+										form(action="/updateMemberProfileDB/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											input(type="text" name="member.id" value=member.id hidden)
+											button.btn(type="submit") &#9998;
+										//- button.btn.btn-sm
+										//- 	a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+									td #{member.id}
+								if !userLevel && admin_role === "Local Administrator" || admin_role === "Site Manager"
+									//- if admin_role === 'Local Administrator'
+									//- td 
+									//- 	form(action="/updateMemberDatabase/" + member.id method="post") 
+									//- 		input(type="text" name="adminID" value=id hidden)
+									//- 		button(type="submit") &times;
+									td 
+										button.btn.btn-sm
+											a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+									td #{member.id}
+								td #{member.first_name}
+								td #{member.last_name}
+								td #{member.dreams_completed}
+								td #{member.dreams_created}
+								td #{member.date_member_joined.toDateString()}
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.password}
+								td #{member.loggedIn}
+								//- td #{member.time_as_member}
+								td #{member.email} 
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.phone}
+								td #{member.current_project}
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.address1}
+									td #{member.address2}
+								td #{member.city}
+								td #{member.state}
+								td #{member.zipCode}
+								td #{member.privacy}
+								//- td #{member.date_of_birth.toDateString()}
+								td #{member.membership_status}
+								td #{member.membership_role} 
+								if admin_role === 'Local Administrator' || userLevel 
+									td #{member.admin_role} 
+					
+					else
+						td There are no users.

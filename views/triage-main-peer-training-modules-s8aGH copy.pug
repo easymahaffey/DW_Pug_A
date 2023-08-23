@@ -1,0 +1,147 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css") 
+  section.container-2
+    h2 Dreamweaver Academy Peer Training 
+    h2 Keys to Success (S8aGH)
+    p Student Id: #{ student_id }
+    br
+    h3 Key 1
+    br
+    h3 Setting and Clarifying Your Whole Health Goal
+    br
+    p Complete Health Strengths:
+    p (Put a check mark by those that you think are your strengths)
+    strong 
+      p General Health
+    form#multi_form1(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH1" hidden)
+      input(type="text" name="answerTime" hidden)
+      //- input(type="text" name="questionNumber" value="GH1" hidden)
+      input(type="text" name="questionNumber" value="General Health1" hidden)
+      input(type="text" name="questionText" value="My blood pressure is within the normal range." hidden)
+      input(type="checkbox" id="blood_pressure" name="answerText" value="yes")
+      label(for="blood_pressure") My blood pressure is within the normal range.
+      br
+      button.btn.btn-primary( type="submit") Submit
+      br
+      //- form#multi_form2(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH2" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health2" hidden)
+      input(type="text" name="questionText" value="My blood sugar level is within the normal range." hidden)
+      input(type="checkbox" id="blood_sugar" name="answerText" value="yes")
+      label(for="blood_sugar") My blood sugar level is within the normal range.
+      br
+      
+      //- form#multi_form3(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH3" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health3" hidden)
+      input(type="text" name="questionText" value="My cholesterol level is within the normal range." hidden)
+      input(type="checkbox" id="cholesterol" name="answerText" value="yes")
+      label(for="cholesterol") My cholesterol level is within the normal range.
+      br
+      
+      //- form#multi_form4(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH4" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health4" hidden)
+      input(type="text" name="questionText" value="My body weight is within the normal range." hidden)
+      input(type="checkbox" id="body_weight" name="answerText" value="yes")
+      label(for="body_weight") My body weight is within the normal range.
+      br
+      
+      //- form#multi_form5(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH5" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health5" hidden)
+      input(type="text" name="questionText" value="I have a physical examination on a regular basis." hidden)
+      input(type="checkbox" id="examination" name="answerText" value="yes")
+      label(for="examination") I have a physical examination on a regular basis.
+      br
+      
+      //- form#multi_form6(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH6" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health6" hidden)
+      input(type="text" name="questionText" value="I have a primary care doctor that I trust and can work with." hidden)
+      input(type="checkbox" id="primary_care" name="answerText" value="yes")
+      label(for="primary_care") I have a primary care doctor that I trust and can work with.
+      br
+      
+      //- form#multi_form7(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH7" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health7" hidden)
+      input(type="text" name="questionText" value="I do not have a chronic illness." hidden)
+      input(type="checkbox" id="no_chronic_illness" name="answerText" value="yes")
+      label(for="no_chronic_illness") I do not have a chronic illness.
+      br
+      
+      //- form#multi_form8(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH8" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health8" hidden)
+      input(type="text" name="questionText" value="I have a chronic illness, but I have learned how to control it." hidden)
+      input(type="checkbox" id="chronic_illness" name="answerText" value="yes")
+      label(for="chronic_illness") I have a chronic illness, but I have learned how to control it.
+      br
+      
+      //- form#multi_form9(action="/secureMainPeerTrainingModulesS8aGH/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aGH9" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="General Health9" hidden)
+      input(type="text" name="questionText" value="I know what areas of my health I want to improve." hidden)
+      input(type="checkbox" id="improve_health_areas" name="answerText" value="yes")
+      label(for="improve_health_areas") I know what areas of my health I want to improve.
+
+      br
+      button.btn.btn-primary.btn-lg.btn-module( type="submit") Submit
+
+    //- form#q
+    //-   //- button.btn.btn-primary.btn-lg.btn-module Submit
+    //-   input(form="multi_form1" type="submit")
+    //-   input(form="multi_form2" type="submit")
+    //-   input(form="multi_form3" type="submit")
+    //-   button.btn.btn-primary.btn-lg.btn-module(form="q" type="submit") Submit
+      
+      
+      
+      
+    br

@@ -1,0 +1,66 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Academy Peer Training
+    h2 Keys to Success (S8cQ1)
+    p Student Id: #{ student_id }
+    br
+    h3 Key 1
+    br
+    h4 Question 1 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question Looking over what I could do in each of the 10 health and resiliency factors and the benefits of doing each, I believe that improving these three factors would have the greatest positive impact on my life:
+    br
+    p#answer List three things below:
+    form(action="/secureMainPeerTrainingModulesS8cq1/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8c" hidden)
+      input(type="text" name="questionTitle" value="S8cQ1" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q1a" hidden)
+      input(type="text" name="questionText" value="Looking over what I could do in each of the 10 health and resiliency factors and the benefits of doing each, I believe that improving these three factors would have the greatest positive impact on my life:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder=" 1)       2)      3)")
+      br
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+    br
+    //- p#question I think my current lifestyle is healthy and resilient in the following ways:
+    //- br
+    //- p#answer Answer below:
+    //- form(action="/secureMainPeerTrainingModulesS8cq1/" + id method="post")
+    //-   input(type="text" name="student_id" value=student_id hidden)
+    //-   input(type="text" name="answerDate" hidden)
+    //-   input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+    //-   input(type="text" name="questionModule" value="8c" hidden)
+    //-   input(type="text" name="questionTitle" value="S8cQ1" hidden)
+    //-   input(type="text" name="answerTime" hidden)
+    //-   input(type="text" name="questionNumber" value="Q1b" hidden)
+    //-   input(type="text" name="questionText" value="I think my current lifestyle is healthy and resilient in the following ways:" hidden)
+    //-   input.answerArea(type="textarea" name="answerText" placeholder="Answer 1b of 8")
+    //-   br
+    //-   br
+    //-   button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    //- br
+    //- br
+    //- p#question I think my current lifestyle is healthy and resilient in the following ways:
+    //- br
+    //- p#answer Answer below:
+    //- form(action="/secureMainPeerTrainingModulesS8cq1/" + id method="post")
+    //-   input(type="text" name="student_id" value=student_id hidden)
+    //-   input(type="text" name="answerDate" hidden)
+    //-   input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+    //-   input(type="text" name="questionModule" value="8c" hidden)
+    //-   input(type="text" name="questionTitle" value="S8cQ1" hidden)
+    //-   input(type="text" name="answerTime" hidden)
+    //-   input(type="text" name="questionNumber" value="Q1c" hidden)
+    //-   input(type="text" name="questionText" value="I think my current lifestyle is healthy and resilient in the following ways:" hidden)
+    //-   input.answerArea(type="textarea" name="answerText" placeholder="Answer 1c of 8")
+    //-   br
+    //-   br
+    //-   button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    //- br
+    //- br

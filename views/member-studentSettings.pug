@@ -1,0 +1,142 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1 Hello #{ first_name }
+
+      if (loggedIn) 
+        h2 You are online now.
+      else 
+        h2 You are not online.
+      h4 Your student id is:
+        p #{ id }
+
+      if (!message)
+        h3 This is where you update your student profile.
+      else
+        h3 #{ message }
+
+      p #{ passwordMessage }
+
+      form(action="/updateMemberProfile/" + id method="post")
+        button.btn.btn-primary.btn-lg#password-btn(type="button" data-toggle="modal" data-target="#passwordModal") Change password
+        br
+        label(for="password") Hashed Password:  
+        p #{ password }
+        br
+        label(for="current_project") Current Project 
+        input(type="text" name="current_project" placeholder= "Current Project" )
+        span #{ current_project }
+        br
+        p Joined as member
+        span #{ date_member_joined.toDateString() }
+        br
+        p Time as member 
+        span #{ time_as_member.toDateString() }
+        br
+        p Student enrollment date 
+        span #{ student_enroll_date.toDateString() }
+        br
+        label(for="first_name") First Name: #{ first_name }
+        input(type="text" name="first_name" placeholder= "first name" )
+        br
+        label(for="last_name") Last Name: #{ last_name }
+        input(type="text" name="last_name" placeholder= "last name" )
+        br
+        //- label(for="email") E-mail: #{ email }
+        //- input(type="text" name="email" placeholder="email")
+        //- br
+        //- label(for="phone") Phone: #{ phone }
+        //- input(type="text" name="phone" placeholder="phone")
+        //- br
+        //- label(for="address1") Address 1: #{ address1 }
+        //- input(type="text" name="address1" placeholder="address1") 
+        //- br
+        //- label(for="address2") Address 2: #{ address2 }
+        //- input(type="text" name="address2" placeholder="address2")  
+        //- br
+        //- label(for="city") City: #{ city }
+        //- input(type="text" name="city" placeholder="city") 
+        //- br
+        //- label(for="state") State: #{ state }
+        //- input(type="text" name="state" placeholder="state") 
+        //- br
+        //- label(for="zipCode") Zip Code: #{ zipCode }
+        //- input(type="text" name="zipCode" placeholder="zip Code") 
+        //- br
+        label(for="date_of_birth") Date of Birth: #{ date_of_birth.toDateString() }
+        input(type="date" name="date_of_birth" placeholder="DOB" required) 
+        br
+        label(for="answers") Answers: #{ answers }
+        input(type="text" name="answers" placeholder="answers") 
+        br
+        p Profile privacy setting
+        input(type="checkbox" name="student_privacy" value="Show")
+        label(for="student_privacy") Show Profile
+        br
+        input(type="checkbox" name="student_privacy" value ="Hide")
+        label(for="student_privacy") Hide Profile 
+        p Current privacy setting
+          strong  :
+          br
+          u
+            strong #{ student_privacy }
+        p 
+        p Profile membership status setting
+        input(type="checkbox" name="student_status" placeholder="student_status setting" value="Active")
+        label(for="student_status") Active Enrollment
+        br
+        input(type="checkbox" name="student_status" placeholder="student_status setting" value ="Inactive")
+        label(for="student_status") Inactive Enrollment
+        p Current enrollment status setting
+          strong  :
+          br
+          u
+            strong #{ student_status }
+
+        label(for="student_role") Student Role *
+        br
+        select(id="student_role" name="student_role" required)
+            option(value="") -- 
+            option(value="Student") Student
+            option(value="Peer") Peer
+
+        br
+        
+        p Current Student Role
+          strong  :
+          br
+          if student_role === 'Student'
+            u 
+              strong Student
+          else if student_role === 'Peer'
+            u 
+              strong Peer
+          br
+        button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit
+
+    div.modal.fade#passwordModal
+      .modal-dialog
+        .modal-content  
+          .modal-header 
+            h1.modal-title Change Password
+
+          .modal-body
+            //- form(action="/registerMember" method="post")  
+            form(action="/updateMemberPassword/" + id method="post") 
+              input(type="text" name="email" value=email hidden)
+              - console.log("EMAIL", email)
+              input(type="text" name="password1" placeholder="password" required)
+              br
+              input(type="text" name="password2" placeholder="confirm password *" required)
+              br
+              p * Required
+              br
+              button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+          .modal-footer
+            button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

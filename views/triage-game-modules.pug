@@ -1,0 +1,21 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module.css")
+
+  div.slideshow-container
+    div.mySlides
+      div
+        iframe(src="/triage-game-pong/" + id)
+    div.mySlides
+      div
+        iframe(src="/triage-game-bouncy-ball/" + id)
+    
+    a.prev.moduleArrow(onclick="plusSlides(-1)") &#10094
+    a.next.moduleArrow(onclick="plusSlides(1)") &#10095
+
+  br
+  div(style="text-align:center")
+    span.dot(onclick="currentSlide(1)") 
+    span.dot(onclick="currentSlide(2)") 
+    span.dot(onclick="currentSlide(3)") 
+
+  script(src="/assets/javascript/modules.js")

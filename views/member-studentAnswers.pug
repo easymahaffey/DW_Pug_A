@@ -1,0 +1,51 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			h1 
+				em Challenge and Academy results.
+			h2 #{ first_name } #{ last_name }'s 
+			span 
+				h2 Student Answers
+			br
+			p #{ message }
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+
+							th Delete
+							th Answer ID
+							th Question Module Group
+							th Question Module
+							th Question Title
+							th Question Number
+							th Answer Date
+							th Answer Text
+							th Question Text
+							th 
+					//- -console.log("STUDENT ANSWERS ", answers)
+					each answer in answers
+						tr.small
+							td 
+								button.btn-outline-light
+									a.link(href="/deleteStudentAnswers/" + answer.id) Delete
+							form(action="/updateStudentAnswer/" + member_student_id method="post")
+								td #{answer.id}
+									input.small(type="text" name="id" placeholder="New Answer" value=answer.id hidden)
+								td #{answer.questionGroupModule}
+								td #{answer.questionModule}
+								td #{answer.questionTitle}
+								td #{answer.questionNumber}
+								td #{answer.answerDate.toDateString()}
+								td #{answer.answerText}
+									input.small(type="text" name="answerText" placeholder="New Answer")
+								td #{answer.questionText}
+								td
+									button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit
+
+					else
+							td There are no answers.

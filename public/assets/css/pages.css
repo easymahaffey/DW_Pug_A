@@ -1,0 +1,181 @@
+
+* {box-sizing: border-box}
+/* body {font-family: Verdana, sans-serif; margin:0} */
+/* body {font-family: Arial, Helvetica, sans-serif; margin:0} */
+.mySlides {
+  display: none;
+}
+
+.myPages {
+  display: none;
+}
+/* img {vertical-align: middle;} */
+
+/* Slideshow container */
+.slideshow-container {
+  background-color: rgb(223, 223, 223);
+  /* max-width: 1000px; */
+  width: auto;
+  position: relative;
+  margin: auto;
+  overflow:hidden;
+}
+
+/* Iframe */
+iframe {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.3rem;
+  /* margin-top: -1rem; */
+  height: 500px;
+  width: 100%;
+  /* font-family: Arial, Helvetica, sans-serif;
+  color: red; */
+}
+
+section.container-2 {
+  width:120%;
+  height: 160%;
+  background-color: rgb(223, 223, 223);
+  z-index: 1;
+  /* margin-top: -180px; */
+  margin-left: -1rem;
+  margin-right: 5rem;
+  padding: 7rem 3rem 1rem 1rem;
+  overflow:hidden;
+  /* padding-top: 400px; */
+  /* color:red; */
+  position: sticky;
+  /* position: fixed; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin-bottom: -140px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+section.container-3 {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(223, 223, 223);
+  background-color: rgb(231, 60, 60);
+  z-index: 1;
+  margin-top: -80px;
+  margin-left: -1rem;
+  padding: 2rem 2rem 1rem 1rem;
+  overflow: hidden;
+  /* padding-top: 400px; */
+  /* color:red; */
+  position: sticky;
+  /* position: fixed; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin-bottom: -60px;
+}
+
+#timerDisplay{
+  margin-top: 1rem;
+  padding: .9rem;
+  width: 50%;
+  height: 4rem;
+  border-style: solid;
+  border:#717171;
+  margin-left: .5rem;
+  display: inline-block;
+  background-color: #f1f1f1;
+  border-width: 5px;
+  box-sizing: border-box;
+  /* font-weight: bold; */
+}
+
+#question, #answer{
+  width: 70%;
+  margin: 0 10% 1rem 10%;
+  padding: 1rem;
+  display: inline-block;
+  background-color: #f1f1f1;
+  border-width: 5px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+#answer{
+  font-weight: 600;
+}
+
+#sleep{
+  /* height: 10px; */
+  width: 100px;
+}
+
+/* nav, footer{
+  display: none;
+} */
+
+.answerArea{
+  background-color: #f1f1f1;
+  margin-left: 10%;
+  padding-bottom: .5rem;
+  width: 70%;
+  height: 100px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.btn-module {
+  margin-left:10%;
+}
+
+a.moduleArrow {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  /* position: relative; */
+  position: absolute;
+  top: 40%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  /* font-size: 18px; */
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 .5rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/* .dot:hover {
+  background-color: #717171;
+} */
+
+.active, .dot:hover {
+  /* background-color: tomato; */
+  background-color: #717171;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next, .text {font-size: 11px}
+}

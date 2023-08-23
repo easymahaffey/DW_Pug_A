@@ -1,0 +1,22 @@
+extends layout.pug
+
+block append content
+
+    div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 Logged Out
+      h2 #{ name } thank you for securely logging out after visiting.
+      h3 Please login back in to enter.
+
+      div
+        button.btn.btn-primary.btn-lg#home-btn(type="button" onclick="window.location = '/login'") Login
+
+        button.btn.btn-primary.btn-lg#register-btn(type="button" onclick="window.location ='/'") Home
+      
+      p Have a great day!
+
+
+
+        

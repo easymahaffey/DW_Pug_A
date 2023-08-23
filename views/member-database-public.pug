@@ -1,0 +1,71 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			h1 Members
+
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small 
+							th Total Site Visitors 
+							th Unique Site Visitors
+							th Total Members 
+							th AZ State Members 
+							if userLevel || admin_role !== "Inactive"
+								th Private
+								th Public
+								th Active
+								th Inactive
+							th Dreamweavers
+							th Servers
+							th Member Only 
+							if userLevel || admin_role !== "Inactive"
+								th Project Managers
+								th Site Managers
+								th Local Admins
+						tr.small 
+							td #{visitor_total_count}
+							td #{visitor_unique_count}
+							td #{member_total_count}
+							td #{member_total_state_count}
+							if userLevel || admin_role !== "Inactive"
+								td #{member_total_private_count}
+								td #{member_total_public_count}
+								td #{member_total_active_count}
+								td #{member_total_inactive_count}
+							td #{member_dreamweaver_count}
+							td #{member_server_count}
+							td #{member_only_count}
+							if userLevel || admin_role !== "Inactive"
+								td #{member_project_manager_count}
+								td #{member_admin_role_site_manager_count}
+								td #{member_admin_role_local_administrator_count}
+
+			div.table
+				table.table-dark.table-bordered.table-hover.table-responsive.small
+					thead.thead-dark
+						tr.small
+							th View Profile
+							th First Name
+							th Last Name
+							th E-mail 
+							th Project 
+							th Membership Role 
+					each member in members 
+						if member.privacy !== "Hide" && member.membership_approved === "Yes" && member.auth_register === "Yes"
+							tr.small
+								td 
+									button.btn.btn-sm
+										a.link(href="/memberProfilePublic/" + member.id) &#9898;
+								td #{member.first_name}
+								td #{member.last_name}
+								td 
+									a.text-white(href="mailto: #{member.email}") #{member.email} 
+								td #{member.current_project}
+								td #{member.membership_role} 
+					else
+						td There are no users.

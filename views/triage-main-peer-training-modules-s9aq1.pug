@@ -1,0 +1,34 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css") 
+  section.container-2
+    h2 Dreamweaver Academy Peer Training
+    h2 Keys to Success (S9aQ1)
+    p Student Id: #{ student_id }
+    br
+    h3 Key 2
+    h3 Weekly Action Plan
+    br
+    h4 Question 1 of 1
+    br
+    p Learning to create a 
+      b weekly action plan 
+      span that helps a person reach his or her whole health goal is crucial to success. The actions must be healthy and such that a person can engage in them multiple times a week.
+      br
+    br
+    p#question Some of the things I could possibly do, or need to do, each week to accomplish my goal are:
+    br
+    p#answer Answer below:
+    form(action="/secureMainPeerTrainingModulesS9aq1/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="9a" hidden)
+      input(type="text" name="questionTitle" value="S9aq1" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q1" hidden)
+      input(type="text" name="questionText" value="Some of the things I could possibly do, or need to do, each week to accomplish my goal are:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder=" 1)   2)   3)   4)")
+      br
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

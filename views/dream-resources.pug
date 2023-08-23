@@ -1,0 +1,36 @@
+extends layout.pug
+
+block append section 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 Dreamweaver Resources
+      if !loggedIn 
+        strong
+          em
+            h2 
+              a.link(href="/loginMember") Login 
+      hr
+      if loggedIn  
+        h2 Hello 
+          em #{ first_name } #{ name } 
+          span welcome back.
+      else 
+        h2 
+          a.link(href="/registerMember") Register
+          span  to learn more. 
+      hr 
+      
+      h2.display-5 Resources
+      hr.my-4
+
+      p.lead Future resource listings.  
+
+      if !loggedIn
+        br
+        p If this is your first visit please register to enter to view available resources.
+
+
+  

@@ -1,0 +1,111 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1 Use the browser back arrow to return to the admin area.
+      br
+      if loggedIn 
+        h2 The user is online now. 
+      else 
+        h2 #{ name } is not online.
+      h4 The user's id is:
+        p #{ id }
+        
+      if !message
+        h3 Update admin profile.
+      else
+        h3 #{ message }
+
+      p #{ passwordMessage }
+
+      form(action="/updateMyProfile/" + id method="post")
+        button.btn.btn-primary.btn-lg#password-btn(type="button" data-toggle="modal" data-target="#passwordModal") Change password
+        br
+        label(for="password") Hashed Password:  
+        p #{ password }
+        br
+        label(for="name") Name: #{ name } 
+        br
+        input(type="text" name="name" placeholder= "name" )
+        br
+        label(for="email") E-mail: #{ email }
+        br
+        input(type="text" name="email" placeholder="email")
+        br
+        label(for="city") City: #{ city }
+        br
+        input(type="text" name="city" placeholder="city") 
+        br
+        label(for="state") State: #{ state }
+        br
+        input(type="text" name="state" placeholder="state")
+        br 
+        label(for="zipcode") Zip Code: #{ zipcode }
+        br
+        input(type="text" name="zipcode" placeholder="zipcode")
+        p 
+        p Profile privacy setting
+        input(type="checkbox" name="privacy" value="Show")
+        label(for="privacy") Show Profile
+        br
+        input(type="checkbox" name="privacy" value ="Hide")
+        label(for="privacy") Hide Profile 
+        p Current privacy setting
+          strong  :
+          br
+          u
+            strong #{ privacy }
+
+        label(for="userLevel") Update user security level *
+          br
+          select(id="userLevel" name="userLevel" required)
+            option(value="Local Administrator") Local Administrator
+            option(value="Site Administrator") Site Administrator
+            option(value="System Administrator") System Administrator
+            option(value="Programmer") Programmer
+        br
+        
+        p Current Security Level
+          strong  :
+          br
+          if userLevel === 'Local Administrator'
+            u 
+              strong Local Administrator
+          else if userLevel === 'Site Administrator'
+            u 
+              strong Site Administrator
+          else if userLevel === 'System Administrator' 
+            u
+              strong System Administrator
+          else if userLevel === 'Programmer' 
+            u
+              strong Programmer
+          br
+        button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit
+
+    div.modal.fade#passwordModal
+      .modal-dialog
+        .modal-content  
+          .modal-header 
+            h1.modal-title Change Password
+
+          .modal-body
+            form(action="/updateMyPassword/" + id method="post") 
+              p #{ id }
+              p #{ email }
+              input(type="text" name="email" value=email hidden)
+              input(type="text" name="password1" placeholder="password" required)
+              br
+              input(type="text" name="password2" placeholder="confirm password *" required)
+              br
+              p * Required
+              br
+              button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+
+          .modal-footer
+            button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

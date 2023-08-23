@@ -1,0 +1,190 @@
+extends layout.pug
+
+block append content
+
+	//- div.container-fluid
+
+	//- 	div.jumbotron
+
+	//- 	h1.display-4 
+	//- 			em #{ first_name } #{ last_name }
+	//- 			span  is a #{ membership_role }
+
+	//- 	if loggedIn 
+	//- 			h2 and is online now.
+	//- 	else 
+	//- 			h2 but is not online.
+
+	//- 	h3 #{ first_name } joined on 
+	//- 		em #{ date_member_joined.toDateString() }
+	//- 		span .
+
+	//- 	hr
+
+	//- 	if privacy === 'Show'
+	//- 			h4 #{ first_name } is located in #{ city }, #{ state }, #{ zipCode }
+
+	p #{ message }
+
+	div.container-fluid
+
+		div.row
+			//- Left Column
+			div.col-sm-3.p-2
+
+				//- Profile
+				div.card.text-center.text-white.bg-secondary.mb-3
+					h4 #{ first_name } #{ last_name }
+					a(href="/assets/pages/My_Profile.html")
+						img(src="/assets/images/pics/laura-lugaresi-E27W6TyGmZM-unsplash.jpg" style="height:100%;width:100%" alt="Profile Picture")
+					hr
+					h5 #{ membership_role }
+					p
+						i.fa.fa-home &nbsp#{ city },&nbsp #{ state },&nbsp #{ zipCode }
+					p Member since #{ date_member_joined.toDateString() }
+					if loggedIn 
+						h6 #{ first_name } is online now.
+					else 
+						h6 #{ first_name } is not online.
+				br
+				//- Accordian
+				div.accordion#accordion
+					div.card
+						div.card-header.bg-secondary.mb-0#headingOne
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne") My Projects
+						div#collapseOne.collapse(aria-labelledby="headingOne" data-parent="#accordion")
+							div.card-body
+								a(href="../pages/projects/Phoenix/Phoenix.html") Phoenix
+								br
+								a(href="../pages/projects/Tucson/Tucson.html") Tucson
+
+					div.card
+						div.card-header.bg-secondary.mb-0#headingTwo
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") My Events
+						div#collapseTwo.collapse(aria-labelledby="headingTwo" data-parent="#accordion")
+							div.card-body
+								p Training Schedule
+								p Outreach Schedule
+								p Community Events
+
+					div.card
+						div.card-header.bg-secondary.mb-0#headingThree
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree") My Photos
+						div#collapseThree.collapse(aria-labelledby="headingThree" data-parent="#accordion")
+							div.card-body
+								div.card-deck
+									div.card
+										img(src="/assets/images/w3images/lights.jpg" style="width:100%").mb
+									div.card
+										img(src="/assets/images/w3images/nature.jpg" style="width:100%").mb
+									div.card
+										img(src="/assets/images/w3images/mountains.jpg" style="width:100%").mb
+									div.card
+										img(src="/assets/images/w3images/forest.jpg" style="width:100%").mb
+									div.card
+										img(src="/assets/images/w3images/nature.jpg" style="width:100%").mb
+									div.card
+										img(src="/assets/images/w3images/snow.jpg" style="width:100%").mb
+
+					div.card
+						div.card-header.bg-secondary.mb-0#headingFour 
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour") My Certifications
+						div#collapseFour.collapse(aria-labelledby="headingFour" data-parent="#accordion") 
+							div.card-body
+								a(href="#") Project Leader
+								br
+								a(href="#") TriAge Mentor
+								br
+								a(href="#") Peer Support
+								br
+								a(href="#") TriAge Volunteer
+								br
+								a(href="#") Peer Training
+								br
+								a(href="#") Challenge 
+				br
+				//- Feedback
+				div.container.card.white.text-center.text-white.bg-secondary.mb-3
+					div.p-3
+						h6.p-3 How's our service?
+						p(contenteditable="true").border.padding Enter questions or  comments here
+						button.btn.btn-secondary.collapsed.text-white.theme Send Message
+
+			//- Center Column
+			div.col-sm-6.p-1
+				div
+					div.row.p-2
+						div.container.card.white.text-center
+							h4 Ready to resume the challenge?
+							h5 Return to the challenge.
+							p 
+								a.button.btn.btn-outline-dark(href="/member-challenge/" + id, alt="triage challenge")
+									i.fa.fa-chess-knight 
+									br
+									span TriAge Challenge
+
+				//- div.slideshow-container
+				//- 	iframe(src="/triage-game-modules/" + id)
+				div.slideshow-container
+					div.mySlides
+						div
+							iframe(src="/triage-game-pong-title/" + id)
+					div.mySlides
+						div
+							iframe(src="/triage-game-bouncy-ball-title/" + id)
+					
+
+					a.prev.moduleArrow(onclick="plusSlides(-1)") &#10094
+					a.next.moduleArrow(onclick="plusSlides(1)") &#10095
+
+				br
+				div(style="text-align:center")
+					span.dot(onclick="currentSlide(1)") 
+					span.dot(onclick="currentSlide(2)") 
+					span.dot(onclick="currentSlide(3)") 
+
+			script(src="/assets/javascript/modules.js")
+
+			//- Right Column
+			div.col-sm-3.p-1
+
+				div.card.text-center.p-3
+					div
+						p Upcoming Events:
+						img(src="/assets/images/27a_deposit.jpg" alt="Forest" style="width:100%;")
+						p
+							strong Volunteer Awards
+						p Friday 19:00
+						p Civic Center
+						p 
+							button Info
+
+				div.card.text-center.p-3
+					div
+						p Need Peer Support or Assistance?
+							img(src="/assets/images/Jane_Doe.jpg" alt="Online Volunteer" style="width:100%")
+							br
+							span I'm online now.
+							br 
+							p Jane Doe
+							div
+								div
+									button.button.btn-outline-secondary(title="Chat Request")
+										i.fa.fa-handshake Chat Request
+
+				div.card.p-3
+					div
+						p
+							i.fa.fa-calendar-alt TriAge Project community fundraiser starts next month!
+
+				div.card.p-3
+					div
+						p
+							i.fa.fa-calendar-alt Next Peer Support Specialist class:
+							br 
+							p 08/20/2023
+

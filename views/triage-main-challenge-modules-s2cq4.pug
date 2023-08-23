@@ -1,0 +1,27 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S2cQ4)
+    h3 Science of Stress
+    p Student Id: #{ student_id }
+    br
+    h4 Question 4 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question What are 3-5 things a person might start doing on a regular basis to reduce the impact of stress in their life?
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS2cq4/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="2c" hidden)
+      input(type="text" name="questionTitle" value="S2cQ4" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q4" hidden)
+      input(type="text" name="questionText" value="What are 3-5 things a person might start doing on a regular basis to reduce the impact of stress in their life?" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 4 of 4")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+ 

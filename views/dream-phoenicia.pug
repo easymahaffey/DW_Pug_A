@@ -1,0 +1,26 @@
+extends layout.pug
+
+block append section 
+
+  div.container-fluid
+
+    div.jumbotron
+      if memberhip_role === "Dreamweaver" || membership_role === 'Project Manager' || admin_role !== "Inactive" 
+        div.d-flex.justify-content-center
+          a(href="/image/" + id)
+            img(src="/assets/images/logos/animateLogoLinks.svg" alt="logo" height= 200)
+        div.d-flex-column.align-items-center 
+          div.d-flex.justify-content-center.mt-3
+            h2.display Phoenicia Project
+          div
+            //- h3.display-5
+            //-   a(href="/transcendence/" + id) Transcendence 
+            p.lead Phoenician Entrepreneurs 
+            p Dreamweavers that excel in business development are invited to join the Phoenicians. 
+          
+      else 
+        div.d-flex-column.align-items-center
+          div.d-flex.justify-content-center.mt-3
+            h1.display-4 Special Projects Area 
+          div.d-flex.justify-content-center.mt-3
+            p.lead For Deamweavers only 

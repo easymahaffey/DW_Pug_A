@@ -1,0 +1,164 @@
+extends layout.pug 
+
+block append content 
+  
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4
+        em Frequently Asked Questions
+      if !loggedIn 
+        strong
+          em
+            h2 
+              a.link(href="/loginMember") Login 
+      hr
+      if loggedIn  
+        h2 Hello 
+          em #{ first_name } #{ name } 
+          span welcome back.
+      else 
+        h2 
+          a.link(href="/registerMember") Register
+          span  to learn more.
+    hr
+    h3#toc
+      a.link(href="#what-are-dreamweavers") What are Dreamweavers? 
+      hr
+      a.link(href="#what-is-member") What is a Member? 
+      hr
+      a.link(href="#what-is-server") What is a Server? 
+      hr
+      a.link(href="#what-are-dreamweaver") What is a Dreamweaver? 
+      hr
+      a.link(href="#what-experiences") What kind of experiences? 
+      hr
+      a.link(href="#how-to-become-dreamweaver") How to become a Dreamweaver? 
+      hr
+      a.link(href="#dreamweaver-workgroups") What are Dreamweaver workgroups? 
+      hr
+      a.link(href="#how-long-dreamweavers-serve") How long do Dreamweavers serve? 
+      hr
+      a.link(href="#what-are-benefits") What are the benefits of being a Dreamweaver?
+      hr
+      a.link(href="#after-two-years") What happens after the two(2) years of initial service? 
+      hr
+      a.link(href="#what-is-prosocial") What is “prosocial” behavior?
+      hr
+      a.link(href="#contact") Contact Us
+      
+      if (loggedIn)
+        hr
+        hr
+        h3#toc2 Dreamweaver Philosophy 
+        hr
+        h4
+          a.link(href="#outline") Behavioral Health Consultation Model
+        hr
+        h4
+          a.link(href="#delineate") Delineating Client Problems
+        hr
+        h4
+          a.link(href="#website") Dreamweaver Website
+      hr
+      hr
+    h3#what-are-dreamweavers What are Dreamweavers?
+    p 
+      ul 
+        li Dreamweavers are a fraternal organization advancing prosocial philosophies we would like others to think about and possibly embrace. We practice and support inclusion without regard to sex, race, religion, ethnicity, gender, sexual orientation, economic status, political affiliation or disability. 
+        li Dreamweavers are inclusive and support different cultural and social lifestyles. 
+        li Dreamweavers strive to align individual members into working groups with common social values.  
+        li Liaison to other Dreamweaver communities
+    a.link(href="#toc") Return To Top
+    hr
+    h3#what-is-member What is a Member? 
+    p 
+      ul 
+        li The website’s prosocial group member interested in creating unique experiences for others. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#what-is-server What is a Server? 
+    p 
+      ul 
+        li The website’s prosocial group member interested in creating unique experiences for others in and outside of the Dreamweaver network by participating in Dream Scrums. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#what-are-dreamweaver  What is a Dreamweaver? 
+    p 
+      ul 
+        li The website’s prosocial group member dedicated to creating unique experiences for others in and outside of the Dreamweaver network by leading Dream Scrums.  
+      a.link(href="#toc") Return To Top
+    hr
+    h3#what-experiences  What kind of experiences? 
+    p 
+      ul 
+        li Each Experience is unique: The goal is to make the receiver have a sense of being seen, feeling welcomed and belonging. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#how-to-become-dreamweaver  How to become a Dreamweaver? 
+    p 
+      ul 
+        li Attend the Dreamweaver Academy on-line (90 days) or in-person (120 hours) to be a candidate. Graduates and potential initiates then apply to join a Dreamweaver workgroup. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#dreamweaver-workgroups  What are Dreamweaver workgroups? 
+    p 
+      ul 
+        li Working groups that consist of one Dream Master (team leader) and up to six members. 
+        li Dreamweaver workgroups are mission specific units created to contribute to the larger Dreamweaver network. 
+        li Dreamweaver workgroup members are professional and non-professional depending on the needs of the workgroup. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#how-long-dreamweavers-serve  How long do Dreamweavers serve?  
+    p 
+      ul 
+        li To avoid burn-out Dreamweavers are only ask to serve a total of two years. 
+        span &nbsp &nbsp &nbsp &nbsp Time frames: &nbsp &nbsp &nbsp &nbsp Total time: 
+        ul 
+          li 90 days &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	90 days  -  Dreamweaver Graduates (Dreamweaver Academy) 
+          li 90 days &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	180 days  -  Dreamweaver Initiates (Post-Graduates) 
+          li 180 days &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	1 year  -  Dreamweaver1&#176 
+          li 1 year &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	2 years  -  Dreamweaver2&#176 
+        li After two(2) years a Dreamweaver 2&#176 is eligible for a permanent lead position as a Dreamweaver 3&#176
+      a.link(href="#toc") Return To Top
+    hr
+    h3#what-are-benefits  What are the benefits of being a Dreamweaver? 
+    p 
+      ul 
+        li Volunteering is a cure for loneliness. 
+        li Gaining a sense of belonging. 
+        li Dreamweavers promote the welfare of the Dreamweaver first, so that in return they may serve better. 
+        li Dreamweavers are provided continual volunteer opportunities. 
+        li Dreamweavers are provided continual leadership opportunities. 
+        li Dreamweavers are provided career opportunities. 
+        li Dreamweavers receive the joy of sharing in providing Experiences. 
+        li Members that are a Dreamweaver 2&#176 and above are eligible to receive Dreamweaver Experiences. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#after-two-years What happens after the two(2) years of initial service? 
+    p 
+      ul 
+        li After two(2) years of initial service an active contributing Dreamweaver member their service commitment is considered fulfilled. The benefits of the Dreamweaver network access remain available. 
+        li Additional benefits are provided for each additional two years of service. 
+        li Additional leadership opportunities may be available based on service time, experience and performance. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#what-is-prosocial What is “prosocial” behavior? 
+    p 
+      ul 
+        li Prosocial behavior is voluntary behavior with the intent to help others. 
+        li Altruism is the desire to help even if the personal costs outweigh the benefits.  This may be due to empathy, the capacity to understand another person’s perspective by feelingwhat that person feels: an emotional connection. 
+        li Egoism can also create the desire to help due to the self-serving benefit of feeling good when helping others. 
+        li Prosocial behavior can be driven by either selfless(altruism) or self-serving(egoism) motives or both. 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#contact Contact us:
+    br 
+    strong 
+      p H. "Easy" Mahaffey (319173)
+      p ASPC Tucson
+      p Whetstone Unit 2B42
+      p 10004 S. Wilmot Rd.
+      p Tucson, AZ 85734-4402
+    a.link(href="#toc") Return To Top 

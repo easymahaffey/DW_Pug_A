@@ -1,0 +1,41 @@
+extends layout.pug
+
+block append nav
+
+    - loggedIn = true
+
+block append content
+    
+    div.container-fluid
+
+        div.jumbotron
+
+        h1.display-4 
+            em DATABASE
+            h1.display-4 Testing Page
+
+        if (loggedIn) 
+            h2 Hello #{ first_name } #{ name }
+            hr
+
+            h3 This is a 
+                em database test
+                span ,
+            h3 it shows you are logged in.
+        else 
+            h3 This is a 
+                em database test
+                span ,
+            h3 it shows you are logged out.
+            h4 That is why your menu is limited.
+        hr
+
+        h3 This is a 
+            em authentication test
+            span ,
+        h3 it shows you are currently authenticated.
+
+        if (!loggedIn)
+            div
+            h4 Re-login to register your database status with the program.
+            a.btn.btn-primary.btn-lg(href="/login") Re-Login

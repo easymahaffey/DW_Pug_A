@@ -1,0 +1,330 @@
+extends layout.pug 
+
+block append content 
+  
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4
+        em Dreamweaver Project Profile
+      if !loggedIn 
+        strong
+          em
+            h2 
+              a.link(href="/loginMember") Login 
+      hr
+      if loggedIn  
+        h2 Hello 
+          em #{ first_name } #{ name } 
+          span welcome back.
+      else 
+        h2 
+          a.link(href="/registerMember") Register
+          span  to learn more. 
+    hr
+    h3#toc
+      a.link(href="#what") What are Dreamweavers?
+      hr
+      a.link(href="#provides") What are Experiences?
+      hr
+      a.link(href="#experiential_dreams") What are Experiential Dreams?
+      hr
+      a.link(href="#service_dreams") What are Service Dreams?
+      hr
+      a.link(href="#benefits") Dreamweaver Benefits
+      hr
+      a.link(href="#nfts") Dreamweaver NFTs
+      hr
+      a.link(href="#goals") Dreamweaver Goals
+      hr
+      a.link(href="#corps") Server Corps
+      hr
+      a.link(href="#teams") Dream Teams
+      hr
+      a.link(href="#training") Dreamweaver Academy
+      hr
+      a.link(href="#about") More About Us
+      hr
+      a.link(href="#contact") Contact Us
+      
+      if (loggedIn)
+        hr
+        hr
+        h3#toc2 Dreamweaver Philosophy 
+        hr
+        h4
+          a.link(href="#outline") Behavioral Health Consultation Model
+        hr
+        h4
+          a.link(href="#delineate") Delineating Client Problems
+        hr
+        h4
+          a.link(href="#website") Dreamweaver Website
+      hr
+      hr
+    h3#what What are Dreamweavers?
+    p
+      strong 
+        ul 
+          li A Pro-Social Volunteer Community
+          li Incubators for Experiences
+          li Coordination of Dreamweaver Teams 
+          li Liaison to other Dreamweaver communities
+      a.link(href="#toc") Return To Top
+    hr
+    hr
+    h3#provides What are Experiences:
+    p
+      strong
+        ul
+          li The Experience 
+            ul 
+              li To create a feeling of being seen 
+              li To create a feeling of being welcomed 
+              li To create a sense of belonging 
+              li To create an Experience through Dreams 
+          li Experience opportunities:
+            ul 
+              li as a Server 
+              li as a Dreamweaver 
+              li as a Dream recipient 
+          li Community Service Opportunities
+            ul
+              li Dreamweaver organization development
+              li Dreamweaver service development
+              li Dreamweaver administrative services
+              li Dreamweaver training services
+      a.link(href="#toc") Return To Top
+    hr
+    h3#experiential_dreams What are Experiential Dreams:
+    p
+      strong
+        ul
+          li The Experiential Dream 
+            ul 
+              li An event or service 
+              li Creates an Experience 
+          li Experiential Dreams are created by Dreamweaver Teams:
+            ul 
+              li One Dreamweaver
+              li Four to six Servers
+          li Dreamweaver use the Workgroup Service Developer(WSD):
+            ul
+              li The event/service overview 
+              li Event/service background 
+              li The solution 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#service_dreams What are Service Dreams:
+    p
+      strong
+        ul
+          li The Service Dream 
+            ul 
+              li An event, service, or product 
+              li Creates an Experience for the Dreamweaver Community 
+          li Service Dreams are created by Dreamweaver Teams:
+            ul 
+              li One Dreamweaver
+              li Four to six Servers
+          li Dreamweaver use the Workgroup Service Developer(WSD):
+            ul
+              li The problem overview 
+              li Problem background 
+              li The solution 
+      a.link(href="#toc") Return To Top
+    hr
+    h3#benefits Dreamweaver Benefits
+    p
+      strong
+        ul
+          li Learning to model through agency
+            ul
+              li Developing agency for self and others
+              li Identifying goals leading to self-actualization
+          li Earn Dreamweaver Service NTFs
+          li Better communities
+          li Better lives
+      a.link(href="#toc") Return To Top
+    hr
+    h3#nfts Dreamweaver NFTs
+    p NFT: Non-fungible token
+      strong
+        ul
+          li NFTs are non-monetary digital assets (tokens) Dreamweavers and Servers earn from successful Dreams(SCRUMs).
+            ul
+
+          li A Dreamweaver Service-NTF is awarded to each Server for each successful Dream.
+          li An additional Dreamweaver Service-NTF is awarded to the Dreamweaver (team lead) for each successful Dream.
+          li Dreamweaver NFTs can be used for community recognition and advancement within the Dreamweaver Community.
+      a.link(href="#toc") Return To Top
+    hr
+    h3#goals Dreamweaver Goals
+    p 
+      strong 
+        ul 
+          li An experiential understanding of happiness
+          ul
+            li Pleasent life - enjoying daily pleasures
+            li Good life - using skills for enrichment
+            li Meaningful life - contributing to greater good
+          li Self-actualization
+      a.link(href="#toc") Return To Top
+    hr
+    h3#corps Server Corps
+    p Servers are active members on Dream Teams. Those who successfully complete a Dream become eligible for Dreamweaver (team lead) status to create new Dreams.
+    p Areas of service for servers (depending on Dream requirements) include:
+      strong 
+        ul
+          li Event Management
+          li Financial Management
+          li Entertainment Management
+          li Education Management
+          li Social Activity Management
+          li Organizational Management
+          li Logistical Management
+          li Community Services Management
+          li Business Management
+      a.link(href="#toc") Return To Top
+    hr
+    h3#teams Dream Teams - Event/Service Coordination (up to six members per team)
+    p 
+      strong 
+        ul
+          li Dreamweaver - Team Lead
+          ul 
+            li Idea/event/service creator
+            li Select team members
+          li Server
+            ul 
+              li Team member
+              li Eligible to become a Dreamweaver
+                ul 
+                  li Upon successful event
+          li SCRUM Events
+            ul 
+              li 4 week SCRUM
+              li 8 week SCRUM
+      a.link(href="#toc") Return To Top
+    hr
+    h3#training Dreamweaver Academy
+    p 
+      strong 
+        ul 
+          li Dreamweaver Academy (WHAM Challenge)
+          li Project Management (SCRUMs)
+          if (loggedIn)
+            li 
+              a.link(href="/arizonaServices/peer-training-centers/" + id) Peer Support Specialist (state certification) TBD
+          else 
+            li Peer Support Specialist (state certification) TBD
+          
+      a.link(href="#toc") Return To Top
+    hr
+    h3.display-4#about More about us
+    br
+    h3 Who are we 
+    p 
+      strong 
+        ul 
+          li We are volunteers 
+          li We are pro-social advocates
+          br
+    h3 Our philosophy 
+    p 
+      strong 
+        ul 
+          li Dreamweaver is a philosophy of life. A way to think about how one chooses to live.
+          li Dreamweaver is a philosophy supports pro-social behavior as a component of one's lifestyle.
+          li Dreamweaver philosophy does not promote any specific behavior, to promote is to convince or change a perspective, that is not its goal.
+          li Dreamweaver philosophy supports being available for those that choose to act on or expand one's exisitng pro-social behavoir.
+          li Dreamweaver philosophy holds external(intellectual) and internal (spiritual) tenents  toward pro-social behavoir. These are also viewed as cognitive (thinking) and expriential (feeling) as correllaries to the aforementioned.
+          li Dreamweaver philosophy supports its use via in any part or as a whole whenapplied to pursuing or advancing pro-social behavior.
+          li Dreamweaver philosophy holds that the use of any actionable aspect of pro-social behavior will eventually result in greater wholeistic results.
+          br
+    h3 Our need 
+    p Any organization is 20% documentation and 80% people.
+    p We need you. This is a list of some (not all) of the skills needed. Each Dream has its own requirements. 
+      strong 
+        ul 
+          li Laborers 
+          li Baristas 
+          li Chefs 
+          li Entertainers 
+          li Entrepreneurs 
+          li SCRUM Masters 
+          li Program managers 
+          li Marketing 
+          li Administrators 
+          li Clerical 
+          li Accountants 
+          li Certified Public Accountants 
+          li Paralegals 
+          li Legal Counsel  
+          li Peer Support Specialtists 
+          li Behavioral Health Counselors 
+          li Software developers 
+          li Network Engineers 
+          br
+    h3 How can you help? 
+    p 
+      strong 
+        ul 
+          li Volunteer 
+          li Join a team 
+          li Tell those that inspire you 
+          br
+      a.link(href="#toc") Return To Top
+    hr
+    h3#contact Contact us:
+    br 
+    strong 
+      p H. "Easy" Mahaffey (319173)
+      p ASPC Tucson
+      p Whetstone Unit 2B42
+      p 10004 S. Wilmot Rd.
+      p Tucson, AZ 85734-4402
+    a.link(href="#toc") Return To Top
+    br
+    hr
+    if (loggedIn)
+      h3#outline Behavioral Health Consultation Model (Parsons, Meyers & Jossey-Bass, 1984)
+      br
+      p The Dreamweaver Project uses a consultation model developed by Parsons, et al, to identify and provision services most effectively within itself, the Dreamweaver community.
+      p 
+      p 
+        strong 
+          ul 
+            li Direct service to Server (I)
+            li Indirect service to Server (II)	
+            li Service to the Dreamweaver (III) *
+            li Service to the Dreamweaver Community (IV) *
+        p * Dreamweaver Project focus areas.
+        p Principle: “… services should be given in most parsimoniously manner that is maximally effective.”
+        img(src="/assets/images/pics/model_stages.png" style="height:100%;width:100%" alt="Model Stages")
+        br
+        br
+        a.link(href="#toc2") Return To Top
+        hr
+      h3#delineate Delineate Internal versus External Problems For Dreamweavers
+      p 
+        strong 
+          ul 
+            li Internal problems make it difficult to recognize the need for help or how to ask for it.
+            li External problems are a lack of knowledge about available services or how to access them.
+        strong
+          p Dreamweaver Projects
+          ul 
+            li Help the Dreamweaver identify a community need (Assessment)
+            li Help the Dreamweaver identify community help (Referral)
+        a.link(href="#toc2") Return To Top
+        hr
+      h3#website Dreamweaver Website
+        br
+        br
+        img(src="/assets/images/pics/DW_Websites.png" style="height:100%;width:100%" alt="Model Stages")
+      br
+      p
+        a.link(href="#toc2") Return To Top
+        hr

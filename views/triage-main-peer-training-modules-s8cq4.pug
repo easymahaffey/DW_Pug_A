@@ -1,0 +1,29 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css") 
+  section.container-2
+    h2 Dreamweaver Academy Peer Training
+    h2 Keys to Success (S8cQ4)
+    p Student Id: #{ student_id }
+    br
+    h3 Key 1
+    br
+    h4 Question 4 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question I think I might be ready to improve these areas because:
+    br
+    p#answer Answer below:
+    form(action="/secureMainPeerTrainingModulesS8cq4/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8c" hidden)
+      input(type="text" name="questionTitle" value="S8cQ4" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q4" hidden)
+      input(type="text" name="questionText" value="I think I might be ready to improve these areas because:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="4 of 4")
+      br
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

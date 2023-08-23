@@ -1,0 +1,108 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.text-white
+	span 
+		if membership_role === "Server" || membership_role === "Dreamweaver" || membership_role === 'Project Manager' || admin_role !== "Inactive" 
+			a(href="/image/" + user_id)
+				img(src="/assets/images/logos/animateLogo2.svg" alt="logo" height= 60)
+		else 
+			img(src="/assets/images/logos/logo.jpg" alt="logo" height= 60)
+		a.navbar-brand(href="/finalLandingMember/" + user_id) Dreamweaver Project 
+		br
+		//- if user_admin_role !== 'Inactive'
+		span Admin Role: #{ user_admin_role } | Membership Role: #{ user_membership_role }
+		//- else 
+			//- span Membership Role: #{ membership_role }
+		if user_admin_role !== 'Inactive'
+			if user_member_student_status === "Active"
+				span  | Student Role: #{ user_student_role } 
+		//- br
+		//- span ID #{ id } 
+		//- br
+		//- span  | UserID #{ user_id }
+	span
+		button.btn.btn-dark.btn-outline-secondary.text-white.mr-3(onclick="darkToggle()") Dim
+		button.navbar-toggler(type="button"
+			data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+			span.navbar-toggler-icon
+	div.collapse.navbar-collapse#navbarSupportedContent
+		ul.navbar-nav.mr-auto
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Home
+					span.sr-only (current)
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/finalLandingMember/" + user_id) Home 
+					a.dropdown-item(href="/phases/" + id) Project Phases
+					hr 
+					if student_loggedIn
+						a.dropdown-item(href="/logoutStudent/" + user_id) Student Logout
+					else if loggedIn
+						a.dropdown-item(href="/logoutMember/" + user_id) Member Logout
+					else if user_admin_role
+						a.dropdown-item(href="/logoutMember/" + user_id) Member Logout
+			if user_admin_role === 'Local Administrator' ||user_admin_role === 'Site Manager' || user_admin_role === 'Program Manager'
+				li.nav-item.dropdown
+					a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false") Admin
+					div.dropdown-menu(aria-labelledby="navbarDropdown") 
+						a.dropdown-item(href="/memberDatabase/" + user_id) Member Database
+						a.dropdown-item(href="/vendorDatabase/" + user_id) Services Database
+						if membership_role === 'Local Administrator' || user_admin_role !== "Inactive"
+							hr
+							a.dropdown-item(href="/login/" + user_id) Admin Login 
+			li.nav-item.dropdown 
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Members 
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/memberDatabasePublic/" + user_id) Member Profiles
+					a.dropdown-item(href="/memberDatabaseAZ/" + user_id) Members (AZ)         
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") About Us
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/company-profile/" + user_id) Project Profile
+					a.dropdown-item(href="/company-events/" + user_id ) Project Events
+					a.dropdown-item(href="/company-faq/" + user_id ) FAQs
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Projects
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/triage-project-az-phoenix/" + user_id) Phoenix
+					a.dropdown-item(href="/triage-project-az-tucson/" + user_id) Tucson
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Dreams
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/registerDream/" + user_id) Create Dream 
+					a.dropdown-item(href="/dreamDatabaseForecastPublic/" + user_id ) Dream Forecast (Public)
+					if user_admin_role === 'Local Administrator' ||user_admin_role === 'Site Manager' || user_admin_role === 'Program Manager' 
+						a.dropdown-item(href="/dreamDatabaseForecast/" + user_id ) Dream Forecast (Private) 
+					a.dropdown-item(href="/arizonaDreams/" + user_id) Arizona Dreams
+					if user_admin_role === 'Local Administrator' ||user_admin_role === 'Site Manager' || user_admin_role === 'Program Manager' 
+						a.dropdown-item(href="/dreamDatabase/" + user_id ) All Dreams 
+						hr 
+					a.dropdown-item(href="/dreamDatabasePublic/" + user_id ) All Public Dreams 
+					hr  
+					a.dropdown-item(href="#" + user_id ) What Are Dreams
+					a.dropdown-item(href="#" + user_id ) Workgroup Developer
+					a.dropdown-item(href="#" + user_id ) Dream Forecast
+					a.dropdown-item(href="#" + user_id ) Resources
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Academy
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					hr
+					a.dropdown-item(href="/triage-challenge/" + user_id) Challenge
+					a.dropdown-item(href="/triage-my-challenge/" + user_id) My Challenge
+					if user_member_student_status === "Active"
+						a.dropdown-item(href="/member-challenge/" + user_id) Challenge Modules
+					hr 
+					a.dropdown-item(href="/triage-peer-training/" + user_id) Academy
+					a.dropdown-item(href="/triage-my-peer-training/" + user_id) My Academy
+					if user_member_student_status === "Active"
+						a.dropdown-item(href="/member-peer-training/" + user_id) Academy Modules
+						hr 
+						a.dropdown-item(href="/studentAnswers/" + user_id) Student Answers
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") My Profile
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/memberProfile/" + user_id) My Profile
+					a.dropdown-item(href="/updateMemberProfile/" + user_id) My Profile Settings

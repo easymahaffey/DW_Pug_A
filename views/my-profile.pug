@@ -1,0 +1,28 @@
+extends layout.pug
+
+block append content
+
+    div.container-fluid
+
+        div.jumbotron
+
+        h1.display-4 
+            em #{ name }
+            span  is a #{ userLevel }
+
+        if loggedIn 
+            h2 and is online now.
+        else 
+            h2 but is not online.
+
+        h3 #{ name } joined on 
+          em #{ date.toDateString() }
+          span .
+
+        hr
+
+        if privacy === 'Show'
+            h4 #{ name } is located in 
+            h4 #{ city }, #{ state }, #{ zipcode }
+
+        p #{ message }

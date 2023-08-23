@@ -1,0 +1,60 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			h1 Student Answers
+			h2 Member ID #{ id }
+			h2 Student ID #{ member_student_id }
+			h2 #{ first_name } #{ last_name }'s Challenge results.
+			br
+			p #{ message }
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+							if membership_role === 'Local Administrator' || userLevel
+								th 
+								th ID
+							
+							th Delete
+							th Answer ID
+							th Question Module Group
+							th Question Module
+							th Question Title
+							th Question Number
+							th Answer Date
+							th Answer Text
+							th Question Text
+
+					//- -console.log("STUDENT ANSWERS ", answers)
+					each answer in answers
+						tr.small
+							if membership_role === 'Local Administrator' || userLevel
+								td 
+									button.btn.btn-sm
+										a.link(href='/updateStudentAnswers/' + answer.id) &#9998;
+										//- a.link(href='/updateMemberProfileDB/' + member_student_id) &#9998;
+								td #{member_student_id}
+							td 
+								button.btn-outline-light
+									a.link(href="/deleteStudentAnswers/" + answer.id) &times;
+							//- form(action="/updateStudentAnswers/" + member_student_id method="post")
+							
+							td #{answer.id}
+							td #{answer.questionGroupModule}
+							td #{answer.questionModule}
+							td #{answer.questionTitle}
+							td #{answer.questionNumber}
+							td #{answer.answerDate.toDateString()}
+							td #{answer.answerText}
+							td #{answer.questionText}
+
+
+							//- td #{student.date_member_joined.toDateString()}
+							//- if membership_role === 'Local Administrator' || userLevel
+							//- 	td #{member.password}
+					else
+							td There are no answers.

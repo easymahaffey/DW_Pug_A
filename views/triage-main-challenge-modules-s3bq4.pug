@@ -1,0 +1,29 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S3bQ4)
+    h3 Improving Your Health
+    p Student Id: #{ student_id }
+    br
+    h3 Healthier Eating Questions
+
+    h4 Question 4 of 5
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question These are some healthy foods I like:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS3bq4/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="3b" hidden)
+      input(type="text" name="questionTitle" value="S3bQ4" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q4" hidden)
+      input(type="text" name="questionText" value="These are some healthy foods I like:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 4 of 5")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+

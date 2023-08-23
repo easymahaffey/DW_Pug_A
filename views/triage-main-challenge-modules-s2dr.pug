@@ -1,0 +1,44 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S2dr)
+    h3 Science of Stress
+    p Student Id: #{ student_id }
+    br
+    h4.text-center Reduce Stressor 
+    h4.text-center Review
+    br
+    h3.text-center 1A
+    p#question If I decide it is important to 
+      a(href="#") reduce stress
+      span  in my life or practice more stress management skills to improve my health and resiliency, I could do the following to accomplish that:
+
+    p#answer (Make sure it is something you are currently not doing, can do, and think you might enjoy.)
+    form(action="/secureMainChallengeModulesS2dr/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge PT" hidden)
+      input(type="text" name="questionModule" value="2d" hidden)
+      input(type="text" name="questionTitle" value="S2drA" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="1A" hidden)
+      input(type="text" name="questionText" value="If I decide it is important to reduce stress in my life or practice more stress management skills to improve my health and resiliency, I could do the following to accomplish that:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 1A")
+      br
+      br
+      h3.text-center 1B
+      p#question The benefit of doing this would be:
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge PT" hidden)
+      input(type="text" name="questionModule" value="2d" hidden)
+      input(type="text" name="questionTitle" value="S2drB" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="1B" hidden)
+      input(type="text" name="questionText" value="The benefit of doing this would be:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 1B")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+      br
+    br
+ 

@@ -1,0 +1,28 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Academy Peer Training (S7aQ2)
+    h3 Health Risk, Screening, and Shared Decision-Making
+    p Student Id: #{ student_id }
+    br
+    h3 Health Risk
+    br
+    h4 Question 2 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question What self-management strategies or health risk screenings are important to prevent untimely death?
+    br
+    p#answer Answer below:
+    form(action="/secureMainPeerTrainingModulesS7aq2/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="7a" hidden)
+      input(type="text" name="questionTitle" value="S7aQ2" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q2" hidden)
+      input(type="text" name="questionText" value="What self-management strategies or health risk screenings are important to prevent untimely death?" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 2 of 4")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

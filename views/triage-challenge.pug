@@ -1,0 +1,30 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 Welcome to the Dreamweaver Challenge
+      
+      if loggedIn 
+        h2 Hello #{ first_name } #{ name }
+        
+      p.lead Play fun games while challenging your mind.
+      hr.my-4
+      p.
+        Dreamweaver Challenge offers members a Person-Centered Planning Process (part one of two). 
+      p These challenges are important Whole Health and Resiliency Factors for your health. 
+      p Complete the challenges for fun and improved health or use it to start your path toward becoming a Dreamweaver Academy graduate.
+      
+      p 
+        if member_student_status === "Inactive" 
+          br
+          a.btn.btn-primary.btn-lg(href="/registerStudent/" + id) Register Challenge
+        if member_student_status === "Active"
+          br
+          a.btn.btn-primary.btn-lg(href="/triage-my-challenge/" + id) My Challenge
+        if userLevel 
+          p Admin Id: #{ id }
+          P Note: (Please do not register for Challenge as an Admin.)

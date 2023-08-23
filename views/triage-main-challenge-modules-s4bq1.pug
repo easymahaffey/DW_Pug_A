@@ -1,0 +1,29 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S4bQ1)
+    h3 The Power of Human Connection
+    p Student Id: #{ student_id }
+    br
+    h3 Service to Others Questions
+    br
+    h4 Question 1 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question These are some of the things that I have done or I am currently doing that I would define as “service to others”:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS4bq1/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="4b" hidden)
+      input(type="text" name="questionTitle" value="S4bQ1" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q1" hidden)
+      input(type="text" name="questionText" value="These are some of the things that I have done or I am currently doing that I would define as “service to others”:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 1 of 4")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+

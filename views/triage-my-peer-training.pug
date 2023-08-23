@@ -1,0 +1,25 @@
+extends layout.pug 
+
+block append section  
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 Welcome to YOUR Dreamweaver Academy
+      
+      if loggedIn 
+        h2 Hello #{ first_name } #{ name }
+        
+      p.lead Continue your path towards Dreamweaver Academy certification.
+      hr.my-4
+
+      p.
+        This is the Person-Centered Planning Process part two of two. These modules offer an important continuation of Whole Health and Resiliency Factors for you. Complete these modules to continue your path toward becoming a certified Dreamweaver.
+      
+      div
+        button.btn.btn-primary.btn-lg#myChallengeModules-btn(type="button")
+          a.text-decoration-none.text-white(href="/member-peer-training/" + id) Dreamweaver Academy 
+        br 
+        button.btn.btn-primary.btn-lg#myChallengeModules-btn(type="button")
+          a.text-decoration-none.text-white(href="/triage-main-peer-training-modules/" + id) Dreamweaver Academy (Full Screen) 

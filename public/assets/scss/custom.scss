@@ -1,0 +1,21 @@
+@import "../vendor/bootstrap/css/bootstrap";
+@import "../vendor/font-awesome/css/all";
+
+// $enable-gradients:                            false;
+
+// $bg-gradient-primary; linear-gradient(180deg, rgb(36, 28, 153), red);
+
+// @function theme-color($key: "primary") {
+//     @return map-get($theme-colors, $key);
+//   }
+
+// @each $color, $value in $theme-colors {
+//    @include bg-variant('.bg-#{$color}', $value);
+//   }
+
+$body-bg: rgb(231, 52, 52);
+$body-color: #111;
+
+body {
+  // background-color: rgb(167, 4, 4);
+}

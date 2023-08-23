@@ -1,0 +1,45 @@
+block append content
+	link(rel="stylesheet" href="/assets/css/module_content.css")
+	section.container-2
+		div.jumbotron
+			h1 Student Answers
+			h2 #{ first_name } #{ last_name }'s Dreamweaver Academy Challenge review.
+			br
+			//- p #{ message }
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+						//- 	th Question Number
+						//- 	th Answer Date
+						//- tr.small
+						//- 	th Question Text
+							tr
+					//- -console.log("STUDENT ANSWERS ", answers)
+					each answer in answers
+						tr.small
+							form(action="/secureMainPeerTrainingModulesS8b/" + member_student_id method="post") 
+								th Challenge Number 
+								//- th Answer Date
+								tr 
+								td.center #{answer.questionNumber} 
+								//- td #{answer.answerDate.toDateString()}
+								tr
+									th Challenge Text 
+									tr
+										input.form-control.small(type="text" name="id" placeholder="New Answer" value=answer.id hidden)
+										td #{answer.questionText}
+								tr
+									th Challenge Answer 
+									tr 
+									td #{answer.answerText}
+									tr
+									td 
+										input.small(type="text" name="answerText" placeholder="New Answer")
+									td
+										button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit 
+									tr 
+									td 
+										hr
+					else
+							td There are no answers.

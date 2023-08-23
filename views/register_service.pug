@@ -1,0 +1,262 @@
+extends layout.pug
+
+block append content 
+	p Your member id is #{ id }
+	h2 Enter the new profile for the organization you wish to register in the Dreamweaver and Phonecia Networks.
+
+	button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#serviceModal") Register
+	
+	p #{ message }
+
+	div.modal.fade#serviceModal
+		.modal-dialog
+			.modal-content  
+				.modal-header 
+					h1.modal-title New Organization
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+				.modal-body
+					form(action="/registerService/" + id method="post")
+						- console.log("SERVICE REG FORM ID", id)
+						input(type="text" name="organization_name" placeholder="Organization Name *" required)
+						br
+						input(type="password" name="password1" placeholder="password *" required)
+						br
+						input(type="password" name="password2" placeholder="confirm password *" required)
+						br
+						input(type="text" name="org_branch" placeholder="Branch Name")
+						br
+						input(type="text" name="org_email" placeholder="Organization E-mail")
+						br
+						input(type="text" name="org_website" placeholder="Organization Website")
+						br
+						input(type="text" name="org_phone" placeholder="Organization Phone")
+						br
+						input(type="text" name="org_phone_ext" placeholder="Organization Phone Extension ")
+						br
+						input(type="text" name="org_alt_phone" placeholder="Organization Alt Phone")
+						br
+						input(type="text" name="org_cell_phone" placeholder="Organization Cell Phone")
+						br
+						input(type="text" name="org_fax" placeholder="Organization FAX")
+						br
+						input(type="text" name="poc_first_name" placeholder="POC First Name")
+						br
+						input(type="text" name="poc_last_name" placeholder="POC Last Name")
+						br
+						input(type="text" name="poc_title" placeholder="POC Title")
+						br
+						input(type="text" name="alt_poc_first_name" placeholder="Alt. POC First Name")
+						br
+						input(type="text" name="alt_poc_last_name" placeholder="Alt. POC Last Name")
+						br
+						input(type="text" name="alt_poc_title" placeholder="Alt. POC Title")
+						br
+						input(type="text" name="alt_poc_phone" placeholder="Alt. POC Phone")
+						br
+						input(type="text" name="alt_poc_email" placeholder="Alt. POC E-mail")
+						br
+						input(type="text" name="address1" placeholder="Address 1")
+						br
+						input(type="text" name="address2" placeholder="Address 2")
+						br
+						input(type="text" name="city" placeholder="City")
+						br
+						input(type="text" name="State" placeholder="State")
+						br
+						input(type="text" name="zipCode" placeholder="Zip Code")
+						br
+						input(type="text" name="mail_address1" placeholder="Mail Address 1")
+						br
+						input(type="text" name="mail_address2" placeholder="Mail Address 2")
+						br
+						input(type="text" name="mail_city" placeholder="Mail City")
+						br
+						input(type="text" name="mail_state" placeholder="Mail State")
+						br
+						input(type="text" name="mail_zipCode" placeholder="Mail Zip Code")
+						br
+						label(for="eligibility") Eligibility
+						br
+						select(id="eligibility" name="eligibility")
+							option(value="--") --
+							option(value="COED") COED
+							option(value="Male") Male
+							option(value="Female") Female
+							option(value="Families") Families
+							option(value="Open To Public") Open To Public
+							option(value="LGBT") LGBT
+							option(value="Referral Required") Referral required
+							option(value="Veterans") Veterans
+							option(value="Refugees") Refugees
+						br
+						label(for="custody_level") Custody Level
+						br
+						select(id="custody_level" name="custody_level")
+							option(value="--") --
+							option(value="A1") A1
+							option(value="C3") C3
+							option(value="C2") C2
+							option(value="R1") R1
+							option(value="R3") R3
+							option(value="R4") R4
+							option(value="R5") R5
+							option(value="R1-6") R1-6
+							option(value="R1-6/R2") R1-6/R2
+							option(value="R4-R1") R4-R1
+							option(value="R1-7") R1-7
+							option(value="R1-9") R1-9
+							option(value="TCC") TCC
+							option(value="TCR-2") TCR-2
+						br
+						br
+						label(for="adoc_approved") ADOC Approved
+						br
+						select(id="adoc_approved" name="adoc_approved")
+							option(value="--") --
+							option(value="ADOC Approved") ADOC Approved
+						br
+						label(for="ahcccs_approved") AHCCCS Approved 
+						br
+						select(id="ahcccs_approved" name="ahcccs_approved")
+							option(value="--") --
+							option(value="AHCCCS Approved") AHCCCS Approved
+						br
+						label(for="azrha_approved") AZRHA Approved 
+						br
+						select(id="azrha_approved" name="azrha_approved")
+							option(value="--") --
+							option(value="AZRHA Approved") AZRHA Approved
+						br
+						hr
+						b 
+						label(for="info") Services Information 
+						br
+						textarea(name="info" rows="5" cols="30" placeholder="Enter Additional Information")
+						hr
+						br
+						input(type="radio" name="vendor_privacy" placeholder="privacy setting" value="Public")
+						label(for="privacy") Public Profile
+						br
+						input(type="radio" name="vendor_privacy" placeholder="privacy setting" value ="Private")
+						label(for="privacy") Private Profile
+						br
+						label(for="vendor_status") Service Status
+						br
+						select(id="vendor_status" name="vendor_status")
+							option(value="Active") Active
+							option(value="Inactive") Inactive
+						br
+						label(for="membership_role") Membership Role
+						br
+						select(id="membership_role" name="membership_role")
+							option(value="Member") Member
+						br
+						label(for="membership_status") Membership Status 
+						br 
+						select(id="membership_status" name="membership_status")
+							option(value="Inactive") Inactive
+							option(value="Active") Active
+						br
+						label(for="service") Service *
+						br
+						select(id="service" name="service" required)
+							option(value="") --
+							option(value="Community Service") Community Service
+							option(value="Healthcare Service") Healthcare Service
+						br
+						label(for="service_type") Service Type *
+						br
+						select(id="service_type" name="service_type" required)
+							option(value="") --
+							option(value="Transportation") Transportation
+							option(value="Housing") Housing
+							option(value="Food") Food
+							option(value="Clothing") Clothing
+							option(value="Employment") Employment
+							option(value="Behavioral Health") Behavioral Health
+							//- option(value="Mental Health") Mental Health
+							option(value="Physical Health") Physical Health
+							option(value="Benefits") Benefits
+							option(value="Financial") Financial
+							option(value="Identification Cards") Identification Cards
+							option(value="Legal") Legal
+							option(value="Religious") Religious
+							option(value="Parole") Parole
+						br
+						label(for="service_category") Service Category *
+						br
+						select(id="service_category" name="service_category" required)
+							option(value="") --
+							option(value="Public Transport") Public Transportation
+							option(value="Program Transport") Program Transportation
+							option(value="Commercial Transport") Commercial Transportation
+							option(value="Shelter") Shelter
+							option(value="Transitional Housing") Transitional Housing
+							option(value="Low Income Rentals") Low Income Rentals
+							option(value="Disabilities Rentals") Disabilities Rentals
+							option(value="Rent/Utility Assistance") Rent/Utility Assistance
+							option(value="Home Repair") Home Repair
+							option(value="Food Banks") Food Banks
+							option(value="Food Stamps") Food Stamps
+							option(value="Community Clothing") Community Clothing
+							option(value="State Unemployment") State Unemployment
+							option(value="Community Employment") Community Employment
+							option(value="Staffing Agency") Staffing Agency
+							option(value="Disabled Employment") Disabled Employment
+							option(value="Behavioral Health Employment") Behavioral Health Employment
+							option(value="Veterans Employment") Veterans Employment
+							option(value="Women Employment") Women Employment
+							option(value="Youth Employment") Youth Employment
+							option(value="Job Training") Job Training
+							option(value="Self-Employment/Entrepreneurs") Self-Employment/Entrepreneurs
+							option(value="Volunteer Opportunities") Volunteer Opportunities
+							option(value="Employers") Employers
+							option(value="Financial Assistance") Financial Assistance
+							option(value="SSI Benefits") SSI Benefits
+							option(value="Veterans Benefits") Veterans Benefits
+							option(value="Legal") Legal
+							option(value="Legal Aid") Legal Aid
+							option(value="Identification Cards") ID Cards
+							option(value="Parole Offices") Parole Offices
+							option(value="Religious Outreach") Religious Outreach
+							option(value="Behavioral Health Service") Behavioral Health Service
+							option(value="Veteran Behavioral Health Service") Veteran Behavioral Health Service
+							option(value="Peer Run Org") Peer Run Organization
+							option(value="Peer Support Training") Peer Recovery Support Specialist Training
+							option(value="Support Group") Support Group
+							option(value="Diabetes Care Center") Diabetes Care Center
+							option(value="Physical Healthcare") Physical Healthcare
+							option(value="Veterans Healthcare") Veterans Healthcare
+							option(value="Healthcare & Dental") Healthcare & Dental
+							option(value="Healthcare Advocacy") Healthcare Advocacy
+						br
+						label(for="service_source") Tertiary Category
+						br
+						select(id="service_source" name="service_source")
+							option(value="") --
+							option(value="Emergency Food Resource") Emergency Food Resource
+							option(value="Sober Living") Sober Living
+						br
+						br
+						label(for="service_source") Service Source *
+						br
+						select(id="service_source" name="service_source" required)
+							option(value="") --
+							option(value="Community Source") Community Source
+							option(value="Government Source") Government Source
+						br
+						label(for="veterans_services") Veterans Services 
+						br
+						select(id="veterans_services" name="veterans_services")
+							option(value="") --
+							option(value="Veterans Services") Veterans Services
+						br
+						br
+						br
+						p * Required
+						br
+						button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+				.modal-footer
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

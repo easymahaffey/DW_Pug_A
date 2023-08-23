@@ -1,0 +1,62 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css") 
+  section.container-2
+    h2 Dreamweaver Academy Peer Training
+    h2 Keys to Success (S8dQ2)
+    p Student Id: #{ student_id }
+    br
+    h3 Key 1
+    br
+    h4 Question 2 of 3
+      //- span#timerDisplay Time remaining: #{ timer }
+    h3 IMPACT Criteria Questions About Goals
+    br
+    p#question My whole health and resiliency goal is... (explain what I want to achieve or what I want to be able to do)
+    ul 
+      li
+        b I : 
+        span Does it 
+        em Improve 
+        span the quality of my health and resiliency? 
+      li
+        b M : 
+        span Is it 
+        em Measurable 
+        span in terms of my supporter knowing if I have accomplished it?
+      li
+        b P : 
+        span Is it 
+        em Positively 
+        span stated as something new I want in my life? 
+      li 
+        b A : 
+        span Is it 
+        em Achievable 
+        span for me in my present situation and with my current abilities?
+      li 
+        b C : 
+        span Does it 
+        em Call 
+        span forth actions that I can take on a regular basis to begin to create healthy habits?
+      li 
+        b T : 
+        span Is it 
+        em Time 
+        span limited in terms of when I will begin and when I plan to accomplish it?
+    
+    br
+    p#answer Answer below:
+    form(action="/secureMainPeerTrainingModulesS8dq2/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8d" hidden)
+      input(type="text" name="questionTitle" value="S8dQ2" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q2" hidden)
+      input(type="text" name="questionText" value="My whole health and resiliency goal is (explain what I want to achieve or what I want to be able to do)" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="2 of 3")
+      br
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

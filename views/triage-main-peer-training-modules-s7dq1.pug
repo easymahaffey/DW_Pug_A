@@ -1,0 +1,30 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css") 
+  section.container-2
+    h2 Dreamweaver Academy Peer Training (S7dQ1)
+    h3 Health Risk, Screening, and Shared Decision-Making
+    p Student Id: #{ student_id }
+    br
+    h3 Health Discussion
+    h3 SHARED DECISION MAKING
+    h3 PREPARING FOR YOUR DOCTOR’S MEETING AND HEALTH TESTS
+    br
+    h4 Question 1 of 3
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question What challenges do you think people may face when screening themselves for health issues?
+    br
+    p#answer Answer below:
+    form(action="/secureMainPeerTrainingModulesS7dq1/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="7d" hidden)
+      input(type="text" name="questionTitle" value="S7dQ1" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q1" hidden)
+      input(type="text" name="questionText" value="What challenges do you think people may face when screening themselves for health issues?" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 1 of 3")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

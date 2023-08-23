@@ -1,0 +1,334 @@
+//- extends layout.pug 
+extends layout_for_update.pug 
+
+block append content 
+
+	div.container-fluid
+
+		div.jumbotron
+
+			h1 Hello #{ first_name }
+			p Your id
+				strong : #{ member_id } 
+			h2 Dream (SCRUM) Settings 
+			h2 Dream ID: #{ dream_id } 
+			p Update messages 
+				strong : #{ message } #{ passwordMessage }
+
+	form(action="/updateDreamProfile/" + dream_id method="post") 
+		button.btn.btn-primary.btn-lg#password-btn(type="button" data-toggle="modal" data-target="#deleteModal") Delete Dream Profile
+		br
+		button.btn.btn-primary.btn-lg#password-btn(type="button" data-toggle="modal" data-target="#passwordModal") Change Profile Password
+		br
+		if admin_role === "Local Administrator"
+			label(for="password") Hashed Password:  
+			p #{ password }
+			br
+		label(for="current_project") Dreamweaver Current Project * 
+			strong  :
+			br
+			strong #{ current_project }
+		br 
+		select(id="current_project" name="current_project")
+			option(value="") -- 
+			option(value="Dreamweaver Phoenix") Phoenix 
+			option(value="Dreamweaver Tucson") Tucson 
+			if admin_role === "Local Administrator"
+					if membership_role === "Dreamweaver 2" || membership_role === "Dreamweaver 3" || membership_role === "Site Manager" || membership_role === "Local Administrator" || membership_role === "Project Leader"
+					option(value="Phoenicia Phoenix") Phoenicia Phoenix 
+					option(value="Phoenicia Tucson") Phoenicia Tucson
+		br 
+		label(for="dream_name") Dream Name
+			strong  : 
+			br 
+			strong #{ dream_name } 
+		input(type="text" name="dream_name" placeholder="Dream Name *") 
+		br 
+		label(for="start_date") Start Date  
+		strong  :
+			br
+			strong #{ start_date.toDateString() }
+		br  
+		input(type="date" name="start_date")
+		br 
+		label(for="scrum_type") SCRUM Type * 
+		strong  :
+			br
+			strong #{ scrum_type } 
+		br 
+		select(id="scrum_type" name="scrum_type") 
+			option(value="") -- 
+			option(value="4 Week") 4 Week 
+			option(value="8 Week") 8 Week 
+			option(value="Other") Other 
+		br 
+		//- input(type="password" name="password1" placeholder="password *" required) 
+		//- br 
+		//- input(type="password" name="password2" placeholder="confirm password *" required)
+		//- br
+		label(for="email") Email 
+		strong  :
+			br
+			strong #{ email } 
+		br
+		input(type="text" name="email" placeholder="Dream E-mail")
+		br
+		label(for="event_link") Event Link 
+		strong  :
+			br
+			strong #{ event_link } 
+		input(type="text" name="event_link" placeholder="Event Link (Internal)")
+		br
+		label(for="website") Website 
+		strong  :
+			br
+			strong #{ website }
+		input(type="text" name="website" placeholder="Dream Website (External)")
+		br 
+		label(for="dw_first_name") DW First Name 
+		strong  :
+			br
+			strong #{ dw_first_name }
+		input(type="text" name="dw_first_name" placeholder="Dreamweaver First Name *" )
+		br 
+		label(for="dw_last_name") DW Last Name 
+		strong  :
+			br
+			strong #{ dw_last_name }
+		input(type="text" name="dw_last_name" placeholder="Dreamweaver Last Name *" )
+		br 
+		label(for="dw_member_id") DW ID 
+		strong  :
+			br
+			strong #{ dw_member_id }
+		input(type="text" name="dw_member_id" placeholder="Dreamweaver ID *" )
+		br 
+		label(for="address1") Address 1 
+		strong  :
+			br 
+			strong #{ address1 }
+		input(type="text" name="address1" placeholder="Address 1")
+		br 
+		label(for="address2") Address 2 
+		strong  :
+			br 
+			strong #{ address2 }
+		input(type="text" name="address2" placeholder="Address 2")
+		br 
+		label(for="city") City * 
+		strong  :
+			br 
+			strong #{ city } 
+		input(type="text" name="city" placeholder="City *"  )
+		br
+		label(for="State") State * 
+		strong  :
+			br 
+			strong #{ State } 
+		input(type="text" name="State" placeholder="State *" )
+		br 
+		label(for="zipCode") Zip Code 
+		strong  :
+			br 
+			strong #{ zipCode } 
+		input(type="text" name="zipCode" placeholder="Zip Code")
+		br
+		label(for="eligibility") Dream Team Eligibility 
+		strong  :
+		br
+		strong #{ eligibility } 
+		br
+		select(id="eligibility" name="eligibility")
+			option(value="") -- 
+			option(value="OPEN") OPEN 
+			option(value="Referral ") Referral  
+			option(value="Dreamweaver 1") Dreamweaver 1&#176 
+			option(value="Dreamweaver 2") Dreamweaver 2&#176 
+			option(value="Dreamweaver 3") Dreamweaver 3&#176  
+		br
+		hr 
+		label(for="team_vacancy") Team Vacancy 
+		strong  :
+		br
+		strong #{ team_vacancy } 
+		br
+		select(id="team_vacancy" name="team_vacancy")
+			option(value="") -- 
+			option(value="Positions Available") Positions Available 
+			option(value="Positions Closed") Positions Closed 
+		br
+		label(for="team_positions") Team Positions (5-7) *  
+		strong  :
+		br
+		strong #{ team_positions } 
+		br
+		textarea(id="team_positions" name="team_positions" cols="30" rows="4" minlength="10" placeholder="List positions needed")
+		br
+		hr
+		label(for="team_members") Current Team Members * 
+		strong  :
+		br
+		strong #{ team_members }
+		br
+		textarea(id="team_members" name="team_members" cols="30" rows="4" minlength="10" placeholder="List team members" )
+		hr 
+		label(for="synopsis") Dream Synopsis * 
+		strong  :
+		br
+		strong #{ synopsis }
+		br
+		textarea(id="synopsis" name="synopsis" rows="4" cols="30" placeholder="Enter Dream Synopsis \n (plain text only)" minlength="10" )
+		hr 
+		label(for="results") Dream Results * 
+		strong  :
+		br
+		strong #{ results }
+		br
+		textarea(id="results" name="results" rows="4" cols="30" placeholder="Enter Dream Results \n (plain text only)" minlength="10" )
+		hr 
+		label(for="privacy") Privacy Setting  
+		strong  :
+		br
+		strong #{ privacy }
+		br
+		input(type="radio" name="privacy" placeholder="privacy setting" value="Public")
+		label(for="privacy") Public Profile 
+		br
+		input(type="radio" name="privacy" placeholder="privacy setting" value ="Private")
+		label(for="privacy") Private Profile 
+		hr
+		label(for="status") Dream Status *  
+		strong  :
+		br
+		strong #{ status } 
+		br
+		select(id="status" name="status" )
+			option(value="") -- 
+			option(value="Pending Approval") Pending Approval 
+      if admin_role !== "Inactive"
+        option(value="Active") Active 
+        option(value="Inactive") Inactive 
+		br
+		//- label(for="membership_role") Membership Role
+		//- br
+		//- select(id="membership_role" name="membership_role" hidden)
+		//- 	option(value="Member") Member
+		hr 
+		label(for="membership_status") Dreamweaver's Status 
+		strong  :
+		br
+		strong #{ membership_status }
+		br 
+		//- select(id="membership_status" name="membership_status")
+		//- 	option(value="") -- 
+		//- 	option(value="Inactive") Inactive 
+		//- 	option(value="Active") Active 
+		//- br
+		hr 
+		label(for="stage") Current Dream Stage 
+		strong  :
+		br
+		strong #{ stage }
+		br 
+		span 1: Idea, 2: Pre-plan, 3: Plan, 4: Pre-event, 
+		br 
+		span 5: Event:, 6: Post-event, 7: Results Posted 
+		br 
+		input(name = "stage" type="number" placeholder="Stage" min="1" max="7")
+		br
+		hr 
+		label(for="service_category") Service Category * 
+		strong  :
+		br
+		strong #{ service_category }
+		br
+		select(id="service_category" name="service_category" )
+			option(value="") -- 
+			option(value="Dreamweaver Service") Dreamweaver (Community Service) 
+			option(value="Phoenix Service") Phoenicia (Enterprise Service) 
+			option(value="Sphinx Service") Transcendence (Spiritual Service) 
+		hr
+		label(for="service_type") Service Type * 
+		strong  :
+		br
+		strong #{ service_type }
+		br
+		select(id="service_type" name="service_type" )
+			option(value="") -- 
+			option(value="Event Planning") Event Planning Services 
+			option(value="Culinary") Culinary Services 
+			option(value="Performing Arts") Performing Art Services 
+			option(value="Logistical") Logistical Services 
+			option(value="Administrative") Administrative Services 
+			option(value="Business") Business Services 
+			option(value="Housing") Housing Services 
+			option(value="Spiritual") Spiritual Services 
+		hr
+		label(for="service") Service * 
+		strong  :
+		br
+		strong #{ service }
+		br
+		select(id="service" name="service" )
+			option(value="") -- 
+			option(value="Adminstration") Adminstration 
+			option(value="Marketing") Marketing 
+			option(value="Product Marketing") Product Marketing 
+			option(value="Business Development") Business Development 
+			option(value="Network Engineering") Network Engineering 
+			option(value="Software Developer") Software Developer 
+			option(value="Multi-Dream Coordination") Multi-Dream Coordination 
+			option(value="Peer Support") Peer Support 
+			option(value="Spiritual Outreach") Spiritual Outreach 
+			option(value="Catering") Catering 
+			option(value="Black Tea") High Tea Service 
+			option(value="Green Tea") Green Tea Service 
+			option(value="Formal Dinner") Formal Dinner 
+			option(value="Fund Raising") Fund Raising 
+			option(value="Dreamweaver Community House") Dreamweaver Community House  
+			option(value="Dreamweaver House") Dreamweaver Member House 
+			option(value="Public Transport") Public Transportation 
+			option(value="Community Transport") Community Transportation 
+			option(value="Commercial Transport") Commercial Transportation 
+			//- option(value="Volunteer Opportunities") Volunteer Opportunities 
+		br
+		br
+		p * Required
+		button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+		//- .modal-footer
+		//- 	button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+	
+		div.modal.fade#passwordModal
+			.modal-dialog
+				.modal-content  
+					.modal-header 
+						h1.modal-title Change Password
+
+					.modal-body  
+						form(action="/updateMemberPassword/" + dream_id method="post") 
+							input(type="text" name="email" value=email hidden)
+							input(type="password" name="password1" placeholder="password" required)
+							br
+							input(type="password" name="password2" placeholder="confirm password *" required)
+							br
+							p * Required
+							br
+							button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+					.modal-footer
+						button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+		div.modal.fade#deleteModal
+			.modal-dialog
+				.modal-content  
+					.modal-header 
+						h1.modal-title Delete Dream
+					.modal-body 
+						form(action="/deleteDream/" + dream_id method="post") 
+							input(type="text" name="id" value=id hidden)
+							br
+							button.btn.btn-primary.btn-lg#register-btn(type="submit") Confirm delete
+
+					.modal-footer
+						button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

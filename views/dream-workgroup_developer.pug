@@ -1,0 +1,152 @@
+extends layout.pug
+
+block append section 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 The Dreamweaver Project
+      if !loggedIn 
+        strong
+          em
+            h2 
+              a.link(href="/loginMember") Login 
+      hr
+      if loggedIn  
+        h2 Hello 
+          em #{ first_name } #{ name } 
+          span welcome back.
+      else 
+        h2 
+          a.link(href="/registerMember") Register
+          span  to learn more. 
+      hr 
+      h2.display-5 The Workgroup Developer is the cornerstone of all Dreamweaver Dreams.
+
+      hr.my-4
+      
+      p.lead Workgroup Misson Developer (WMD)
+      ol 
+        li Define the mission(function/service/product). 
+        li Identify the gap in other available functions, services or products. 
+        li Define something doable to fill the gap. 
+      
+      p (The WMD can be written before or after completing the service developer.)
+      p.lead Workgroup Service Developer (WSD) 
+      p (The outline below is used to develop a brief synopsis. The synopsis is then used to develop a 5-6 six page detailed solution.)
+      ol 
+        li An overview of the challenge at hand. 
+          ul
+            li Consider the 
+              span 
+                u audience does not know
+                span  why the challenge has issues.
+            li 
+              u Describe
+              span  the challenge 
+              u as you see it
+              span . 
+        li A description of the challenge's background. 
+          ul 
+            li 
+              u How
+              span  have 
+              u similar challenges
+              span  been handled (other locations, time periods). 
+            li 
+              u Explain
+              span  why 
+              u solutions did not work
+              span  or were 
+              u not employed
+              span .
+        li The solution. 
+          ul 
+            li Propose solution in a 
+            u logical way
+            span .
+            ul 
+              li If solution is complex 
+              u identify stages
+              span . 
+              li If solution is simple give  
+              u examples
+              span  of 
+              u top three
+              span  contexts. 
+        li Illustrate thoughtfully throughout.
+          ul 
+            li Include enough examples to illustrate 
+              u why
+              span  solution could work.
+            li Consider 
+              u images
+              span , graphs, etc. that 
+              u highlight goals
+              span  of solution. 
+        li Conclude.
+          ul 
+            li What might change if solution is used?
+            li Explain how solution is meeting the needs of the present generation while caring for the future: sustainability.
+            li Sustainability should include sociocultural (
+              u people
+              span ), environmental (
+              u planet
+              span ) and economical (
+              u profit
+              span ) benefits. 
+      
+      if loggedIn 
+        hr 
+        h2.display-5 Example of synopsis
+        p.lead Dreamweaver Website Developer 
+        ol 
+          li The challenge: 
+            ul
+              li Need website to recruit volunteers and create events. 
+              li Need high conversion rate of visitor to volunteer.
+              li Need event developer and promoter.
+              li Need event/volunteer availablility and status.
+              li Need to monitor event effectiveness and results.
+          li Background:  
+            ul 
+              li Social media events 
+              ul 
+                li Promotions, results 
+              li Social networking 
+                ul 
+                  li Getting word output 
+              li Iteration 
+                ul 
+                  li Improving team/event/idea outcomes 
+          li The solution (demo). 
+            p 
+              u.badge-dark  Idea list (Sign-up) | &nbsp &nbsp Team List &nbsp | &nbspRegister WGs &nbsp 
+              br 
+              u.badge-dark  &nbsp Events (Open) &nbsp &nbsp | Event Results | Team Positions 
+            span.badge-dark &nbsp&nbsp &nbsp Idea &nbsp &nbsp | Status | Plan-Stage | &nbsp Results | Event link &nbsp| Team-List &nbsp
+            br 
+            span Enter Idea | Open | &nbsp &nbsp &nbsp &nbsp -- &nbsp &nbsp &nbsp &nbsp| Pending | &nbsp &nbsp &nbsp -- &nbsp &nbsp &nbsp &nbsp |Enter Names
+            p &nbspBuild Site | Open | &nbsp &nbsp &nbsp &nbsp&nbsp 3 &nbsp &nbsp &nbsp &nbsp| Pending | www.e.link | Tom, Raj, Bill
+            p &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+              u social media icons/links 
+          li Triple-Bottom Line:
+            ul 
+              li Dreamweaver and Server (Corps) growth (
+                u people
+                span )
+              li Better ideas with efficiency (
+                u planet
+                span ) 
+              li Improve project models (
+                u profit
+                span ) benefits. 
+      
+      if !loggedIn 
+        hr      
+        p If this is your first visit please register to enter and see an example of the workgroup service developer. 
+
+
+
+  

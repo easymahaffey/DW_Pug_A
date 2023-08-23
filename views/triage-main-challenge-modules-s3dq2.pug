@@ -1,0 +1,29 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S3dQ2)
+    h3 Improving Your Health
+    p Student Id: #{ student_id }
+    br
+    h3 Restful Sleep Questions
+    br
+    h4 Question 2 of 5
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question I know that I am not getting enough sleep when these things happen:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS3dq2/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="3d" hidden)
+      input(type="text" name="questionTitle" value="S3dQ2" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q2" hidden)
+      input(type="text" name="questionText" value="I know that I am not getting enough sleep when these things happen:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 2 of 5")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+

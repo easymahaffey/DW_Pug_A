@@ -1,0 +1,106 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.text-white
+	span
+		img(src="/assets/images/logos/logo.jpg" alt="logo" height= 60)
+		a.navbar-brand(href="/finalLandingMember/" + id) Dreamweaver Project 
+		br
+		span
+			if admin_role !== 'Inactive'
+				span #{ admin_role } 
+		span #{ membership_role } 
+		if member_student_status === "Active"
+			span #{ student_role } 
+
+	span
+		//- input(type="button", name="dark_mode" value="true")
+		button.btn.btn-dark.btn-outline-secondary.text-white.mr-3(onclick="darkToggle()") Dim
+
+		button.navbar-toggler(type="button"
+			data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+			span.navbar-toggler-icon
+
+	div.collapse.navbar-collapse#navbarSupportedContent
+		ul.navbar-nav.mr-auto
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Home
+					span.sr-only (current)
+		
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/finalLandingMember/" + id) Home
+					hr 
+					if student_loggedIn
+						a.dropdown-item(href="/logoutStudent/" + id) Student Logout
+					else if loggedIn
+						a.dropdown-item(href="/logoutMember/" + id) Member Logout
+
+			if admin_role === 'Local Administrator' ||admin_role === 'Site Manager' || admin_role === 'Program Manager'
+				li.nav-item.dropdown
+					a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false") Admin
+							
+					div.dropdown-menu(aria-labelledby="navbarDropdown") 
+						a.dropdown-item(href="/memberDatabase/" + id) Member Database
+						a.dropdown-item(href="/vendorDatabase/" + id) Services Database
+						if membership_role === 'Local Administrator'
+							hr
+							a.dropdown-item(href="/login/" + id) Admin Login            
+						
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Projects
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/triage-project-az-phoenix/" + id) Phoenix
+					a.dropdown-item(href="/triage-project-az-tucson/" + id) Tucson
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") About Us
+						
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/company-profile/" + id) Project Profile
+					a.dropdown-item(href="/company-events/" + id ) Project Events
+
+			//- li.nav-item.dropdown
+			//- 	a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Dreams
+
+			//- 	div.dropdown-menu(aria-labelledby="navbarDropdown")
+			//- 		a.dropdown-item(href="/local-news/" + id) Local
+			//- 		a.dropdown-item(href="/national-news/" + id) National
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Challenge
+
+				- console.log("NAV3 member_student_status", member_student_status)
+				- console.log("NAV3 II student_status", member_student_status)
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/triage-challenge/" + id) Challenge
+					a.dropdown-item(href="/triage-my-challenge/" + id) My Challenge
+					if member_student_status === "Active"
+						a.dropdown-item(href="/member-challenge/" + id) Challenge Modules
+						//- a.dropdown-item(href="/triage-main-challenge-modules/" + id) Challenge Modules
+						a.dropdown-item(href="/studentAnswers/" + id) Challenge Responses
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Academy
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/triage-peer-training/" + id) Academy
+					a.dropdown-item(href="/triage-my-peer-training/" + id) My Academy
+					if member_student_status === "Active"
+						a.dropdown-item(href="/member-peer-training/" + id) Academy Modules
+						//- a.dropdown-item(href="/triage-main-challenge-modules/" + id) Challenge Modules
+						a.dropdown-item(href="/studentAnswers/" + id) Academy Responses
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") My Profile
+				
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/memberProfile/" + id) My Profile
+					a.dropdown-item(href="/updateMemberProfile/" + id) My Profile Settings
+
+	//- form.form-inline.my-2.my-lg-0
+	//- 	input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search") 
+	//- 	button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search

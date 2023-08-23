@@ -1,0 +1,235 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			if userLevel || admin_role !== "Inactive"
+				h5 Administrator: #{ first_name } #{ last_name } #{ name }
+				h5 Administrator ID: #{ id }
+				h5 Administrator AdminID: #{ adminID }
+				h5 Administrator User ID: #{ user_id }
+				h5 Administrator Role: #{ admin_role }
+			h5 Hello #{ first_name } #{ last_name } #{ name }
+			h1 Members
+			
+				//- if userLevel || admin_role !== "Inactive"
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small 
+							th Total Site Visitors 
+							th Unique Site Visitors 
+							th Registrations Pending 
+							th Registrations Approved 
+							th Memberships Approved
+							th Total Members 
+							th AZ State Members 
+							th Private
+							th Public
+							th Active
+							th Inactive
+							th Dreamweavers
+							th Servers
+							th Member Only 
+							if userLevel || admin_role !== "Inactive"
+								th Project Managers
+								th Site Managers
+								th Local Admins
+						tr.small 
+							td #{visitor_total_count}
+							td #{visitor_unique_count}
+							td #{member_register_pending_count}
+							td #{member_register_approved_count}
+							td #{membership_approved_count}
+							td #{member_total_count}
+							td #{member_total_state_count}
+							td #{member_total_private_count}
+							td #{member_total_public_count}
+							td #{member_total_active_count}
+							td #{member_total_inactive_count}
+							td #{member_dreamweaver_count}
+							td #{member_server_count}
+							td #{member_only_count}
+							if userLevel || admin_role !== "Inactive"
+								td #{member_project_manager_count}
+								td #{member_admin_role_site_manager_count}
+								td #{member_admin_role_local_administrator_count}
+
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+							if userLevel
+								//- th (Admin Use THIS delete only!)
+								//- 	br
+								//- 	br
+								//- 	p Delete
+								th Delete
+								th Edit
+								th ID	
+							if admin_role === 'Local Administrator'
+								//- th Delete
+								th Edit
+								th ID
+							if admin_role === "Site Manager" 
+								th Edit
+							th Approved Registration
+							th Membership Approved 
+							th Membership Status
+							th First Name
+							th Last Name
+							th Dreams Completed
+							th Dreams Created
+							th Joined
+							th Logged-In
+							th Time as Member
+							th E-mail 
+							if admin_role === 'Local Administrator' || userLevel
+								th Phone
+							th Project 
+							if admin_role === 'Local Administrator' || userLevel
+								th Address 1
+								th Address 2
+							th City
+							th State
+							th Zip Code
+							th Privacy
+							//- th Birthday
+							th Membership Role 
+							if admin_role === 'Local Administrator' || userLevel
+								th Adminitrative Role
+
+					each member in members 
+						if admin_role === "Site Manager" || admin_role === 'Local Administrator' || userLevel 
+							tr.small
+								if userLevel 
+									td 
+										form(action="/userUpdateMemberDatabase/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											button(type="submit") &times; 
+									td 
+										form(action="/updateMemberProfileDB/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											input(type="text" name="member.id" value=member.id hidden)
+											button.btn(type="submit") &#9998;
+										//- button.btn.btn-sm
+										//- 	a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+									td #{member.id}
+								if admin_role === "Local Administrator"
+									td 
+										button.btn.btn-sm
+											a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+									td #{member.id}
+								if admin_role === "Site Manager" 
+									td 
+										button.btn.btn-sm
+											a.link(href="/updateMemberProfileDB/" + member.id) &#9998;		
+								td #{member.auth_register}
+								td #{member.membership_approved}
+								td #{member.membership_status}
+								td #{member.first_name}
+								td #{member.last_name}
+								td #{member.dreams_completed}
+								td #{member.dreams_created}
+								td #{member.date_member_joined.toDateString()}
+								td #{member.loggedIn}
+								//- td #{member.time_as_member}
+								td 
+									- let currentTime = Date.now() - member.date_member_joined
+									- let currentSeconds = currentTime / 1000
+									- let currentMinutes = currentSeconds / 60
+									- let currentHours = currentMinutes / 60
+									- let currentDays = currentHours / 24
+									- let currentMonths = currentDays / 30
+									- let currentYears = currentMonths / 12
+									- let monthsLeft = Math.floor(currentYears) * 12
+									- let calcMonths = Math.floor(currentMonths - monthsLeft)
+									- let monthDaysLeft = monthsLeft * 30
+									- let daysLeft = Math.floor(currentDays) - monthDaysLeft
+									- let calcDays = daysLeft % 30
+									span Days #{ calcDays }, 
+									span Months #{ calcMonths },  
+									span Years #{ Math.floor(currentYears) } 
+								td 
+									a.text-white(href="mailto: #{member.email}") #{member.email}  
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.phone}
+								td #{member.current_project}
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.address1}
+									td #{member.address2}
+								td #{member.city}
+								td #{member.state}
+								td #{member.zipCode}
+								td #{member.privacy}
+								//- td #{member.date_of_birth.toDateString()}
+								td #{member.membership_role} 
+								if admin_role === 'Local Administrator' || userLevel 
+									td #{member.admin_role} 
+						else if member.privacy !== "Hide"
+							tr.small
+								if userLevel 
+									td 
+										form(action="/userUpdateMemberDatabase/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											button(type="submit") &times;
+									td 
+										form(action="/updateMemberProfileDB/" + member.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											input(type="text" name="member.id" value=member.id hidden)
+											button.btn(type="submit") &#9998;
+									td #{member.id}
+								if !userLevel && admin_role === "Local Administrator" || admin_role === "Site Manager"
+									td 
+										button.btn.btn-sm
+											a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+									if admin_role !== "Site Manager"
+										td #{member.id}
+								td #{member.auth_register}
+								td #{member.membership_approved}
+								td #{member.membership_status}
+								td #{member.first_name}
+								td #{member.last_name}
+								td #{member.dreams_completed}
+								td #{member.dreams_created}
+								td #{member.date_member_joined.toDateString()}
+								td #{member.loggedIn}
+								//- td #{member.time_as_member} 
+								td 
+									- let currentTime = Date.now() - member.date_member_joined
+									- let currentSeconds = currentTime / 1000
+									- let currentMinutes = currentSeconds / 60
+									- let currentHours = currentMinutes / 60
+									- let currentDays = currentHours / 24
+									- let currentMonths = currentDays / 30
+									- let currentYears = currentMonths / 12
+									- let monthsLeft = Math.floor(currentYears) * 12
+									- let calcMonths = Math.floor(currentMonths - monthsLeft)
+									- let monthDaysLeft = monthsLeft * 30
+									- let daysLeft = Math.floor(currentDays) - monthDaysLeft
+									- let calcDays = daysLeft % 30
+									span Days #{ calcDays }, 
+									span Months #{ calcMonths },  
+									span Years #{ Math.floor(currentYears) } 
+								td 
+									a.text-white(href="mailto: #{member.email}") #{member.email}  
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.phone}
+								td #{member.current_project}
+								if admin_role === 'Local Administrator' || userLevel
+									td #{member.address1}
+									td #{member.address2}
+								td #{member.city}
+								td #{member.state}
+								td #{member.zipCode}
+								td #{member.privacy}
+								//- td #{member.date_of_birth.toDateString()}
+								td #{member.membership_status}
+								td #{member.membership_role} 
+								if admin_role === 'Local Administrator' || userLevel 
+									td #{member.admin_role} 
+					
+					else
+						td There are no users.

@@ -1,0 +1,54 @@
+extends layout.pug
+
+block append content 
+    p Your member id is #{ id }
+    h2 Enter the new profile for the admin area of the site.
+
+    button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#userModal") Register
+    
+    p #{ message }
+
+    div.modal.fade#userModal
+        .modal-dialog
+            .modal-content  
+                .modal-header 
+                    h1.modal-title Admin Registration
+
+                .modal-body
+                    form(action="/registerUser/" + id method="post")
+                        - console.log("REG FORM ID", id)
+                        input(type="text" name="name" placeholder="Name *" required)
+                        br
+                        input(type="text" name="email" placeholder="E-mail *" required)
+                        br
+                        input(type="password" name="password1" placeholder="password *" required)
+                        br
+                        input(type="password" name="password2" placeholder="confirm password *" required)
+                        br
+                        input(type="text" name="city" placeholder="City *" required)
+                        br
+                        input(type="text" name="state" placeholder="State *" required)
+                        br
+                        input(type="text" name="zipcode" placeholder="Zip Code *" required)
+                        br
+                        input(type="checkbox" name="privacy" placeholder="privacy setting" value="Show")
+                        label(for="privacy") Show Profile
+                        br
+                        input(type="checkbox" name="privacy" placeholder="privacy setting" value ="Hide")
+                        label(for="privacy") Hide Profile
+                        br
+                        label(for="userLevel") User security level *
+                        br
+                        select(id="userLevel" name="userLevel" required)
+                            option(value="Local Administrator") Local Administrator
+                            option(value="Site Administrator") Site Administrator
+                            option(value="System Administrator") System Administrator
+                            option(value="Programmer") Programmer
+                        br
+                        p * Required
+                        br
+                        button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+                    
+
+                .modal-footer
+                    button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

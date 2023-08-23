@@ -1,0 +1,111 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.text-white
+	span
+		a(href="/image/" + user_id)
+			img(src="/assets/images/logos/animateLogo2.svg" alt="logo" height= 60)
+		//- img(src="/assets/images/logos/logo.jpg" alt="logo" height= 60)
+		a.navbar-brand(href="/finalLandingUser/" + user_id) Dreamweavers (#{userLevel} #{membership_role} )
+		br
+		span ID #{ id } 
+		br
+		span UserID #{ user_id }
+
+	span 
+		button.btn.btn-dark.btn-outline-secondary.text-white.mr-3(onclick="darkToggle()") Dim
+
+		button.navbar-toggler(type="button"
+			data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+			span.navbar-toggler-icon
+
+	div.collapse.navbar-collapse#navbarSupportedContent
+		ul.navbar-nav.mr-auto
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Home
+					span.sr-only (current)
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/finalLandingUser/" + user_id) Home
+					hr 
+					//- a.dropdown-item(href="/triage-project-az-phoenix/" + id) Phoenix
+					//- a.dropdown-item(href="/triage-project-az-tucson/" + id) Tucson
+					//- hr
+					
+					if admin_role 
+						a.dropdown-item(href="/logoutMember/" + member_id) Member Logout
+					if userLevel
+						a.dropdown-item(href="/logout/" + user_id) Admin Logout
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Admin
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/test/" + user_id) Auth. Test
+					a.dropdown-item(href="/userDatabase/" + user_id) Admin Database
+					a.dropdown-item(href="/userMemberDatabase/" + user_id) Member Database 
+					a.dropdown-item(href="/userVendorDatabase/" + user_id) Services Database
+					if membership_role === 'Local Administrator'
+						a.dropdown-item(href="/userRegisterMember/" + user_id) Register Member
+						a.dropdown-item(href="/registerUser/" + user_id) Register Admin
+						a.dropdown-item(href="/registerProject/" + user_id) Register Project
+					if userLevel === 'System Administrator' || userLevel === 'Programmer'
+						a.dropdown-item(href="/userRegisterMember/" + user_id) Register Member
+						a.dropdown-item(href="/registerUser/" + user_id) Register Admin
+						a.dropdown-item(href="/registerProject/" + user_id) Register Project
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Projects
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/triage-project-az-phoenix/" + user_id) Phoenix
+					a.dropdown-item(href="/triage-project-az-tucson/" + user_id) Tucson
+			
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") About Us
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/admin-company-profile/" + user_id) Profile
+					a.dropdown-item(href="/admin-company-events/" + user_id ) Events
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") In The News
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/admin-local-news/" + user_id) Local
+					a.dropdown-item(href="/admin-national-news/" + user_id) National
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Main Module
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/triage-main-module-questions/" + user_id) Main Module Questions
+					//- a.dropdown-item(href="/national-news") National
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Challenge
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/triage-challenge/" + user_id) Challenge
+					a.dropdown-item(href="/triage-my-challenge/" + user_id) My Challenge
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Peer Training
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/triage-peer-training/" + user_id) Peer Training
+					a.dropdown-item(href="/triage-my-peer-training/" + user_id) My Training
+
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") My Account
+
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/myProfile/" + user_id) My Profile
+					a.dropdown-item(href="/myProfileSettings/" + user_id) My Profile Settings
+					//- a.dropdown-item(href="/my-account/" + id) My Account Settings
+
+		//- form.form-inline.my-2.my-lg-0
+		//-     input.form-control.mr-sm-2(type="search" placeholder="Search" aria-label="Search") 
+		//-     button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search

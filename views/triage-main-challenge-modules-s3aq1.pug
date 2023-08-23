@@ -1,0 +1,29 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S3aQ1)
+    h3 Improving Your Health
+    p Student Id: #{ student_id }
+    br
+    p Usually diet, exercise, and sleep are the first things called to mind when considering health. In the WHAM training, these are refereed to as “Healthy Eating.” “Physical Activity,” and “Restful Sleep.”
+
+    h4 Question 1 of 1
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question What role has healthy eating, physical activity, and restful sleep played in your mental health, addiction, and overall health and wellness?
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS3aq1/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="3a" hidden)
+      input(type="text" name="questionTitle" value="S3aQ1" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q1" hidden)
+      input(type="text" name="questionText" value="What role has healthy eating, physical activity, and restful sleep played in your mental health, addiction, and overall health and wellness?" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 1 of 1")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+

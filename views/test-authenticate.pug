@@ -1,0 +1,39 @@
+extends layout.pug
+
+block append content
+
+    div.container-fluid
+
+        h1.display-4 
+            em AUTHENTICATION
+
+        if (loggedIn) 
+            h2 Hello #{ first_name } #{ name }
+            h3 This is a 
+                em database test
+                span ,
+            h3 it shows you are logged in.
+        else 
+            h3 This is a 
+                em database test
+                span ,
+            h3 it shows you are logged out.
+
+        hr
+
+        h3 This is a 
+            em authentication test
+            span ,
+        if (loggedIn)
+            h3 it shows you are logged in.
+        else 
+            h3 it also shows you are logged out.
+
+        if (!loggedIn)
+            div
+                h4 Login to complete your authentication.
+                br
+                em
+                    h4 If you just registered please login.
+                br
+                a.btn.btn-primary.btn-lg(href="/loginMember") Login

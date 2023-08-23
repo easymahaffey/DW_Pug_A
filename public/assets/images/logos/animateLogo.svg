@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg
+  margin= "10"
+  width="50" 
+  height="50" 
+  viewBox="0 0 50 50"
+  stroke-width="28.222" 
+  stroke-linejoin="round"
+  preserveAspectRatio="xMidYMid" 
+  fill-rule="evenodd"
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:smil="http://www.w3.org/2001/SMIL20/"
+  xmlns:anim="urn:oasis:names:tc:opendocument:xmlns:animation:1.0"
+  xml:space="preserve"
+  >
+  console.log()
+
+  <defs>
+    <filter id="f1" x="0" y="0" width="200%" height="200%">
+      <feOffset result="offIn" in="SourceGraphic" dx="0" dy="0" />
+      <feGaussianBlur result="blurIn" in="offIn" stdDeviation="1" />
+      <feBlend in="SourceGraphic" in2="blurIn" mode="normal" />
+    </filter>
+  </defs>
+
+  <g>
+      <polygon points="25,0 12.5,25 37.5,25" style="fill:rgb(36, 74, 177);stroke:rgb(7, 37, 119);stroke-width:2" filter="url(#f1)" />
+      <animateTransform attributeName="transform" type="scale" begin=".1s" dur="3s" from="20" to="1" repeatCount="" />
+  </g>
+
+  <g>
+    <a xlink:href="/test">
+    <!-- <a xlink:href="/index.html"> -->
+      <polygon points="25,50 12.5,25 37.5,25" style="fill:red;stroke:rgb(158, 9, 9);stroke-width:2" filter="url(#f1)" />
+      <animateTransform attributeName="transform" type="scale" begin=".1s" dur="3.5s" from="-10" to="1" repeatCount="" />
+    </a>
+  </g>
+
+  <g>
+    <polygon points="12.5,25 0,50 25,50" style="fill:rgb(36, 74, 177);stroke:rgb(7, 37, 119);stroke-width:2" filter="url(#f1)"/>
+    <animateTransform attributeName="transform" type="scale" begin=".1s" dur="2.5s" from="10" to="1" repeatCount="" />
+  </g>
+
+  <g>
+    <polygon points="37.5,25 25,50 50,50" style="fill:rgb(36, 74, 177);stroke:rgb(7, 37, 119);stroke-width:2" filter="url(#f1)"/>
+    <animateTransform attributeName="transform" type="scale" begin=".1s" dur="2s" from="20" to="1" repeatCount="" />
+  </g>
+
+</svg>
+

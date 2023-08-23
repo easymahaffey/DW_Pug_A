@@ -1,0 +1,51 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1 Hello #{ name }
+
+      if (loggedIn) 
+        h2 You are online now.
+      else 
+        h2 You are not online.
+      h4 You're id is
+        p #{ id }
+
+      if (!message)
+        h3 This is where you update your account settings.
+      else
+        h3 #{ message }
+
+      form(action="/updateMyAccount/" + id method="post")
+        label(for="name") Name 
+        input(type="text" name="name" placeholder= "name" )
+        span #{ name }
+        br
+        label(for="email") E-mail 
+        input(type="text" name="email" placeholder="email")
+        span #{ email }
+        br
+        label(for="city") City 
+        input(type="text" name="city" placeholder="city") 
+        span #{ city }
+        br
+        label(for="state") State 
+        input(type="text" name="state" placeholder="state") 
+        span #{ state }
+        br
+        label(for="zipcode") Zipcode 
+        input(type="text" name="zipcode" placeholder="zipcode") 
+        span #{ zipcode }
+        br
+        
+        //- input(type="checkbox" name="privacy" placeholder="privacy setting" value="true")
+        //- label(for="privacy") Show Profile
+        //- input(type="checkbox" name="privacy" placeholder="privacy setting" value ="false")
+        //- label(for="privacy") Hide Profile 
+        //- p Current privacy setting #{ value }
+        //- br
+        button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit

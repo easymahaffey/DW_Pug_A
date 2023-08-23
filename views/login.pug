@@ -1,0 +1,44 @@
+extends layout.pug
+
+block append content
+
+    h2 Administrators welcome back please login.
+
+    button.btn.btn-primary.btn-lg#login-btn(type="button" data-toggle="modal" data-target="#myModal") Login
+
+    p #{ message }
+    
+    div.modal.fade#myModal
+        .modal-dialog
+            .modal-content  
+                .modal-header 
+                    h1.modal-title Admin Login
+                    //- button.btn.btn-primary.btn-md.close(type="button" data-dismiss="modal") Close
+
+                .modal-body
+                    form(action="/login/" + id method="post") 
+                        label(for="email") E-mail 
+                        input(type="text" name="email" placeholder="email")
+                        br
+                        label(for="password") Password 
+                        input(type="text" name="password" placeholder="password")
+                        br
+                        button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit
+
+                        button.btn.btn-primary.btn-lg#home-btn(type="button" onclick="window.location = '/'") Home
+                    div
+                        if userLevel
+                            button.btn.btn-primary.btn-lg#register-btn(type="button" )
+                                a.text-decoration-none.text-white(href="/registerUser/" + id) Register Admin
+                        button.btn.btn-primary.btn-lg#register-btn(type="button" )
+                            a.text-decoration-none.text-white(href="/registerMember/") Register Member
+                        //- //- p Uncomment for initial admin user   
+                        //- button.btn.btn-primary.btn-lg#register-btn(type="button" )
+                        //-     a.text-decoration-none.text-white(href="/registerUser/" + id) Register Admin
+
+                .modal-footer
+                    button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+
+
+        

@@ -1,0 +1,102 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4
+        em Dreamweaver Project Events
+      if !loggedIn 
+        strong
+          em
+            h2 
+              a.link(href="/loginMember") Login 
+      hr
+      if loggedIn  
+        h2 Hello 
+          em #{ first_name } #{ name } 
+          span welcome back.
+      else 
+        h2 
+          a.link(href="/registerMember") Register
+          span  to learn more. 
+    hr
+    h3#toc
+      a.link(href="#volunteer_meeting") Dreamweaver Member Meetings
+      hr
+      a.link(href="#peer_meeting") Dreamweaver Team Meetings
+      hr
+      
+      if (loggedIn)
+        a.link(href="#peer_training") Dreamweaver Monthly SCRUM Training
+        hr
+    h3#volunteer_meeting Dreamweaver Member Weekly Meetings
+    p
+      strong
+        ul
+          li Phoenix North
+            ul 
+              li Monday 1800
+              li Address: Greenway & Scottsdale
+          li Phoenix South
+            ul 
+              li Wednesday 1800
+              li Address: Mill Ave & Scottsdale
+          li Mesa
+            ul 
+              li Tuesday 1800
+              li Address: Powers & Hwy 60
+          li Avondale
+            ul 
+              li Thursday 1800
+              li Address: Avondale Ave & I-10
+      a.link(href="#toc") Return To Top
+    hr
+    h3#peer_meeting Dreamweaver Team Meetings
+    p
+      strong
+        ul
+          li Phoenix North
+            ul 
+              li Monday 1900
+              li Address: Greenway & Scottsdale
+          li Phoenix South
+            ul 
+              li Wednesday 1900
+              li Address: Mill Ave & Scottsdale
+          li Mesa
+            ul 
+              li Tuesday 1900
+              li Address: Powers & Hwy 60
+          li Avondale
+            ul 
+              li Thursday 1900
+              li Address: Avondale Ave & I-10
+      a.link(href="#toc") Return To Top
+    if (loggedIn)
+      hr
+      h3#peer_training Dreamweaver Monthly SCRUM Training
+      p (First week of the month.)
+      p
+        strong
+          ul
+            li Phoenix North
+              ul 
+                li Saturday 1000
+                li Address: Greenway & Scottsdale
+            li Phoenix South
+              ul 
+                li Wednesday 1200
+                li Address: Mill Ave & Scottsdale
+            li Mesa
+              ul 
+                li Tuesday 1400
+                li Address: Powers & Hwy 60
+            li Avondale
+              ul 
+                li Thursday 0800
+                li Address: Avondale Ave & I-10
+        a.link(href="#toc") Return To Top
+    hr

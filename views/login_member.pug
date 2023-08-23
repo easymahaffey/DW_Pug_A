@@ -1,0 +1,42 @@
+extends layout.pug
+
+block append content
+
+    h2 Welcome back please login.
+
+    button.btn.btn-primary.btn-lg#login-btn(type="button" data-toggle="modal" data-target="#loginModal") Login
+
+    p #{ message }
+    
+    div.modal.fade#loginModal
+        .modal-dialog
+            .modal-content  
+                .modal-header 
+                    h1.modal-title Member Login
+                    //- button.btn.btn-primary.btn-md.close(type="button" data-dismiss="modal") Close
+
+                .modal-body
+                    form(action="/loginMember" method="post") 
+                        label(for="email") E-mail 
+                        br
+                        input(type="text" name="email" placeholder="email")
+                        br 
+                        label(for="password") Password 
+                        br
+                        input(type="text" name="password" placeholder="password")
+                        //- input(type="password" name="password" placeholder="password")
+                        br
+                        button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit
+
+                    div
+                        button.btn.btn-primary.btn-lg#register-btn(type="button" onclick="window.location ='/registerMember'") Register
+                        button.btn.btn-primary.btn-lg#home-btn(type="button" onclick="window.location = '/'") Home
+
+                    
+
+                .modal-footer
+                    button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+
+
+        

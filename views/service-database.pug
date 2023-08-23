@@ -1,0 +1,149 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			//- h5 Administrator: #{ first_name } #{ last_name } #{ name }
+			//- h5 Administrator ID: #{ id }
+			//- h5 Administrator Role: #{ admin_role }
+			h5 Member: #{ first_name } #{ last_name } #{ name }
+			h5 Member ID: #{ id }
+			h1 #{ vendorServiceCategory } Services 
+			
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+							if userLevel
+								th (Admin Use THIS delete only!)
+									br
+									br
+									p Delete
+								th Local Admin 
+									br 
+									br 
+									p Delete
+								th Edit
+								th 
+							else if admin_role === 'Local Administrator'
+								th Delete
+								th Edit
+								th ID
+							else if admin_role !== 'Inactive'
+								th Edit
+							th Organization Name
+							th Organization Branch
+							th Joined
+							th E-mail
+							th website
+							th Address 1
+							th Address 2
+							th City
+							th State
+							th Zip Code
+							if admin_role === 'Local Administrator' || userLevel
+								th Logged In
+								th Vendor Status
+								th Membership Role
+								th Membership Status
+								th Enrolling Member's ID
+							if membership_role !== 'Member'
+								th Phone
+								th Phone ext.
+								th Alt Phone
+								th Cell Phone
+								th Fax
+								th POC First Name
+								th POC Last Name
+								th POC Title
+								th Alt POC First Name
+								th Alt POC Last Name
+								th Alt POC Title
+								th Alt POC Phone
+								th Alt POC Email
+								th Mail Address 1
+								th Mail Address 2
+								th Mail City
+								th Mail State
+								th Mail Zip Code
+								th Eligibility 
+								th Custody Level 
+								th ADOC Approved 
+								th AHCCCS Approved
+								th AZRHA Approved 
+								th Information 
+								th Service 
+								th Service Type 
+								th Service Category 
+								th Service Source 
+								th Veteran Service
+
+					each vendor in vendors
+						tr.small
+							if userLevel 
+								td 
+									form(action="/userUpdateVendorDatabase/" + vendor.id method="post") 
+										input(type="text" name="adminID" value=id hidden)
+										button(type="submit") &times;
+							if admin_role !== 'Inactive'
+								if admin_role === 'Local Administrator'
+									td 
+										form(action="/updateVendorDatabase/" + vendor.id method="post") 
+											input(type="text" name="adminID" value=id hidden)
+											button(type="submit") &times;
+								td 
+									button.btn.btn-sm
+										a.link(href="/updateVendorProfileDB/" + vendor.id) &#9998;
+								if admin_role === 'Local Administrator'
+									td #{vendor.id}
+							td #{vendor.organization_name}
+							td #{vendor.org_branch}
+							td #{vendor.date_organization_joined.toDateString()}
+							td #{vendor.org_email}
+							td #{vendor.org_website}
+							td #{vendor.address1}
+							td #{vendor.address2}
+							td #{vendor.city}
+							td #{vendor.State}
+							td #{vendor.zipCode}
+							if admin_role === 'Local Administrator' || userLevel
+								td #{vendor.loggedIn}
+								td #{vendor.vendor_status}
+								td #{vendor.membership_role}
+								td #{vendor.membership_status}
+								td #{vendor.member_id}
+							if membership_role !== 'Member'
+								td #{vendor.org_phone}
+								td #{vendor.org_phone_ext}
+								td #{vendor.org_alt_phone}
+								td #{vendor.org_cell_phone}
+								td #{vendor.org_fax}
+								td #{vendor.poc_first_name}
+								td #{vendor.poc_last_name}
+								td #{vendor.poc_title}
+								td #{vendor.alt_poc_first_name}
+								td #{vendor.alt_poc_last_name}
+								td #{vendor.alt_poc_title}
+								td #{vendor.alt_poc_phone}
+								td #{vendor.alt_poc_email}
+								td #{vendor.mail_address1}
+								td #{vendor.mail_address2}
+								td #{vendor.mail_city}
+								td #{vendor.mail_State}
+								td #{vendor.mail_zipCode}
+								td #{vendor.eligibility}
+								td #{vendor.custody_level}
+								td #{vendor.adoc_approved}
+								td #{vendor.ahcccs_approved}
+								td #{vendor.azrha_approved}
+								td #{vendor.info}
+								td #{vendor.service}
+								td #{vendor.service_type}
+								td #{vendor.service_category}
+								td #{vendor.service_source}
+								td #{vendor.veterans_services}
+							
+					else
+							td There are no vendors.

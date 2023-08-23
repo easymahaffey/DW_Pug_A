@@ -1,0 +1,28 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S5cQ1)
+    h3 Maintaining a Positive Attitude
+    p Student Id: #{ student_id }
+    br
+    h3 Cognitive Skills to Avoid Negative Thinking Questions
+    br
+    h4 Question 1 of 2
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question List 3-4 actions you have found helpful in catching, checking, and changing your negative self-talk:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS5cq1/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="5c" hidden)
+      input(type="text" name="questionTitle" value="S5cQ1" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q1" hidden)
+      input(type="text" name="questionText" value="List 3-4 actions you have found helpful in catching, checking, and changing your negative self-talk:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 1 of 2")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

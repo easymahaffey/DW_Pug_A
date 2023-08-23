@@ -1,0 +1,27 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S2cQ2)
+    h3 Science of Stress
+    p Student Id: #{ student_id }
+    br
+    h4 Question 2 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question What are your favorite activities for relaxing or having fun?
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS2cq2/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="2c" hidden)
+      input(type="text" name="questionTitle" value="S2cQ2" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q2" hidden)
+      input(type="text" name="questionText" value="What are your favorite activities for relaxing or having fun?" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 2 of 4")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+ 

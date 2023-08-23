@@ -1,0 +1,56 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css") 
+  section.container-2
+    h2 Dreamweaver Academy Peer Training 
+    h2 Keys to Success (S8b)
+    p Student Id: #{ student_id }
+    br
+    h3 Key 1
+    br
+    strong 
+      p Review and Prioritization 
+      em
+        p Review your answers from the Dreamweaver  Challenge. You can change your answers here as needed. Make sure all A and B areas of questions 1 through 10 are complete. If any are missing you must return to the challenge area to complete them.
+      br
+
+      a.link(href="/triage-main-challenge-modules-s2dr/" + id) 1A_/_1B 
+      a.link(href="/triage-main-challenge-modules-s3br/" + id) 2A_/_2B 
+      a.link(href="/triage-main-challenge-modules-s3cr/" + id) 3A_/_3B 
+      a.link(href="/triage-main-challenge-modules-s3dr/" + id) 4A_/_4B 
+      a.link(href="/triage-main-challenge-modules-s4br/" + id) 5A_/_5B 
+      br
+      a.link(href="/triage-main-challenge-modules-s4cr/" + id) 6A_/_6B 
+      a.link(href="/triage-main-challenge-modules-s5br/" + id) 7A_/_7B 
+      a.link(href="/triage-main-challenge-modules-s5cr/" + id) 8A_/_8B 
+      a.link(href="/triage-main-challenge-modules-s6br/" + id) 9A_/_9B 
+      a.link(href="/triage-main-challenge-modules-s6cr/" + id) 10A_/_10B 
+
+
+    each oldCptAnswer in oldCptAnswers
+
+      h5.text-center #{ oldCptAnswer.questionNumber }
+      p#question #{ oldCptAnswer.questionText }
+      - let page = "/secureMainChallengeModules"+ oldCptAnswer.questionTitle + "/"
+      - let answerId = oldCptAnswer._id
+      form(action = "/secureMainPeerTrainingModulesS8b/" + id method="post")
+        input(type="text" name="member_id" value=id hidden)
+        input(type="text" name="student_id" value=member_student_id hidden)
+        input(type="text" name="answerDate" hidden)
+        input(type="text" name="questionGroupModule" value=oldCptAnswer.questionGroupModule hidden)
+        input(type="text" name="questionModule" value=oldCptAnswer.questionModule hidden)
+        input(type="text" name="questionTitle" value=oldCptAnswer.questionTitle hidden)
+        input(type="text" name="answerTime" hidden)
+        input(type="text" name="questionNumber" value=oldCptAnswer.questionNumber hidden)
+        input(type="text" name="questionText" value=oldCptAnswer.questionText hidden)
+        input.answerArea(type="textarea" name="answerText" placeholder=oldCptAnswer.answerText)
+        br
+        button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+
+      form(action = "/secureMainPeerTrainingModulesS8bDelete/" + id method="post")
+        input(type="text" name="answerId" value=answerId hidden)
+        input(type="text" name="member_id" value=id hidden)
+        input(type="text" name="student_id" value=member_student_id hidden)
+        br
+        button.btn.btn-primary.btn-lg.btn-module(type="submit") Delete Answer      
+      br
+

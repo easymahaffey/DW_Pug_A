@@ -1,0 +1,232 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			h5 Member: #{ first_name } #{ last_name } #{ name }
+			h5 Member ID: #{ id }
+			h1 
+				if !dbState 
+					span #{ privacy }  Dreams 
+				if dbState 
+					span #{ privacy } #{ dbState } Dreams 
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark 
+						tr.small
+							if userLevel 
+								th (For Admin only!)
+									br
+									br
+									p Delete 
+							else if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+								th Delete Dream 
+								th Edit Full Profile
+								th ID 
+							th Current Project 
+							th Dream Name 
+							th Dreamweaver Name
+							if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+								th Dreamweaver ID 
+							th Scrum Type 
+							th Start Date 
+							th Dream Stage 
+							th Dream Privacy 
+							th Dream Status 
+							th Service Category 
+							th Service Type 
+							th Service 
+							th Dream Synopsis 
+							th Service Developer 
+							th Dream E-mail 
+							th Dream Event Link  
+							th Dream Website 
+							th Dream Results 
+							th Eligibility 
+							th Team Vacancy 
+							th Team Positions 
+							th Team Members 
+							if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+								th Address 1 
+								th Address 2 
+								th City 
+								th State 
+								th Zip Code 
+								th Dreamweaver Membership Role
+								th Dreamweaver Membership Status 
+								th Submit Updates
+
+					each dream in dreams
+						tr.small
+							//- if userLevel 
+							//- 	td 
+							//- 		form(action="/userUpdateDreamDB/" + dream.id method="post") 
+							//- 			input(type="text" name="adminID" value=id hidden)
+							//- 			button(type="submit") &times;
+							if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+								td 
+									form(action="/deleteDBDream/" + dream.id method="post") 
+										input(type="text" name="adminID" value=id hidden)
+										button.btn-danger(type="submit") &#88;
+								td 
+									form(action="/updateDreamProfile/" + dream.id method="post") 
+										input(type="text" name="adminID" value=id hidden)
+										input(type="text" name="dream.id" value=dream.id hidden)
+										button.btn(type="submit") &#9998;
+									//- button.btn.btn-sm
+									//- 	a.link(href="/updateDreamProfile/" + dream.id) &#9998;
+								td #{dream.id}
+							form(action="/updateDreamSettingsDB/" + dream.id method="post") 	
+								td #{dream.current_project} 
+									if membership_role === "Dreamweaver" || admin_role === "Local Administrator" || admin_role === "Site Manager" || admin_role === "Project Manager" 
+										select(id="current_project" name="current_project")
+											option(value="") -- 
+											option(value="Dreamweaver Phoenix") Phoenix 
+											option(value="Dreamweaver Tucson") Tucson 
+											if admin_role === "Local Administrator"
+													if membership_role === "Dreamweaver 2" || membership_role === "Dreamweaver 3" || admin_role === "Site Manager" || admin_role === "Local Administrator" || admin_role === "Project Leader"
+													option(value="Phoenicia Phoenix") Phoenicia Phoenix 
+													option(value="Phoenicia Tucson") Phoenicia Tucson
+								td #{dream.dream_name} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										input.small(type="text" name="dream_name")
+								td #{dream.dw_first_name} #{dream.dw_last_name} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										input.small.border-dark(type="text" name="dw_first_name" placeholder="First Name" )
+										input.small.border-dark(type="text" name="dw_last_name" placeholder="Last Name" )
+								if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+									td #{dream.dw_member_id} 
+										input.small(type="text" name="member_id" )
+								td #{dream.scrum_type} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										select(id="scrum_type" name="scrum_type") 
+											option(value="") -- 
+											option(value="4 Week") 4 Week 
+											option(value="8 Week") 8 Week 
+											option(value="Other") Other
+								td #{dream.start_date.toDateString()} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										input.small(type="date" name="start_date")
+								td #{dream.stage} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										input.small(name = "stage" type="number" placeholder="Stage" min="1" max="7") 
+								td 
+									strong #{dream.privacy}
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										em 
+											label(for="privacy") Public Profile 
+										input(type="radio" name="privacy" placeholder="privacy setting" value="Public")
+										em  
+											label(for="privacy") Private Profile
+										input(type="radio" name="privacy" placeholder="privacy setting" value ="Private")
+								td #{dream.status}
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										select(id="status" name="status" )
+											option(value="") -- 
+											option(value="Pending Approval") Pending Approval 
+											option(value="Active") Active 
+											option(value="Inactive") Inactive
+								td #{dream.service_category}
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager' 
+										select(id="service_category" name="service_category" required)
+											option(value="") -- 
+											option(value="Dreamweaver Service") Dreamweaver (Community Service) 
+											option(value="Phoenix Service") Phoenicia (Enterprise Service) 
+											option(value="Sphinx Service") Transcendence (Spiritual Service)
+								td #{dream.service_type}
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										select(id="service_type" name="service_type" required)
+											option(value="") -- 
+											option(value="Event Planning") Event Planning Services 
+											option(value="Culinary") Culinary Services 
+											option(value="Performing Arts") Performing Art Services 
+											option(value="Logistical") Logistical Services 
+											option(value="Administrative") Administrative Services 
+											option(value="Business") Business Services 
+											option(value="Housing") Housing Services 
+											option(value="Spiritual") Spiritual Services 
+								td #{dream.service} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										select(id="service" name="service" required)
+											option(value="") -- 
+											option(value="Adminstration") Adminstration 
+											option(value="Marketing") Marketing 
+											option(value="Product Marketing") Product Marketing 
+											option(value="Business Development") Business Development 
+											option(value="Network Engineering") Network Engineering 
+											option(value="Software Developer") Software Developer 
+											option(value="Multi-Dream Coordination") Multi-Dream Coordination 
+											option(value="Peer Support") Peer Support 
+											option(value="Spiritual Outreach") Spiritual Outreach 
+											option(value="Catering") Catering 
+											option(value="Black Tea") High Tea Service 
+											option(value="Green Tea") Green Tea Service 
+											option(value="Formal Dinner") Formal Dinner 
+											option(value="Fund Raising") Fund Raising 
+											option(value="Dreamweaver Community House") Dreamweaver Community House  
+											option(value="Dreamweaver House") Dreamweaver Member House 
+											option(value="Public Transport") Public Transportation 
+											option(value="Community Transport") Community Transportation 
+											option(value="Commercial Transport") Commercial Transportation 
+								td #{dream.synopsis} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										textarea.small(id="synopsis" name="synopsis" rows="3" cols="30" placeholder="Enter Dream Synopsis \n (plain text only)" minlength="10" )
+								td #{dream.service_developer} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										textarea.small(id="service_developer" name="service_developer" rows="3" cols="30" placeholder="Enter Dream Service Developer \n (plain text only)" minlength="10" )
+								td 
+									a.text-white(href="mailto: #{dream.email}") #{dream.email} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										input.small(type="text" name="email" placeholder="Dream E-mail") 
+								td 
+									a.text-white(href="http://#{dream.event_link}") #{dream.event_link} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										input.small(type="text" name="event_link" placeholder="Event Link (Internal)")
+								td
+									a.text-white(href="http://#{dream.website}") #{dream.website}
+									//- #{dream.website} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										input.small(type="text" name="website" placeholder="Dream Website (External)")
+								td #{dream.results} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										textarea.small(id="results" name="results" rows="4" cols="30" placeholder="Enter Dream Results \n (plain text only)" minlength="10" )
+								td #{dream.eligibility} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										select.small(id="eligibility" name="eligibility")
+											option(value="") -- 
+											option(value="OPEN") OPEN 
+											option(value="Referral ") Referral  
+											option(value="Dreamweaver 1") Dreamweaver 1&#176 
+											option(value="Dreamweaver 2") Dreamweaver 2&#176 
+											option(value="Dreamweaver 3") Dreamweaver 3&#176 
+								td #{dream.team_vacancy} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										select.small(id="team_vacancy" name="team_vacancy")
+											option(value="") -- 
+											option(value="Positions Available") Positions Available 
+											option(value="Positions Closed") Positions Closed 
+								td #{dream.team_positions} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										textarea.small(id="team_positions" name="team_positions" cols="30" rows="3" minlength="10" placeholder="Positions needed")
+								td #{dream.team_members} 
+									if admin_role === 'Local Administrator' || admin_role === 'Site Manager' || admin_role === 'Project Manager'
+										textarea.small(id="team_members" name="team_members" cols="30" rows="3" minlength="10" placeholder="Team members" )
+								if admin_role === 'Local Administrator' || admin_role === 'Project Manager' || admin_role === 'Site Manager'
+									td #{dream.address1}
+										input.small(type="text" name="address1" placeholder="Address 1")
+									td #{dream.address2}
+										input.small(type="text" name="address2" placeholder="Address 2")
+									td #{dream.city} 
+										input.small(type="text" name="city" placeholder="City *")
+									td #{dream.State} 
+										input.small(type="text" name="State" placeholder="State *")
+									td #{dream.zipCode} 
+										input.small(type="text" name="zipCode" placeholder="Zip Code")
+									td #{dream.dw_membership_role}
+									td #{dream.dw_membership_status}
+									td
+										button.btn.btn-primary.btn-sm#login-btn(type="submit") Update Dream
+					else
+							td There are no dreams at this time.

@@ -1,0 +1,185 @@
+extends layout.pug
+
+block append content 
+	p Your member id is #{ id }
+	h2 New SCRUM/Event for a Dreamweaver Team.
+
+	button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#serviceModal") Register
+	
+	p #{ message }
+
+	div.modal.fade#serviceModal
+		.modal-dialog
+			.modal-content  
+				.modal-header 
+					h1.modal-title New Dreamweaver Team
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+				.modal-body
+					form(action="/registerService/" + id method="post")
+						- console.log("SERVICE/DREAM REG FORM ID", id)
+						input(type="text" name="dream_name" placeholder="Dream Name *" required)
+						br
+						label(for="scrumType") SCRUM Type *
+						br
+						select(id="scrumType" name="scrumType")
+							option(value="--") --
+							option(value="4 Week") 4 Week
+							option(value="8 Week") 8 Week
+							option(value="Other") Other
+						br
+						input(type="text" name="organization_name" placeholder="Organization Name *" required)
+						br
+						input(type="password" name="password1" placeholder="password *" required)
+						br
+						input(type="password" name="password2" placeholder="confirm password *" required)
+						br
+						input(type="text" name="org_branch" placeholder="Branch Name")
+						br
+						input(type="text" name="org_email" placeholder="Organization E-mail *" required)
+						br
+						input(type="text" name="org_website" placeholder="Organization Website")
+						br
+						input(type="text" name="org_phone" placeholder="Organization Phone")
+						br
+						input(type="text" name="org_phone_ext" placeholder="Organization Phone Extension ")
+						br
+						input(type="text" name="org_alt_phone" placeholder="Organization Alt Phone")
+						br
+						input(type="text" name="org_cell_phone" placeholder="Organization Cell Phone")
+						br
+						input(type="text" name="org_fax" placeholder="Organization FAX")
+						br
+						input(type="text" name="poc_first_name" placeholder="POC/Team Lead First Name *" required)
+						br
+						input(type="text" name="poc_last_name" placeholder="POC/Team Lead Last Name *" required)
+						br
+						input(type="text" name="poc_title" placeholder="POC Title")
+						br
+						input(type="text" name="alt_poc_first_name" placeholder="Alt. POC First Name")
+						br
+						input(type="text" name="alt_poc_last_name" placeholder="Alt. POC Last Name")
+						br
+						input(type="text" name="alt_poc_title" placeholder="Alt. POC Title")
+						br
+						input(type="text" name="alt_poc_phone" placeholder="Alt. POC Phone")
+						br
+						input(type="text" name="alt_poc_email" placeholder="Alt. POC E-mail")
+						br
+						input(type="text" name="address1" placeholder="Address 1")
+						br
+						input(type="text" name="address2" placeholder="Address 2")
+						br
+						input(type="text" name="city" placeholder="City" required )
+						br
+						input(type="text" name="State" placeholder="State" required)
+						br
+						input(type="text" name="zipCode" placeholder="Zip Code")
+						br
+						input(type="text" name="mail_address1" placeholder="Mail Address 1")
+						br
+						input(type="text" name="mail_address2" placeholder="Mail Address 2")
+						br
+						input(type="text" name="mail_city" placeholder="Mail City")
+						br
+						input(type="text" name="mail_state" placeholder="Mail State")
+						br
+						input(type="text" name="mail_zipCode" placeholder="Mail Zip Code")
+						br
+						label(for="eligibility") Eligibility
+						br
+						select(id="eligibility" name="eligibility")
+							option(value="--") --
+							option(value="OPEN") OPEN
+							option(value="Referral Required") Referral required
+							option(value="Dreamweaver 1") Dreamweaver 1&#176
+							option(value="Dreamweaver 2") Dreamweaver 2&#176
+							option(value="Dreamweaver 3") Dreamweaver 3&#176
+							option(value="Dreamweaver 4") Dreamweaver 4&#176
+						br
+						hr 
+						label(for="team_vacancy") Team Vacancy
+						br
+						select(id="team_vacancy" name="team_vacancy")
+							option(value="--") --
+							option(value="Positions Available") Positions Available
+							option(value="Positions Closed") Positions Closed
+						br
+						label(for="team_positions") Team Positions (5-7) *
+						br
+						textarea(id="team_positions" name="team_positions" cols="30" rows="10" minlength="10" )
+						br
+						hr
+						label(for="team_list") Current Team Members *
+						br
+						textarea(id="team_list" name="team_list" cols="30" rows="10" minlength="10" )
+						hr
+						b 
+						label(for="info") Dream Synopsis * 
+						br
+						textarea(name="dreamSynopsis" rows="5" cols="30" placeholder="Enter Dream Synopsis" minlength="10" required)
+						hr
+						br
+						input(type="checkbox" name="vendor_privacy" placeholder="privacy setting" value="Public" checked)
+						label(for="privacy") Public Profile
+						br
+						input(type="checkbox" name="vendor_privacy" placeholder="privacy setting" value ="Private")
+						label(for="privacy") Private Profile
+						br
+						label(for="vendor_status") Event Status *
+						br
+						select(id="vendor_status" name="vendor_status" required)
+							option(value="Active") Active
+							option(value="Inactive") Inactive
+						br
+						//- label(for="membership_role") Membership Role
+						//- br
+						select(id="membership_role" name="membership_role" hidden)
+							option(value="Member") Member
+						hr 
+						label(for="membership_status") Team Status
+						br 
+						select(id="membership_status" name="membership_status")
+							option(value="Inactive") Inactive
+							option(value="Active") Active
+						br
+						hr 
+						label(for="service") Service *
+						br
+						select(id="service" name="service" required)
+							option(value="") --
+							option(value="Dreamweaver Service") Dreamweaver (Community Service)
+							option(value="Phoenix Service") Phoenix (Enterprise Service)
+							option(value="Sphinx Service") Sphinx (Spiritual Service)
+						br
+						label(for="service_type") Service Type *
+						br
+						select(id="service_type" name="service_type" required)
+							option(value="") --
+							option(value="Event Planning") Event Planning Services
+							option(value="Transportation") Transportation Services
+							option(value="Performing Arts") Performing Arts Services
+							option(value="Housing") Housing Services
+							option(value="Spiritual") Spiritual Services
+						br
+						label(for="service_category") Service Category *
+						br
+						select(id="service_category" name="service_category" required)
+							option(value="") --
+							option(value="Catering") Catering Services
+							option(value="Green Tea") Green Tea Services
+							option(value="Black Tea") High Tea Services
+							option(value="Formal Dinner") Formal Dinner Services
+							option(value="Fund Raising") Fund Raising
+							option(value="Public Transport") Public Transportation
+							option(value="Program Transport") Program Transportation
+							option(value="Commercial Transport") Commercial Transportation
+							option(value="Dreamweaver House") Dreamweaver House
+							option(value="Volunteer Opportunities") Volunteer Opportunities
+							option(value="Spiritual Outreach") Spiritual Outreach
+						br
+						br
+						p * Required
+						button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+				.modal-footer
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

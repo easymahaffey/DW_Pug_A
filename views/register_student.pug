@@ -1,0 +1,34 @@
+extends layout.pug
+
+block append content 
+
+	h3 To enter the Dreamweaver Academy please enroll.
+
+	button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#registerModal") Activate Enrollment
+
+	p #{ passwordMessage }
+
+	div.modal.fade#registerModal
+		.modal-dialog
+			.modal-content  
+				.modal-header 
+					h1.modal-title Student Registration Form
+
+				.modal-body
+					form(action="/registerStudent/" + id method="post") 
+						input.btn-lg(type="checkbox" id="active_student" name="student_status" placeholder="student_status setting" value="Active")
+						label(for="active_student") &nbsp Enrollment Active
+						br
+						input.checkbox(type="checkbox" id="inactive_student" name="student_status" placeholder="student_status setting" value ="Inactive")
+						label(for="inactive_student") &nbsp Enrollment Inactive
+						br
+						label(for="student_role" hidden) Membership Role
+						select(id="student_role" name="student_role" hidden)
+							option(value="Student" hidden) Student
+							//- if member_completed_challenge === true
+							//- option(value="Peer") Peer
+						button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+
+				.modal-footer
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

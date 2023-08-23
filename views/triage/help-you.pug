@@ -1,0 +1,28 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 What is the TriAge Project...
+      
+      if loggedIn 
+        h2 #{ name }
+        
+      p.lead We are a volunteer corps that liaisons with community services.
+      hr.my-4
+
+      p What does that mean?
+
+      p We ask you what you need, then we go with you to get it.
+      
+      p We assist with access to: food, clothing, shelter, healthcare and employment.
+      p We also provide transportation assistance.
+
+      p Call us at 800-555-5555 or chat with our peer support team online to learn how we can help you.
+      
+      div
+        button.btn.btn-primary.btn-lg#home-btn(type="button" onclick="window.location = '/phoenix-community-services'") Phoenix Community Services
+        button.btn.btn-primary.btn-lg#home-btn(type="button" onclick="window.location = '/online-volunteer'") Peer Support

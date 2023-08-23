@@ -1,0 +1,117 @@
+extends layout.pug
+
+block append content 
+	p Your member id is #{ id }
+	h2 Enter the new project you wish to register in the TriAge Project Network.
+
+	button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#projectModal") Register
+	
+	p #{ message }
+
+	div.modal.fade#projectModal
+		.modal-dialog
+			.modal-content  
+				.modal-header 
+					h1.modal-title New Project
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+				.modal-body
+					form(action="/registerProject/" + id method="post")
+						- console.log("PROJECT REG FORM ID", id)
+						input(type="text" name="user_id" value=id hidden)
+						br
+						input(type="text" name="project_name" placeholder="Project Name *" required)
+						br
+						input(type="password" name="password1" placeholder="password *" required)
+						br
+						input(type="password" name="password2" placeholder="confirm password *" required)
+						br
+						input(type="text" name="site_manager_first_name" placeholder="site manager first name")
+						br
+						input(type="text" name="site_manager_last_name" placeholder="site manager last name")
+						br
+						input(type="text" name="site_manager_member_id" placeholder="site manager member id")
+						br
+						input(type="text" name="site_manager_membership_role" placeholder="site manager membership role")
+						br
+						input(type="text" name="alt_site_manager_first_name" placeholder="alt site manager first name")
+						br
+						input(type="text" name="alt_site_manager_last_name" placeholder="alt site manager last name")
+						br
+						input(type="text" name="alt_site_manager_member_id" placeholder="alt site manager member id")
+						br
+						input(type="text" name="alt_site_manager_membership_role" placeholder="alt site manager membership role")
+						br
+						input(type="text" name="local_admin_first_name" placeholder="local admin first name")
+						br
+						input(type="text" name="local_admin_last_name" placeholder="local admin last name")
+						br
+						input(type="text" name="local_admin_member_id" placeholder="local admin member id")
+						br
+						input(type="text" name="local_admin_membership_role" placeholder="local admin membership role")
+						br
+						input(type="text" name="alt_local_admin_first_name" placeholder="alt local admin first name")
+						br
+						input(type="text" name="alt_local_admin_last_name" placeholder="alt local admin last name")
+						br
+						input(type="text" name="alt_local_admin_member_id" placeholder="alt local admin member id")
+						br
+						input(type="text" name="alt_local_admin_membership_role" placeholder="alt local admin membership role")
+						br
+						input(type="text" name="peer_support_first_name" placeholder="peer support first name")
+						br
+						input(type="text" name="peer_support_last_name" placeholder="peer support last name")
+						br
+						input(type="text" name="peer_support_member_id" placeholder="peer support member id")
+						br
+						input(type="text" name="peer_support_membership_role" placeholder="peer support membership role")
+						br
+						input(type="text" name="alt_peer_support_first_name" placeholder="alt peer support first name")
+						br
+						input(type="text" name="alt_peer_support_last_name" placeholder="alt peer support last name")
+						br
+						input(type="text" name="alt_peer_support_member_id" placeholder="alt peer support member id")
+						br
+						input(type="text" name="alt_peer_support_membership_role" placeholder="alt peer support membership role")
+						br
+						input(type="text" name="email" placeholder="E-mail")
+						br
+						input(type="text" name="phone" placeholder="Phone")
+						br
+						input(type="text" name="extension" placeholder="Phone Extension ")
+						br
+						input(type="text" name="fax" placeholder="FAX")
+						br
+						input(type="text" name="address1" placeholder="Address 1")
+						br
+						input(type="text" name="address2" placeholder="Address 2")
+						br
+						input(type="text" name="city" placeholder="City")
+						br
+						input(type="text" name="State" placeholder="State")
+						br
+						input(type="text" name="zipCode" placeholder="Zip Code")
+						br
+						input(type="text" name="mail_address1" placeholder="Mail Address 1")
+						br
+						input(type="text" name="mail_address2" placeholder="Mail Address 2")
+						br
+						input(type="text" name="mail_city" placeholder="Mail City")
+						br
+						input(type="text" name="mail_state" placeholder="Mail State")
+						br
+						input(type="text" name="mail_zipCode" placeholder="Mail Zip Code")
+						//- br
+						//- input(type="text" name="partner_name" placeholder="Partner Name")			
+						//- br
+						//- input(type="text" name="partner_service" placeholder="Partner Service")			
+						//- br
+						//- input(type="text" name="partner_location" placeholder="Partner Location")			
+						br
+						p * Required
+						br
+						button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+					
+
+				.modal-footer
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

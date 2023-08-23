@@ -1,0 +1,27 @@
+New installs:
+
+Seed Member and User DBs
+E.g.
+  localhost:4000/seed/install
+
+Or
+
+Register Member via program interface.
+
+Then use Mongo.exe command line interface to initially set Member to Local Administrator.
+
+E.g.
+  db.triage.update( { “email” : ”easy1@easy.com” } , { $set : {membership_role :
+  “Local Administrator” }})
+
+Uncomment layout.pug line #33 to initially seed admin DB.
+
+
+
+
+*** Other notes ***
+bootstrap.css
+
+lines 931 - 955
+.col-sm-2 & .col-sm-6
+

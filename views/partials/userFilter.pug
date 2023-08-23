@@ -1,0 +1,87 @@
+div.modal.fade#filterModal
+		.modal-dialog.modal-dialog-scrollable
+			.modal-content
+				.modal-header 
+					h3.modal-title Filter
+
+				.modal-body
+					div#filter
+						div.row
+							div.col-m4
+							label({{label||item}}) 
+							p User name: &nbsp&nbsp&nbsp
+							div.col-m2 
+								input(#datatype_{{item}} type='hidden')
+								select.border(#operator_{{item}})
+									option(value="0") =
+									option(value="1") &lt;&gt;
+									option(value="2") &lt;
+									option(value="3") &gt;
+									option(value="4") &lt;=
+									option(value="5") &gt;=
+									option(value="6") %
+							div.col-m6 
+								input.border(#query_{{item}})
+						div.row
+							div.col-m4
+							label({{label||item}}) 
+							p City: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							div.col-m2 
+								input(#datatype_{{item}} type='hidden')
+								select.border(#operator_{{item}})
+									option(value="0") =
+									option(value="1") &lt;&gt;
+									option(value="2") &lt;
+									option(value="3") &gt;
+									option(value="4") &lt;=
+									option(value="5") &gt;=
+									option(value="6") %
+							div.col-m6 
+								input.border(#query_{{item}})
+						div.row
+							div.col-m4
+							label({{label||item}}) 
+							p State: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							div.col-m6 
+								div.autocomplete(autocomplete="off")
+								input#userState(type="text" name="userState" placeholder="State")
+						div.row
+							div.col-m4
+							label({{label||item}}) 
+							p Country: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							div.col-m6 
+								div.autocomplete(autocomplete="off")
+								input#userCountry(type="text" name="userCountry" placeholder="Country")
+						div.row
+							div.col-m4
+							label({{label||item}}) 
+							p Admin level: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+							div.col-m6 
+								//- input.border(#query_{{item}})
+								select.border#userLevel
+									option(value='')
+									option(value = 'Local Administrator') Local Administrator
+									option(value = 'Site Administrator') Site Administrator
+									option(value = 'System Administrator') System Administrator
+									option(value = 'Programmer') Programmer
+					div#orderby
+						h5 Order By
+						div.row
+							div.col-m5
+								select.border#fieldSelect
+									option(value='')
+									option(value = name) User name
+									option(value = city) City
+									option(value = state) State
+									option(value = country) Country
+									option(value = userLevel) Admin Level
+							div.col-m7
+								p ASC 
+									input.radio#orderDirection_asc( type='radio' name='orderDirection' value='asc')
+									span &nbsp DESC 
+										input.radio#orderDirection_desc(type='radio' name='orderDirection' value='desc')
+					br
+					button.btn.btn-success#queryOK-btn(type="button") OK
+
+				.modal-footer
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

@@ -1,0 +1,28 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S6cQ3)
+    h3 Connecting With that Which Is More than Self
+    p Student Id: #{ student_id }
+    br
+    h3 A Sense of Meaning and Purpose Questions
+    br
+    h4 Question 3 of 5
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question These activities give my life meaning and purpose:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS6cq3/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="6c" hidden)
+      input(type="text" name="questionTitle" value="S6cQ3" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q3" hidden)
+      input(type="text" name="questionText" value="These activities give my life meaning and purpose:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 3 of 5")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

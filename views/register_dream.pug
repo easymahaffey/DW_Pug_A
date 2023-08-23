@@ -1,0 +1,186 @@
+extends layout.pug
+
+block append content 
+	h2 New Dream (Scrum) 
+
+	if membership_role === 'Project Leader' || membership_role === "Dreamweaver" || membership_role === "Site Manager" || admin_role === 'Local Administrator' || admin_role === 'Project Manager' || userLevel
+		button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#serviceModal") Register Dream 
+		
+		p #{ message }
+
+		div.modal.fade#serviceModal
+			.modal-dialog
+				.modal-content  
+					.modal-header 
+						h1.modal-title New Dreamweaver Team 
+						button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+					.modal-body
+						form(action="/registerDream/" + id method="post")
+							input(type="text" name="dw_member_id" value=id hidden) 
+							input(type="text" name="dw_membership_status" value=membership_status hidden) 
+							input(type="text" name="dw_membership_role" value=membership_role hidden) 
+							label(for="current_project") Dreamweaver Project * 
+							br 
+							select(id="current_project" name="current_project" required)
+								option(value="") -- 
+								option(value="Dreamweaver Phoenix") Phoenix 
+								option(value="Dreamweaver Tucson") Tucson 
+								if admin_role === "Local Administrator"
+										//- if membership_role === "Dreamweaver 2" || membership_role === "Dreamweaver 3" || membership_role === "Site Manager" || membership_role === "Local Administrator" || membership_role === "Project Leader"
+										option(value="Phoenicia Phoenix") Phoenicia Phoenix 
+										option(value="Phoenicia Tucson") Phoenicia Tucson
+							br 
+							input(type="text" name="dream_name" placeholder="Dream Name *" required) 
+							br 
+							label(for="scrum_type") SCRUM Type * 
+							br 
+							select(id="scrum_type" name="scrum_type") 
+								option(value="") -- 
+								option(value="4 Week") 4 Week 
+								option(value="8 Week") 8 Week 
+								option(value="Other") Other 
+							br 
+							input(type="password" name="password1" placeholder="password *" required) 
+							br 
+							input(type="password" name="password2" placeholder="confirm password *" required)
+							br
+							input(type="text" name="email" placeholder="Dream E-mail *" required)
+							br
+							input(type="text" name="event_link" placeholder="Event Link (Internal)")
+							br
+							input(type="text" name="website" placeholder="Dream Website (External)")
+							br
+							input(type="text" name="dw_first_name" placeholder="Dreamweaver First Name *" required)
+							br
+							input(type="text" name="dw_last_name" placeholder="Dreamweaver Last Name *" required)
+							br 
+							input(type="text" name="address1" placeholder="Address 1")
+							br
+							input(type="text" name="address2" placeholder="Address 2")
+							br
+							input(type="text" name="city" placeholder="City *" required )
+							br
+							input(type="text" name="State" placeholder="State *" required)
+							br
+							input(type="text" name="zipCode" placeholder="Zip Code")
+							br
+							label(for="eligibility") Dream Team Eligibility * 
+							br
+							select(id="eligibility" name="eligibility" required)
+								option(value="") -- 
+								option(value="OPEN") OPEN 
+								option(value="Referral Required") Referral required 
+								option(value="Dreamweaver 1") Dreamweaver 1&#176 
+								option(value="Dreamweaver 2") Dreamweaver 2&#176 
+								option(value="Dreamweaver 3") Dreamweaver 3&#176  
+							br
+							hr 
+							label(for="team_vacancy") Team Vacancy * 
+							br
+							select(id="team_vacancy" name="team_vacancy" required)
+								option(value="") -- 
+								option(value="Positions Available") Positions Available 
+								option(value="Positions Closed") Positions Closed 
+							br
+							label(for="team_positions") Team Positions (5-7) * 
+							br
+							textarea(id="team_positions" name="team_positions" cols="30" rows="10" minlength="10" required)
+							br
+							hr
+							label(for="team_members") Current Team Members * 
+							br
+							textarea(id="team_members" name="team_members" cols="30" rows="10" minlength="10" required)
+							hr
+							b 
+							label(for="synopsis") Dream Synopsis * 
+							br
+							textarea(id="synopsis" name="synopsis" rows="5" cols="30" placeholder="Enter Dream Synopsis" minlength="10" required)
+							hr
+							br
+							input(type="radio" name="privacy" placeholder="privacy setting" value="Public" checked)
+							label(for="privacy") Public Profile 
+							br
+							input(type="radio" name="privacy" placeholder="privacy setting" value ="Private")
+							label(for="privacy") Private Profile 
+							br
+							label(for="status") Dream Status * 
+							br
+							select(id="status" name="status" required)
+								option(value="Pending Approval") Pending Approval 
+								if admin_role !== "Inactive"
+									option(value="Active") Active 
+									option(value="Inactive") Inactive  
+							br
+							label(for="membership_status") Dream Activity Status * 
+							br 
+							select(id="membership_status" name="membership_status" required)
+								option(value="") -- 
+								option(value="Inactive") Inactive 
+								option(value="Active") Active 
+							br
+							hr 
+							label(for="stage") Current Dream Stage *  
+							br 
+							span 1: Idea, 2: Pre-plan, 3: Plan, 4: Pre-event, 
+							br 
+							span 5: Event:, 6: Post-event, 7: Results Posted 
+							br 
+							input(name = "stage" type="number" placeholder="Stage" min="1" max="7" required)
+							br
+							hr 
+							label(for="service_category") Service Category * 
+							br
+							select(id="service_category" name="service_category" required)
+								option(value="") -- 
+								option(value="Dreamweaver Service") Dreamweaver (Community Service) 
+								option(value="Phoenix Service") Phoenicia (Enterprise Service) 
+								option(value="Sphinx Service") Transcendence (Spiritual Service) 
+							br
+							label(for="service_type") Service Type * 
+							br
+							select(id="service_type" name="service_type" required)
+								option(value="") -- 
+								option(value="Event Planning") Event Planning Services 
+								option(value="Culinary") Culinary Services 
+								option(value="Performing Arts") Performing Art Services 
+								option(value="Logistical") Logistical Services 
+								option(value="Administrative") Administrative Services 
+								option(value="Business") Business Services 
+								option(value="Housing") Housing Services 
+								option(value="Spiritual") Spiritual Services 
+							br
+							label(for="service") Service * 
+							br
+							select(id="service" name="service" required)
+								option(value="") -- 
+								option(value="Adminstration") Adminstration 
+								option(value="Marketing") Marketing 
+								option(value="Product Marketing") Product Marketing 
+								option(value="Business Development") Business Development 
+								option(value="Network Engineering") Network Engineering 
+								option(value="Software Developer") Software Developer 
+								option(value="Multi-Dream Coordination") Multi-Dream Coordination 
+								option(value="Peer Support") Peer Support 
+								option(value="Spiritual Outreach") Spiritual Outreach 
+								option(value="Catering") Catering 
+								option(value="Black Tea") High Tea Service 
+								option(value="Green Tea") Green Tea Service 
+								option(value="Formal Dinner") Formal Dinner 
+								option(value="Fund Raising") Fund Raising 
+								option(value="Dreamweaver Community House") Dreamweaver Community House  
+								option(value="Dreamweaver House") Dreamweaver Member House 
+								option(value="Public Transport") Public Transportation 
+								option(value="Community Transport") Community Transportation 
+								option(value="Commercial Transport") Commercial Transportation 
+								//- option(value="Volunteer Opportunities") Volunteer Opportunities 
+							br
+							br
+							p * Required
+							button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+					.modal-footer
+						button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+	else 
+	p 
+		h1 Only Dreamweavers may create new Dreams

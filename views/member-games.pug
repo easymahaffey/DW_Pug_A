@@ -1,0 +1,39 @@
+extends layout.pug
+
+block append content
+	script(src="/assets/javascript/modules.js" defer)
+
+	p #{ message }
+
+	div.container-fluid
+
+		div.card.white.text-center
+			h4 Ready to resume the challenge?
+			h5 Return to the challenge.
+			p 
+				a.button.btn.btn-outline-dark(href="/member-challenge/" + id, alt="triage challenge")
+					i.fa.fa-chess-knight 
+					br
+					span TriAge Challenge
+
+		div.slideshow-container
+			div.mySlides
+				div
+					iframe(src="/triage-game-card-game-title/" + id)
+			div.mySlides
+				div
+					iframe(src="/triage-game-bouncy-ball-title/" + id)
+			div.mySlides
+				div
+					iframe(src="/triage-game-pong-title/" + id)
+
+			a.prev.moduleArrow(onclick="plusSlides(-1)") &#10094
+			a.next.moduleArrow(onclick="plusSlides(1)") &#10095
+
+		br
+		div(style="text-align:center")
+			span.dot(onclick="currentSlide(1)") 
+			span.dot(onclick="currentSlide(2)") 
+			span.dot(onclick="currentSlide(3)") 
+
+		

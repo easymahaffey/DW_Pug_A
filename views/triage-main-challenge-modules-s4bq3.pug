@@ -1,0 +1,29 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S4bQ3)
+    h3 The Power of Human Connection
+    p Student Id: #{ student_id }
+    br
+    h3 Service to Others Questions
+    br
+    h4 Question 3 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question The following are some possible places to volunteer in my community:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS4bq3/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="4b" hidden)
+      input(type="text" name="questionTitle" value="S4bQ3" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q3" hidden)
+      input(type="text" name="questionText" value="The following are some possible places to volunteer in my community:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 3 of 4")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+

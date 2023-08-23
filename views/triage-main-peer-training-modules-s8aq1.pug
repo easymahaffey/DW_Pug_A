@@ -1,0 +1,28 @@
+block append section
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Academy Peer Training
+    h2 Keys to Success (S8aQ1)
+    p Student Id: #{ student_id }
+    br
+    h3 Key 1
+    br
+    h4 Question 1 of 2
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question I think my current lifestyle is healthy and resilient in the following ways:
+    br
+    p#answer Answer below:
+    form(action="/secureMainPeerTrainingModulesS8aq1/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Peer Training" hidden)
+      input(type="text" name="questionModule" value="8a" hidden)
+      input(type="text" name="questionTitle" value="S8aQ1" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q1" hidden)
+      input(type="text" name="questionText" value="I think my current lifestyle is healthy and resilient in the following ways:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 1 of 2")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br

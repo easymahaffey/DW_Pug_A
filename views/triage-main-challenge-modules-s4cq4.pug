@@ -1,0 +1,29 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S4cQ4)
+    h3 The Power of Human Connection
+    p Student Id: #{ student_id }
+    br
+    h3 Service to Others Questions
+    br
+    h4 Question 4 of 5
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question I attend a support group on a regular basis and find that it benefits me in these ways:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS4cq4/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="4c" hidden)
+      input(type="text" name="questionTitle" value="S4cQ4" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q4" hidden)
+      input(type="text" name="questionText" value="I attend a support group on a regular basis and find that it benefits me in these ways:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 4 of 5")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+

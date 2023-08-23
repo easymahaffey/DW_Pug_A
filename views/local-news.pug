@@ -1,0 +1,47 @@
+extends layout.pug 
+
+block append content 
+
+   div.container-fluid
+
+        div.jumbotron
+
+          h1.display-4 Dream Listing
+          h1.display-5
+            em Local Dreams
+
+        if (loggedIn) 
+          h3 Hello 
+            em #{first_name} #{ name }, 
+            span welcome back.
+        else 
+          h3 
+            a.link(href="/registerMember") Register
+            span  to see more local Dreams.
+
+        h4 Local Dream events in your area! 
+        
+        hr
+        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum quam numquam expedita suscipit natus earum, blanditiis ut architecto inventore, assumenda recusandae sapiente odit, nulla impedit laboriosam commodi nam sint voluptatem!
+
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa dolorem, iusto quas unde delectus asperiores aut porro nisi. Quam voluptates dignissimos nihil officiis minus facilis, similique aperiam. Et, magnam officiis.
+
+        hr
+        hr
+
+        if (loggedIn)
+          h5 Local Dream Event #1
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga alias perspiciatis ut totam numquam suscipit soluta reiciendis, sequi accusantium id ullam dolorum labore rerum ad corporis nostrum nihil quod. At.
+            
+          h5 Local Dream Event #2
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga alias perspiciatis ut totam numquam suscipit soluta reiciendis, sequi accusantium id ullam dolorum labore rerum ad corporis nostrum nihil quod. At.
+            
+          h5 Local Dream Event #3
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga alias perspiciatis ut totam numquam suscipit soluta reiciendis, sequi accusantium id ullam dolorum labore rerum ad corporis nostrum nihil quod. At.
+            
+          h5 Local Dream Event #4
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga alias perspiciatis ut totam numquam suscipit soluta reiciendis, sequi accusantium id ullam dolorum labore rerum ad corporis nostrum nihil quod. At.
+            
+          h5 Local Dream Event #5
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga alias perspiciatis ut totam numquam suscipit soluta reiciendis, sequi accusantium id ullam dolorum labore rerum ad corporis nostrum nihil quod. At.
+            

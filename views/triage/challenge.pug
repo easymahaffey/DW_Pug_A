@@ -1,0 +1,21 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 Welcome to the TriAge Challenge
+      
+      if loggedIn 
+        h2 Hello #{ name }
+        
+      p.lead Play fun games while challenging your mind.
+      hr.my-4
+      p.
+        Person-Centered Planning Process part one of two. These challenges offer important Whole Health and Resiliency Factors for you. Complete the challenges for fun or start your path toward becoming a TriAge Volunteer.
+      
+
+      div
+        button.btn.btn-primary.btn-lg#home-btn(type="button" onclick="window.location = '/my-challenge'") Challenge Games

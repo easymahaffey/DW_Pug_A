@@ -1,0 +1,61 @@
+extends layout.pug
+
+block append content
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-5 Dreamweaver Project
+      
+      h1.display-4 Installation
+      hr.my-4
+      
+      p Remove install from "routes" and from landing page after initialization.
+      br
+
+      div
+        a.btn.btn-primary.btn-lg(href="/seed/seedVisitors") Seed Visitors DB
+        
+        a.btn.btn-primary.btn-lg(href="/seed/viewVisitors") View Visitors DB
+      
+      div
+        a.btn.btn-primary.btn-lg(href="/seed/seedVisitorStats") Seed VisitorStats DB
+        
+        a.btn.btn-primary.btn-lg(href="/seed/viewVisitorStats") View VisitorStats DB
+      
+      div
+        a.btn.btn-primary.btn-lg(href="/seed/seedSiteStats") Seed SiteStats DB
+        
+        a.btn.btn-primary.btn-lg(href="/seed/viewSiteStats") View SiteStats DB
+      
+      div
+        a.btn.btn-primary.btn-lg(href="/seed/seedProjects") Seed Projects DB
+        
+        a.btn.btn-primary.btn-lg(href="/seed/viewProjects") View Projects DB
+      
+      div
+        a.btn.btn-primary.btn-lg(href="/seed/seedMembers") Seed Members DB
+        
+        a.btn.btn-primary.btn-lg(href="/seed/viewMembers") View Members DB
+        
+      div
+        a.btn.btn-primary.btn-lg(href="/seed/seedUsers") Seed Admin DB
+        
+        a.btn.btn-primary.btn-lg(href="/seed/viewUsers") View Admin DB
+
+      div
+        a.btn.btn-primary.btn-lg(href="/seed/seedTestVendors") Seed Test Vendor DB (Small)
+        br
+        a.btn.btn-primary.btn-lg(href="/seed/seedVendors") Seed Full Vendor DB
+        
+        a.btn.btn-primary.btn-lg(href="/seed/viewVendors") View Vendor DB
+
+      div  
+        a.btn.btn-primary.btn-lg(href="/loginMember") Login
+
+        a.btn.btn-primary.btn-lg(href="/registerMember") Register
+
+
+
+  

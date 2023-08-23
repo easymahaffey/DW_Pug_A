@@ -1,0 +1,89 @@
+extends layout.pug
+
+block append content 
+
+	h2 Please create a profile to enter the site.
+	p.lead Once your registration is approved you may login. Approval should be within 1-2 business days during the first 12 months of Phase I. Thank you for your patience. 
+	p Please include your social media links to help us expedite consideration of your registration application. Please note available positions are limited depending on the phase. 
+	p If you do not hear from us in a timely manner, you may fall into the second or third round of approvals before the open state/region approval occurs for your phase.
+
+	button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#registerModal") Registration
+
+	p #{ passwordMessage }
+
+	div.modal.fade#registerModal
+		.modal-dialog
+			.modal-content  
+				.modal-header 
+					h1.modal-title Registration Form
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times
+
+				.modal-body
+					form(action="/registerMember" method="post")
+						label(for="current_project") Project
+						br
+						select(id="current_project" name="current_project" required)
+							option(value="") --
+							option(value="Dreamweaver Phoenix") Phoenix
+							option(value="Dreamweaver Tucson") Tucson
+						br
+						input(type="text" name="first_name" placeholder="First Name *" required)
+						br
+						input(type="text" name="last_name" placeholder="Last Name *" required)
+						br
+						input(type="text" name="email" placeholder="E-mail *" required)
+						br
+						input(type="password" name="password1" placeholder="password *" required)
+						br
+						input(type="password" name="password2" placeholder="confirm password *" required)
+						br
+						input(type="text" name="address1" placeholder="Address 1")
+						br
+						input(type="text" name="address2" placeholder="Address 2")
+						br
+						input(type="text" name="city" placeholder="City *" required)
+						br
+						input(type="text" name="state" placeholder="State *" required)
+						br
+						input(type="text" name="zipCode" placeholder="Zip Code")
+						br
+						label(for="date_of_birth") Date of Birth: 
+						span
+							u #{ date_of_birth }
+						br 
+						input(type="date" name="date_of_birth" placeholder="date_of_birth" required) 
+						hr 
+						br
+						label(for="social_media") Your Social Media Profiles (3 max.): 
+						br
+						input(type="text" name="social_media_profile" placeholder="Linked In") 
+						br
+						input(type="text" name="social_media_profile" placeholder="Facebook") 
+						br
+						input(type="text" name="social_media_profile" placeholder="Other") 
+						hr
+						input(type="radio" name="privacy" placeholder="privacy setting" value="Show")
+						label(for="privacy") Show Profile
+						br
+						input(type="radio" name="privacy" placeholder="privacy setting" value ="Hide")
+						label(for="privacy") Hide Profile
+						hr
+						input(type="radio" name="membership_status" placeholder="membership_status setting" value="Active")
+						label(for="membership_status") Active Membership
+						br
+						input(type="radio" name="membership_status" placeholder="membership_status setting" value ="Inactive")
+						label(for="membership_status") Inactive Membership
+						hr
+						label(for="membership_role") Membership Role *
+						br
+						select(id="membership_role" name="membership_role" required)
+							option(value="Member") Member
+							option(value="Server") Server
+						br
+						p * Required
+						br
+						button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+
+				.modal-footer
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

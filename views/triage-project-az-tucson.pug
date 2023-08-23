@@ -1,0 +1,297 @@
+extends layout.pug
+
+block append content
+
+	p #{ message }
+
+	div.container-fluid
+
+		div.row
+			//- Left Column
+			div.col-sm-3.p-2
+
+				//- Profile
+				div.card.text-center.text-white.bg-secondary.mb-3
+					h4 Dreamweaver
+					h4 Project
+					h4 Tucson, AZ
+					if !loggedIn 
+						a.button.btn.btn-outline-dark.text-white(href="/loginMember" alt="login") Login
+						a.button.btn.btn-outline-dark.text-white(href="/registerMember" alt="register") Register to see more.
+					else 
+						form(action="/memberProfilePublic/" + id method="post") 
+							input(type="text" name="adminID" value=id hidden)
+							input(type="text" name="member_id" value=id hidden)
+							//- button.btn(type="submit") &#9998;
+							button.btn.btn-secondary
+								img(src="/assets/images/pics/profile1.jpg" style="width:100%" alt="Profile Picture")
+							//- a.btn.btn-secondary(href="#")
+							//- 	img(src="/assets/images/pics/profile1.jpg" style="width:100%" alt="Profile Picture")
+						br
+						h4 #{ site_manager_first_name } #{ site_manager_last_name }
+						h5 #{ site_manager_membership_role }
+						hr
+						p
+							i.fa.fa-home
+							p. 
+								&nbsp #{ project_address1 }
+								&nbsp #{ project_address2 }
+							p.
+								#{ project_city },
+								#{ project_state },
+								#{ project_zipCode }
+							p Project Est.
+							p #{ project_start_date.toDateString() }
+
+				br
+				//- Accordian
+				div.accordion#accordion
+					if !loggedIn
+						div.card
+							div.card-header.bg-secondary.mb-0#headingOne
+								h2.mb-0
+									button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne") Current Projects
+							div#collapseOne.collapse(aria-labelledby="headingOne" data-parent="#accordion")
+								div.card-body
+									a(href="/triage-project-az-phoenix") Phoenix
+									br
+									a(href="/triage-project-az-tucson") Tucson
+					else if loggedIn
+						div.card
+							div.card-header.bg-secondary.mb-0#headingOne
+								h2.mb-0
+									button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne") My Projects
+							div#collapseOne.collapse(aria-labelledby="headingOne" data-parent="#accordion")
+								div.card-body
+									a(href="/triage-project-az-phoenix/" + id) Phoenix
+									br
+									a(href="/triage-project-az-tucson/" + id) Tucson
+
+					div.card
+						div.card-header.bg-secondary.mb-0#headingTwo
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Dream Today
+						div#collapseTwo.collapse(aria-labelledby="headingTwo" data-parent="#accordion")
+							div.card-body
+								if !loggedIn 
+									a(href="/registerMember") Register to become a member.
+								else if membership_role === "Member"
+									a(href="/member-profileSettings/" + id) Change profile to Server.
+								else if membership_role === "Server"
+									p You are already a Server
+
+					if loggedIn
+						div.card
+							div.card-header.bg-secondary.mb-0#headingThree
+								h2.mb-0
+									button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree") Our Photos
+							div#collapseThree.collapse(aria-labelledby="headingThree" data-parent="#accordion")
+								div.card-body
+									div.card-deck
+										div.card
+											img(src="/assets/images/w3images/lights.jpg" style="width:100%").mb
+										div.card
+											img(src="/assets/images/w3images/nature.jpg" style="width:100%").mb
+										div.card
+											img(src="/assets/images/w3images/mountains.jpg" style="width:100%").mb
+										div.card
+											img(src="/assets/images/w3images/forest.jpg" style="width:100%").mb
+										div.card
+											img(src="/assets/images/w3images/nature.jpg" style="width:100%").mb
+										div.card
+											img(src="/assets/images/w3images/snow.jpg" style="width:100%").mb
+
+						div.card
+							div.card-header.bg-secondary.mb-0#headingFour 
+								h2.mb-0
+									button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour") Community Partners
+							div#collapseFour.collapse(aria-labelledby="headingFour" data-parent="#accordion") 
+								div.card-body.d-flex.flex-column
+									a.button.btn.btn-outline-dark(href="#food", alt="food") Food Banks
+									a.button.btn.btn-outline-dark(href="#shelter", alt="shelter") Shelters
+									a.button.btn.btn-outline-dark(href="#clothing", alt="clothing") Clothing
+									a.button.btn.btn-outline-dark(href="#health", alt="health") Healthcare
+									a.button.btn.btn-outline-dark(href="#peer", alt="peer") Peer Support Services
+									a.button.btn.btn-outline-dark(href="#sponsors", alt="sponsors") Sponsors
+					
+				br
+				//- Feedback
+				if loggedIn
+					div.container.card.white.text-center.text-white.bg-secondary.mb-3
+						div.p-3
+							h6.p-3 How's our service?
+							p(contenteditable="true").border.padding Enter questions or comments here
+							button.btn.btn-secondary.collapsed.text-white.theme Send Message
+
+			//- Center Column
+			div.col-sm-6.p-1
+				div
+					div.row.p-2
+						div.container.card.white.text-center
+							h4 Visit the Dreamweaver Challenge area for games and the Dreamweaver Academy.
+							p 
+								br
+								if !loggedIn 
+									a.button.btn.btn-outline-dark(href="/registerMember" alt="register") Register to accept the Dreamweaver Challenge.
+										br
+										i.fa.fa-chess-knight  Dreamweaver Challenge
+								else 
+									a.button.btn.btn-outline-dark(href="/triage-my-challenge/" + id, alt="Dreamweaver Challenge")
+										i.fa.fa-chess-knight  Dreamweaver Challenge
+
+					div.row.p-2
+						div.container.card.white.text-center.mb-2
+							div
+								img(src="/assets/images/pics/community_services1.jpg", alt="deli", style="width:40vw")
+							p.text-right #{ clients_served } 659 served
+							h4 Community Services
+							br
+							p Dreamweaver provides homeless client advocacy services to access local community services. Help help you contact community resources that provide food, shelter, clothing, healthcare and general assistance.
+							if loggedIn && membership_role !== "Member"
+								a.button.btn.btn-outline-dark(href="/arizonaServices/" + id, alt="Community Services") Community Service Listing
+								hr
+								p To become a community partner please register.
+								a.button.btn.btn-outline-dark(href="/registerService/" + id, alt="Community Services") New Community Service
+							else if membership_role === "Member"
+								p Update your membership role to volunteer and see the members of the TriAge Support Network.
+								a.button.btn.btn-outline-dark(href="/updateMemberProfile/" +id, alt="update profile") Update Profile
+							else 
+								p Register to see the members of the Dreamweaver Support Network.
+								a.button.btn.btn-outline-dark(href="/registerMember" alt="register") Register now
+
+					if loggedIn
+						div.row.p-2
+							div.container.card.white.text-center.mb-2
+								div
+									img(src="/assets/images/pics/community_services1.jpg", alt="deli", style="width:40vw")
+								p.text-right #{ clients_served } 4 providers
+								h4#food Food Assistance
+								br
+								p The Dreamweaver Project invites local community service providers to join our service network.
+								p 
+									a.button.btn.btn-outline-dark(href="/arizonaServices/food-centers/" + id, alt="Food Distribution Centers") Food Distribution Centers
+									br
+								p 
+									a.button.btn.btn-outline-dark(href="/arizonaServices/food-assistance/" + id, alt="Food Assistance") Food Assistance
+									br
+									br
+
+						div.row.p-2
+							div.container.card.white.text-center.mb-2
+								div
+									img(src="/assets/images/pics/community_services1.jpg", alt="deli", style="width:40vw")
+								p.text-right #{ clients_served } 60 providers
+								h4#shelter Shelter
+								br
+								p The Dreamweaver Project invites local community service providers to join our service network.
+								p 
+									a.button.btn.btn-outline-dark(href="/arizonaServices/shelters/" + id, alt="Temporary Shelters") Temporary Shelters
+									br
+									br
+									a.button.btn.btn-outline-dark(href="/arizonaServices/transitional-housing/" + id, alt="Transitional Housing") Transitional Housing
+									br
+
+						div.row.p-2
+							div.container.card.white.text-center.mb-2
+								div
+									img(src="/assets/images/pics/community_services1.jpg", alt="deli", style="width:40vw")
+								p.text-right #{ clients_served } 6 providers
+								h4#clothing Clothing
+								br
+								p The Dreamweaver Project invites local community service providers to join our service network.
+								p 
+									br
+									a.button.btn.btn-outline-dark(href="/arizonaServices/clothing/" + id, alt="Community Clothing") Community Clothing Centers
+									br
+
+						div.row.p-2
+							div.container.card.white.text-center.mb-2
+								div
+									img(src="/assets/images/pics/community_services1.jpg", alt="deli", style="width:40vw")
+								p.text-right #{ clients_served } 6 providers
+								h4#health Healthcare
+								br
+								p The Dreamweaver Project invites local community service providers to join our service network.
+								p 
+									br
+									a.button.btn.btn-outline-dark(href="/arizonaServices/veterans-clinics/" + id, alt="Veterans Clinics") Veterans Clinics
+									br
+									br
+									a.button.btn.btn-outline-dark(href="/arizonaServices/behavioral-health-clinics/" + id, alt="Behavioral Health Clinics") Behavioral Health Clinics
+									br
+									br
+									a.button.btn.btn-outline-dark(href="/arizonaServices/healthcare-clinics/" + id, alt="Community Clinics") Healthcare Clinics
+
+						div.row.p-2
+							div.container.card.white.text-center.mb-2
+								div
+									img(src="/assets/images/pics/community_services1.jpg", alt="deli", style="width:40vw")
+								p.text-right #{ clients_served } 6 providers
+								h4#peer Peer Support Services
+								br
+								p The Dreamweaver Project invites local community service providers to join our service network.
+								p 
+									br
+									br
+									a.button.btn.btn-outline-dark(href="/arizonaServices/peer-run-organizations/" + id, alt="Peer Run Organizations") Peer Run Organizations
+									br
+									br
+									a.button.btn.btn-outline-dark(href="/arizonaServices/peer-training-centers/" + id, alt="Peer Support Training Centers") Peer Support Training Centers
+									br
+									br
+
+			//- Right Column
+			div.col-sm-3.p-1
+
+				if loggedIn
+					div.card.text-center.p-3
+						div
+							p Upcoming Events:
+							img(src="/assets/images/pics/community_services1.jpg" alt="deli" style="width:100%;")
+							p
+								strong Volunteer Awards
+							p Friday 19:00
+							p Civic Center
+							p 
+								button Info
+
+					div.card.text-center.p-3
+						div
+							p Need Peer Support or Assistance?
+								img(src="/assets/images/pics/profile1.jpg" style="width:100%" alt="Profile Picture")
+								br
+								span I'm online now.
+								br 
+								p Jane Doe
+								div
+									div
+										button.button.btn-outline-secondary(title="Chat Request")
+											i.fa.fa-handshake Chat Request
+					
+					hr
+					div.card.p-3
+						div
+							p
+								i.fa.fa-calendar-alt Dreamweaver Project community fundraiser starts next month!
+
+					div.card.p-3
+						div
+							p
+								i.fa.fa-calendar-alt Next Peer Support Specialist class:
+								br 
+								p 08/20/2023
+				
+					hr
+				div.card.p-3
+					div#sponsors
+						p
+							p This month's Gold Sponsor
+				div.card.p-3
+					div
+						p
+							p This month's Silver Sponsor
+				div.card.p-3
+					div
+						p
+							p This month's Bronze Sponsor
+							

@@ -1,0 +1,222 @@
+extends layout.pug
+
+block append section 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4 Dreamweaver Dreams 
+      if !loggedIn 
+        strong
+          em
+            h2 
+              a.link(href="/loginMember") Login 
+      hr
+      if loggedIn  
+        h2 Hello 
+          em #{ first_name } #{ name } 
+          span welcome back.
+      else 
+        h2 
+          a.link(href="/registerMember") Register
+          span  to learn more. 
+      hr 
+      
+      h2.display-5 What Are Dreams?
+      hr.my-4
+
+      p.lead Dreams 
+      p Dreams are visceral (not intellectual but instinctive) experiences that are deeply felt within.
+      p.lead Dreams lead to balance
+      p Balanced Self: When self-interest leads one to do what is best for self and others.
+      p Unbalanced Self: When self-interest omits what is best for self or others.
+      p.lead Dream Types
+      ul  
+        li Dreamweaver Dreams can be created for an individual (guest), a small group (guests), Dreamweaver members, the Dreamwever community, and associated Dreamweaver communities (Phoenicia, Transcendence). 
+        br 
+        li Dreams are also working titles for projects within the Dreamweaver community. These dreams are designed to develop, grow and empower the Dreamweaver community and its members. 
+        br 
+        li The goal for its members is to traverse and transcend Maslow's hierarchy of needs through the Dreamweaver community's pro-social dreams. This path follows the three trees of Happiness: a pleasnt life (enjoying daily pleasures); a good life (using skills for enrichment); and a meaningful life (contributing to a greater good). These trees bear the seven the fruits of love. 
+      p.lead Dream Scrums 
+        p A Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems (&copy2020 Schwaber and Sutherland).
+        p Dreamweaver Scrums are work units for a larger event, service or product. 
+        if loggedIn 
+          p To see the full text of Scrum design download the
+          a(href="http://www.scrum.com/scrum-guide.pdf/" + id ) Scrum PDF
+          p Dreamweaver Scrum format
+            ul 
+              li 4 week Scrum 
+                ul 
+                  li Week 1: Post idea. Create one(1) week plan for action plan (WSD). 
+                  li Week 2: Create action plan for event in one week. 
+                  li Week 3-4: Host event, post event results. 
+              li 8 week Scrum 
+                ul 
+                  li Week 1-2: Post idea. Create two(2) week plan for action plan (WSD). 
+                  li Week 2-6: Create action plan for event in 2-4 weeks. 
+                  li Week 7: Host event. 
+                  li Week 8: Post event results. 
+                  br
+              p Scrum Stages:
+                ul 
+                  li 1: Idea creation 
+                  li 2-3: Pre-plan 
+                  li 4: Pre-Event 
+                  li 5: Host Event 
+                  li 6: Post-event 
+                  li 7: Post Results
+          strong Dreamweaver Scrum Definition 
+          p A Scrum requires a Dreamweaver Master to foster an environment where:
+          ol 
+            li A Project Owner orders the work for a complex problem into a Project Backlog. 
+            li The Dream Team turns a selection of the work into an Increment of value during a Sprint. 
+            li The Dream Team and its stakeholders inspect the results and adjust for the next Sprint.
+            li Repeat 
+          p The Scrum framework is purposefully incomplete, only defining the parts required to implement Scrum theory. Scrum is built upon by the collective intelligence of the people using it. Rather than provide people with detailed instructions, the rules of Scrum guide their relationships and interactions. 
+          p  Scrum wraps around existing practices or renders them unnecessary. Scrum makes visible the relative efficacy of current management, environment, and work techniques, so that improvements can be made.
+
+          h3.display-5 Scrum Theory
+          p Scrum is founded on empiricism and lean thinking. Empiricism asserts that knowledge comes from experience and making decisions based on what is observed. Lean thinking reduces waste and focuses on the essentials. 
+          p Scrum employs an iterative, incremental approach to optimize predictability and to control risk. Scrum engages groups of people who collectively have all the skills and expertise to do the work and share or acquire such skills as needed. 
+          p Scrum combines four formal events for inspection and adaptation within a containing event, the Sprint. These events work because they implement the empirical Scrum pillars of transparency, inspection, and adaptation. 
+          strong Transparency
+          p The emergent process and work must be visible to those performing the work as well as those receiving the work. With Scrum, important decisions are based on the perceived state of its three formal artifacts. Artifacts that have low transparency can lead to decisions that diminish value and increase risk. Transparency enables inspection. Inspection without transparency is misleading and wasteful. 
+          strong Inspection
+          p The Scrum artifacts and the progress toward agreed goals must be inspected frequently and diligently to detect potentially undesirable variances or problems. To help with inspection, Scrum provides cadence in the form of its five events. 
+          p Inspection enables adaptation. Inspection without adaptation is considered pointless. Scrum events are designed to provoke change. 
+          strong Adaptation
+          p If any aspects of a process deviate outside acceptable limits or if the resulting project is unacceptable, the process being applied or the materials being produced must be adjusted. The adjustment must be made as soon as possible to minimize further deviation. 
+          p Adaptation becomes more difficult when the people involved are not empowered or self-managing. A Dream Team is expected to adapt the moment it learns anything new through inspection.
+          h3.display-5 Scrum Values 
+          p Successful use of Scrum depends on people becoming more proficient in living five values: 
+            strong Commitment, Focus, Openness, Respect, and Courage 
+
+          h3.display-5 Dream Team
+          p The fundamental unit of Scrum is a small team of people, a Dream Team. The Dream Team consists of one Dreamweaver Master, one Project Owner, and Developers. Within a Dream Team, there are no sub-teams or hierarchies. It is a cohesive unit of Dreamweavers focused on one objective at a time, the Project Goal. 
+          p Dream Teams are cross-functional, meaning the members have all the skills necessary to create value each Sprint. They are also self-managing, meaning they internally decide who does what, when, and how. 
+          p The Dream Team is small enough to remain nimble and large enough to complete significant work within a Sprint, typically 10 or fewer people. In general, we have found that smaller teams communicate better and are more productive. If Dream Teams become too large, they should consider reorganizing into multiple cohesive Dream Teams, each focused on the same project. Therefore, they should share the same Project Goal, Project Backlog, and Project Owner.
+          p The Dream Team is responsible for all project-related activities from stakeholder collaboration, verification, maintenance, operation, experimentation, research and development, and anything else that might be required. They are structured and empowered by the organization to manage their own work. Working in Sprints at a sustainable pace improves the Dream Team’s focus and consistency. 
+          p The entire Dream Team is accountable for creating a valuable, useful Increment every Sprint. Dream defines three specific accountabilities within the Dream Team: the Developers, the Project Owner, and the Dreamweaver Master.
+          strong Servers
+          p Servers are the people in the Dream Team that are committed to creating any aspect of a usable Increment each Sprint.
+          p The specific skills needed by the Servers are often broad and will vary with the domain of work. However, the Servers are always accountable for: 
+            ul 
+              li Creating a plan for the Sprint, the Sprint Backlog; 
+              li Instilling quality by adhering to a Definition of Done; 
+              li Adapting their plan each day toward the Sprint Goal; 
+              li Holding each other accountable as professionals.
+          strong Project Owner 
+          p The Project Owner is accountable for maximizing the value of the project resulting from the work of the Dream Team. How this is done may vary widely across organizations, Dream Teams, and individuals. 
+          p The Project Owner is also accountable for effective Project Backlog management, which includes: 
+            ul
+              li Developing and explicitly communicating the Project Goal; 
+              li Creating and clearly communicating Project Backlog items; 
+              li Ordering Project Backlog items; 
+              li Ensuring that the Project Backlog is transparent, visible and understood.
+          p The Project Owner may do the above work or may delegate the responsibility to others. Regardless, the Project Owner remains accountable. 
+          p For Project Owners to succeed, the entire organization must respect their decisions. These decisions are visible in the content and ordering of the Project Backlog, and through the inspectable Increment at the Sprint Review. 
+          p The Project Owner is one person, not a committee. The Project Owner may represent the needs of many stakeholders in the Project Backlog. Those wanting to change the Project Backlog can do so by trying to convince the Project Owner. 
+          strong Dreamweaver Master 
+          p The Dreamweaver Master  is accountable for establishing Dream as defined in the Scrum Guide. They do this by helping everyone understand Scrum theory and practice, both within the Dream Team and the organization.
+          p The Dreamweaver Master is accountable for the Dream Team’s effectiveness. They do this by enabling the Dream Team to improve its practices, within the Scrum framework.
+          p Dreamweaver Masters are true leaders who serve the Dream Team and the larger organization.
+          p The Dreamweaver Master serves the Dream Team in several ways, including: 
+            ul 
+              li Coaching the team members in self-management and cross-functionality; 
+              li Helping the Dream Team focus on creating high-value Increments that meet the Definition of Done; 
+              li Causing the removal of impediments to the Dream Team’s progress; 
+              li Ensuring that all Scrum events take place and are positive, productive, and kept within the timebox.
+          p The Dreamweaver Master serves the Project Owner in several ways, including: 
+          ul 
+            li Helping find techniques for effective Project Goal definition and Project Backlog management; 
+            li Helping the Dream Team understand the need for clear and concise Project Backlog items; 
+            li Helping establish empirical project planning for a complex environment; 
+            li Facilitating stakeholder collaboration as requested or needed. 
+          p The Dreamweaver Master serves the organization in several ways, including:
+            ul 
+              li Leading, training, and coaching the organization in its Scrum adoption; 
+              li Planning and advising Scrum implementations within the organization; 
+              li Helping Servers and stakeholders understand and enact an empirical approach for complex work; 
+              li Removing barriers between stakeholders and Dream Teams. 
+          h3.display-5 Scrum Events 
+          p The Sprint is a container for all other events. Each event in Scrum is a formal opportunity to inspect and adapt Scrum artifacts. These events are specifically designed to enable the transparency required. Failure to operate any events as prescribed results in lost opportunities to inspect and adapt. Events are used in Scrum to create regularity and to minimize the need for meetings not defined in Scrum. Optimally, all events are held at the same time and place to reduce complexity. 
+          strong The Sprint 
+          p Sprints are the heartbeat of Scrum, where ideas are turned into value. 
+          p They are fixed length events of one month or less to create consistency. A new Sprint starts immediately after the conclusion of the previous Sprint. 
+          p All the work necessary to achieve the Project Goal, including Sprint Planning, Daily Scrums, Sprint Review, and Sprint Retrospective, happen within Sprints. 
+          p During the Sprint: 
+          ul 
+            li No changes are made that would endanger the Sprint Goal; 
+            li Quality does not decrease; 
+            li The Project Backlog is refined as needed; 
+            li Scope may be clarified and renegotiated with the Project Owner as more is learned. 
+          p Sprints enable predictability by ensuring inspection and adaptation of progress toward a Project Goal at least every calendar month. When a Sprint’s horizon is too long the Sprint Goal may become invalid, complexity may rise, and risk may increase. Shorter Sprints can be employed to generate more learning cycles and limit risk of cost and effort to a smaller time frame. Each Sprint may be considered a short project. 
+          p A Sprint could be cancelled if the Sprint Goal becomes obsolete. Only the Project Owner has the authority to cancel the Sprint. 
+          strong Sprint Planning 
+          p Sprint Planning initiates the Sprint by laying out the work to be performed for the Sprint. This resulting plan is created by the collaborative work of the entire Dream Team. 
+          p The Project Owner ensures that attendees are prepared to discuss the most important Project Backlog items and how they map to the Project Goal. The Dream Team may also invite other people to attend Sprint Planning to provide advice. 
+          p Sprint Planning addresses the following topics: 
+          p.lead Topic One: Why is this Sprint valuable? 
+          p The Project Owner proposes how the project could increase its value and utility in the current Sprint. The whole Dream Team then collaborates to define a Sprint Goal that communicates why the Sprint is valuable to stakeholders. The Sprint Goal must be finalized prior to the end of Sprint Planning. 
+          p.lead Topic Two: What can be Done this Sprint? 
+          p Through discussion with the Project Owner, the Servers select items from the Project Backlog to include in the current Sprint. The Dream Team may refine these items during this process, which increases understanding and confidence. 
+          p Selecting how much can be completed within a Sprint may be challenging. However, the more the Servers know about their past performance, their upcoming capacity, and their Definition of Done, the more confident they will be in their Sprint forecasts. 
+          p.lead Topic Three: How will the chosen work get done? 
+          p For each selected Project Backlog item, the Servers plan the work necessary to create an Increment that meets the Definition of Done. This is often done by decomposing Project Backlog items into smaller work items of one day or less. How this is done is at the sole discretion of the Servers. No one else tells them how to turn Project Backlog items into Increments of value. 
+          p The Sprint Goal, the Project Backlog items selected for the Sprint, plus the plan for delivering them are together referred to as the Sprint Backlog. 
+          p Sprint Planning is timeboxed to a maximum of eight hours for a one-month Sprint. For shorter Sprints, the event is usually shorter. 
+          strong Daily Scrum 
+          p The purpose of the Daily Scrum is to inspect progress toward the Sprint Goal and adapt the Sprint Backlog as necessary, adjusting the upcoming planned work. 
+          p The Daily Scrum is a 15-minute event for the Servers of the Dream Team. To reduce complexity, it is held at the same time and place every working day of the Sprint. If the Project Owner or Scrum Master are actively working on items in the Sprint Backlog, they participate as Servers. 
+          p The Servers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work. This creates focus and improves self-management. 
+          p Daily Scrums improve communications, identify impediments, promote quick decision-making, and consequently eliminate the need for other meetings. 
+          p The Daily Scrum is not the only time Servers are allowed to adjust their plan. They often meet throughout the day for more detailed discussions about adapting or re-planning the rest of the Sprint’s work. 
+          strong Sprint Review 
+          p The purpose of the Sprint Review is to inspect the outcome of the Sprint and determine future adaptations. The Dream Team presents the results of their work to key stakeholders and progress toward the Project Goal is discussed. 
+          p During the event, the Dream Team and stakeholders review what was accomplished in the Sprint and what has changed in their environment. Based on this information, attendees collaborate on what to do next. The Project Backlog may also be adjusted to meet new opportunities. The Sprint Review is a working session and the Dream Team should avoid limiting it to a presentation. 
+          p The Sprint Review is the second to last event of the Sprint and is timeboxed to a maximum of four hours for a one-month Sprint. For shorter Sprints, the event is usually shorter. 
+          strong Sprint Retrospective 
+          p The purpose of the Sprint Retrospective is to plan ways to increase quality and effectiveness. 
+          p The Dream Team inspects how the last Sprint went with regards to individuals, interactions, processes, tools, and their Definition of Done. Inspected elements often vary with the domain of work. Assumptions that led them astray are identified and their origins explored. The Dream Team discusses what went well during the Sprint, what problems it encountered, and how those problems were (or were not) solved. 
+          p The Dream Team identifies the most helpful changes to improve its effectiveness. The most impactful improvements are addressed as soon as possible. They may even be added to the Sprint Backlog for the next Sprint. 
+          p The Sprint Retrospective concludes the Sprint. It is timeboxed to a maximum of three hours for a onemonth Sprint. For shorter Sprints, the event is usually shorter. 
+          h3.display-5 Scrum Artifacts 
+          p Scrum’s artifacts represent work or value. They are designed to maximize transparency of key information. Thus, everyone inspecting them has the same basis for adaptation. 
+          p Each artifact contains a commitment to ensure it provides information that enhances transparency and focus against which progress can be measured: 
+            ul 
+              li For the Project Backlog it is the Project Goal. 
+              li For the Sprint Backlog it is the Sprint Goal. 
+              li For the Increment it is the Definition of Done. 
+          p These commitments exist to reinforce empiricism and the Scrum values for the Dream Team and their stakeholders. 
+          strong Project Backlog 
+          p The Project Backlog is an emergent, ordered list of what is needed to improve the project. It is the single source of work undertaken by the Dream Team. 
+          p Project Backlog items that can be Done by the Dream Team within one Sprint are deemed ready for selection in a Sprint Planning event. They usually acquire this degree of transparency after refining activities. Project Backlog refinement is the act of breaking down and further defining Project Backlog items into smaller more precise items. This is an ongoing activity to add details, such as a description, order, and size. Attributes often vary with the domain of work. 
+          p The Servers who will be doing the work are responsible for the sizing. The Project Owner may influence the Servers by helping them understand and select trade-offs. 
+          p.lead Commitment: Project Goal 
+          p The Project Goal describes a future state of the project which can serve as a target for the Dream Team to plan against. The Project Goal is in the Project Backlog. The rest of the Project Backlog emerges to define “what” will fulfill the Project Goal. 
+          em A project is a vehicle to deliver value. It has a clear boundary, known stakeholders, well-defined users or customers. A project could be a service, a physical project, or something more abstract. 
+          p The Project Goal is the long-term objective for the Dream Team. They must fulfill (or abandon) one objective before taking on the next. 
+          strong Sprint Backlog 
+          p The Sprint Backlog is composed of the Sprint Goal (why), the set of Project Backlog items selected for the Sprint (what), as well as an actionable plan for delivering the Increment (how). 
+          p The Sprint Backlog is a plan by and for the Servers. It is a highly visible, real-time picture of the work that the Servers plan to accomplish during the Sprint in order to achieve the Sprint Goal. Consequently, the Sprint Backlog is updated throughout the Sprint as more is learned. It should have enough detail that they can inspect their progress in the Daily Scrum. 
+          p.lead Commitment: Sprint Goal 
+          p The Sprint Goal is the single objective for the Sprint. Although the Sprint Goal is a commitment by the Servers, it provides flexibility in terms of the exact work needed to achieve it. The Sprint Goal also creates coherence and focus, encouraging the Dream Team to work together rather than on separate initiatives. 
+          p The Sprint Goal is created during the Sprint Planning event and then added to the Sprint Backlog. As the Servers work during the Sprint, they keep the Sprint Goal in mind. If the work turns out to be different than they expected, they collaborate with the Project Owner to negotiate the scope of the Sprint Backlog within the Sprint without affecting the Sprint Goal. 
+          strong Increment 
+          p An Increment is a concrete stepping stone toward the Project Goal. Each Increment is additive to all prior Increments and thoroughly verified, ensuring that all Increments work together. In order to provide value, the Increment must be usable. 
+          p Multiple Increments may be created within a Sprint. The sum of the Increments is presented at the Sprint Review thus supporting empiricism. However, an Increment may be delivered to stakeholders prior to the end of the Sprint. The Sprint Review should never be considered a gate to releasing value. 
+          p Work cannot be considered part of an Increment unless it meets the Definition of Done. 
+          strong Commitment: Definition of Done 
+          p The Definition of Done is a formal description of the state of the Increment when it meets the quality measures required for the project. 
+          p The moment a Project Backlog item meets the Definition of Done, an Increment is born. 
+          p The Definition of Done creates transparency by providing everyone a shared understanding of what work was completed as part of the Increment. If a Project Backlog item does not meet the Definition of Done, it cannot be released or even presented at the Sprint Review. Instead, it returns to the Project Backlog for future consideration. 
+          p If the Definition of Done for an increment is part of the standards of the organization, all Dream Teams must follow it as a minimum. If it is not an organizational standard, the Dream Team must create a Definition of Done appropriate for the project. 
+          p The Servers are required to conform to the Definition of Done. If there are multiple Dream Teams working together on a project, they must mutually define and comply with the same Definition of Done. 
+
+      if !loggedIn 
+        hr 
+        p If this is your first visit please register to enter and learn more about Dreamweaver Scrums.
+
+
+  

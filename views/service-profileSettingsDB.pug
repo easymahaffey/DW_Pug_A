@@ -1,0 +1,317 @@
+//- extends layout.pug 
+extends layout_for_update.pug 
+
+block append content 
+
+	div.container-fluid
+
+		div.jumbotron
+			h1 Hello #{ first_name }
+			p Your Admin id
+				strong : #{ user_id } 
+			p Your Admin Role
+				strong : #{ user_admin_role } 
+			p Your Membership Role
+				strong : #{ user_membership_role } 
+			if loggedIn
+				h2 The service is online now.
+			else 
+				h2 #{ poc_first_name } is not online.
+			h4 The service's id is:
+				p #{ id }
+
+			if !message
+				h3 Update service profile.
+			else
+				h3 #{ message }
+
+			p #{ passwordMessage }
+
+			form(action="/updateVendorProfileDB/" + id method="post")
+				button.btn.btn-primary.btn-lg#password-btn(type="button" data-toggle="modal" data-target="#passwordModal") Change password
+				br
+				label(for="password") Hashed Password:  
+				p #{ password }
+				br
+				p Joined: #{ date_organization_joined }
+				br
+				label(for="organization_name") Organization Name: #{ organization_name }
+				input(type="text" name="organization_name" placeholder="Organization Name")
+				br
+				label(for="org_branch") Branch Name: #{ org_branch }
+				input(type="text" name="org_branch" placeholder="Branch Name")
+				br
+				label(for="org_email") Organization E-mail: #{ org_email }
+				input(type="text" name="org_email" placeholder="Organization E-mail")
+				br
+				label(for="org_website") Organization Website: #{ org_website }
+				input(type="text" name="org_website" placeholder="Organization Website")
+				br
+				label(for="org_phone") Organization Phone: #{ org_phone }
+				input(type="text" name="org_phone" placeholder="Organization Phone")
+				br
+				label(for="org_phone_ext") Phone Extension: #{ org_phone_ext }
+				input(type="text" name="org_phone_ext" placeholder="Phone Extension")
+				br
+				label(for="org_alt_phone") Organization Alt Phone: #{ org_alt_phone }
+				input(type="text" name="org_alt_phone" placeholder="Organization Alt Phone")
+				br
+				label(for="org_cell_phone") Organization Cell Phone: #{ org_cell_phone }
+				input(type="text" name="org_cell_phone" placeholder="Organization Cell Phone")
+				br
+				label(for="org_fax") Organization Fax: #{ org_fax }
+				input(type="text" name="org_fax" placeholder="Organization Fax")
+				br
+				label(for="poc_first_name") POC First Name: #{ poc_first_name }
+				input(type="text" name="poc_first_name" placeholder= "first name" )
+				br
+				label(for="poc_last_name") POC Last Name: #{ poc_last_name }
+				input(type="text" name="poc_last_name" placeholder= "last name" )
+				br
+				label(for="poc_title") POC Title: #{ poc_title }
+				input(type="text" name="poc_title" placeholder= "POC Title" )
+				br
+				label(for="alt_poc_first_name") Alt POC First Name: #{ alt_poc_first_name }
+				input(type="text" name="alt_poc_first_name" placeholder= "first name" )
+				br
+				label(for="alt_poc_last_name") Alt POC Last Name: #{ alt_poc_last_name }
+				input(type="text" name="alt_poc_last_name" placeholder= "last name" )
+				br
+				label(for="alt_poc_title") Alt POC Title: #{ alt_poc_title }
+				input(type="text" name="alt_poc_title" placeholder= "POC Title" )
+				br
+				label(for="alt_poc_phone") Alt POC Phone: #{ alt_poc_phone }
+				input(type="text" name="alt_poc_phone" placeholder="Alt POC Phone")
+				br
+				label(for="alt_poc_email") Alt POC E-mail: #{ alt_poc_email }
+				input(type="text" name="alt_poc_email" placeholder="Alt POC E-mail")
+				br
+				label(for="address1") Address 1: #{ address1 }
+				input(type="text" name="address1" placeholder="address1") 
+				br
+				label(for="address2") Address 2: #{ address2 }
+				input(type="text" name="address2" placeholder="address2") 
+				br
+				label(for="city") City: #{ city }
+				input(type="text" name="city" placeholder="city")
+				br
+				label(for="State") State: #{ State }
+				input(type="text" name="State" placeholder="State") 
+				br
+				label(for="zipCode") Zip Code: #{ zipCode }
+				input(type="text" name="zipCode" placeholder="Zip Code") 
+				br
+				label(for="mail_address1") Mai Address 1: #{ mail_address1 }
+				input(type="text" name="mail_address1" placeholder="Mail Address1") 
+				br
+				label(for="mail_address2") Mail Address 2: #{ mail_address2 }
+				input(type="text" name="mail_address2" placeholder="Mail Address2") 
+				br
+				label(for="mail_city") Mail City: #{ mail_city }
+				input(type="text" name="mail_city" placeholder="city")
+				br
+				label(for="mail_state") Mail State: #{ mail_state }
+				input(type="text" name="mail_state" placeholder="Mail State") 
+				br
+				label(for="mail_zipCode") Mail Zip Code: #{ mail_zipCode }
+				input(type="text" name="mail_zipCode" placeholder="Mail Zip Code") 
+				br
+				label(for="eligibility") Eligibility: #{ eligibility }
+				select(id="eligibility" name="eligibility")
+					option(value="") --
+					option(value="COED") COED
+					option(value="Male") Male
+					option(value="Female") Female
+					option(value="Families") Families
+					option(value="Open To Public") Open To Public
+					option(value="LGBT") LGBT
+					option(value="Referral Required") Referral required
+					option(value="Veterans") Veterans
+					option(value="Refugees") Refugees
+				br 
+				label(for="custody_level") Custody Level #{ custody_level }
+				br
+				select(id="custody_level" name="custody_level")
+					option(value="") --
+					option(value="A1") A1
+					option(value="C3") C3
+					option(value="C2") C2
+					option(value="R1") R1
+					option(value="R3") R3
+					option(value="R4") R4
+					option(value="R5") R5
+					option(value="R1-6") R1-6
+					option(value="R1-6/R2") R1-6/R2
+					option(value="R4-R1") R4-R1
+					option(value="R1-7") R1-7
+					option(value="R1-9") R1-9
+					option(value="TCC") TCC
+					option(value="TCR-2") TCR-2
+				br 
+				br
+				label(for="adoc_approved") ADOC Status: #{ adoc_approved }
+				br
+				select(id="adoc_approved" name="adoc_approved")
+					option(value="") --
+					option(value="ADOC Approved") ADOC Approved
+				br 
+				label(for="ahcccs_approved") AHCCCS Status: #{ ahcccs_approved } 
+				br
+				select(id="ahcccs_approved" name="ahcccs_approved")
+					option(value="") --
+					option(value="AHCCCS Approved") AHCCCS Approved
+				br
+				label(for="azrha_approved") AZRHA Status: #{ azrha_approved } 
+				br
+				select(id="azrha_approved" name="azrha_approved")
+					option(value="") --
+					option(value="AZRHA Approved") AZRHA Approved
+				br
+				hr
+				b
+				label(for="info") Services Information: #{ info }
+				br
+				textarea(name="info" rows="5" cols="30" placeholder="Enter Additional Information")
+				hr
+				br        
+				p 
+				p Profile privacy setting
+				input(type="checkbox" name="vendor_privacy" value="Public")
+				label(for="vendor_privacy") Public Profile
+				br
+				input(type="checkbox" name="vendor_privacy" value ="Private")
+				label(for="vendor_privacy") Private Profile 
+				p Current privacy setting
+					strong  :
+					br
+					u
+						strong #{ vendor_privacy }
+				p 
+				p Profile service status setting
+				input(type="checkbox" name="vendor_status" placeholder="vendor_status setting" value="Active")
+				label(for="vendor_status") Active service
+				br
+				input(type="checkbox" name="vendor_status" placeholder="vendor_status setting" value ="Inactive")
+				label(for="vendor_status") Inactive service
+				p Current service status setting
+					strong  :
+					br
+					u
+						strong #{ vendor_status }
+				br
+				br
+				label(for="membership_role") Membership Role: #{ membership_role }
+				br
+				select(id="membership_role" name="membership_role")
+					option(value="Member") Member
+				br
+				br
+				p Profile membership status setting
+				input(type="checkbox" name="membership_status" placeholder="membership_status setting" value="Active")
+				label(for="membership_status") Active Membership
+				br
+				input(type="checkbox" name="membership_status" placeholder="membership_status setting" value ="Inactive")
+				label(for="membership_status") Inactive Membership
+				p Current membership status setting
+					strong  :
+					br
+					u
+						strong #{ membership_status }
+				br
+				label(for="service") Service * #{ service }
+				br
+				select(id="service" name="service")
+					option(value="") --
+					option(value="Community Service") Community Service
+					option(value="Healthcare Service") Healthcare Service
+				br
+				label(for="service_type") Service Type * #{ service_type }
+				br
+				select(id="service_type" name="service_type")
+					option(value="") --
+					option(value="Transportation") Transportation
+					option(value="Housing") Housing
+					option(value="Food") Food
+					option(value="Clothing") Clothing
+					option(value="Employment") Employment
+					option(value="Behavioral Health") Behavioral Health
+					option(value="Mental Health") Mental Health
+					option(value="Physical Health") Physical Health
+					option(value="Benefits") Benefits
+					option(value="ID Cards") ID Cards
+					option(value="Legal") Legal
+					option(value="Religious Outreach") Religious Outreach
+					option(value="Parole Offices") Parole Offices
+				br
+				label(for="service_category") Service Category * #{ service_category }
+				br
+				select(id="service_category" name="service_category")
+					option(value="") --
+					option(value="Public Transport") Public Transportation
+					option(value="Private Transport") Private Transportation
+					option(value="Shelter") Shelter
+					option(value="Transitional Housing") Transitional Housing
+					option(value="Low Income Rentals") Low Income Rentals
+					option(value="Disability Rentals") Disability Rentals
+					option(value="Rent Utility Assistance") Rent & Utility Assistance
+					option(value="Home Repair") Home Repair
+					option(value="Food Banks") Food Banks
+					option(value="Food Stamps") Food Stamps
+					option(value="State Unemployment") State Unemployment
+					option(value="Community Unemployment") Community Unemployment
+					option(value="Staffing Agency") Staffing Agency
+					option(value="Disabled Employment") Disabled Employment
+					option(value="Behavioral Health Employment") Behavioral Health Employment
+					option(value="Veterans Employment") Veterans Employment
+					option(value="Womens Employment") Womens Employment
+					option(value="Youth Employment") Youth Employment
+					option(value="Job Training") Job Training
+					option(value="Self Employment Entrepreneurs") Self-Employment / Entrepreneurs
+					option(value="Volunteer Opportunities") Volunteer Opportunities
+					option(value="Employers") Employers
+					option(value="Financial Assistance") Financial Assistance
+					option(value="Legal Aid") Legal Aid
+					option(value="Peer Run Org") Peer Run Organization
+					option(value="Support Group") Support Group
+					option(value="Diabetes Care") Diabetes Care Center
+					option(value="Healthcare") Healthcare
+					option(value="Healthcare & Dental") Healthcare & Dental
+					option(value="Healthcare Advocacy") Healthcare Advocacy
+				br
+				label(for="service_source") Service Source * #{ service_source }
+				br
+				select(id="service_source" name="service_source")
+					option(value="") --
+					option(value="Community Source") Community Source
+					option(value="Government Source") Government Source
+				br
+				label(for="veterans_services") Veterans Services #{ veterans_services }
+				br
+				select(id="veterans_services" name="veterans_services")
+					option(value="") --
+					option(value="Veterans Services") Veterans Services
+				br
+				br
+				p * Required
+				br
+				button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit
+
+		div.modal.fade#passwordModal
+			.modal-dialog
+				.modal-content  
+					.modal-header 
+						h1.modal-title Change Password
+
+					.modal-body 
+						form(action="/updateVendorPassword/" + id method="post") 
+							input(type="text" name="vendor_id" value=vendor_id hidden)
+							input(type="text" name="password1" placeholder="password" required)
+							br
+							input(type="text" name="password2" placeholder="confirm password *" required)
+							br
+							p * Required
+							br
+							button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+					.modal-footer
+						button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

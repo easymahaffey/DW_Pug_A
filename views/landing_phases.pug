@@ -1,0 +1,65 @@
+extends layout.pug
+
+block append section 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-5 Welcome Dreamweaver's 
+      h1.display-5 Current Phase: 
+        u 
+          em Phase I
+      
+      p.lead Dreamweaver Teams provide pro-social 
+        em Experiences 
+        span for each other and the communities they serve.
+      hr.my-4
+
+      p.lead We are a pro-social community facilitating self-actualization through service to others.  
+
+      p Currently there are four phases for the Dreamweaver Project: 
+        ul 
+          li 
+            u Phase I
+            span  : Limited to Arizona residents only
+            ul 
+              li Limited to first 1,000 (first six(6) months) 
+              li Limited to first 10,000 (second six(6) months of activation) 
+              li Limited to first 1M (second year of activation) 
+              li Unlimited (after second year of activation) 
+          li 
+            u Phase II
+            span  : Open to pacific states (CA, OR, WA) by project (state) listing, and resident of project state
+            ul 
+              li Limited to first 1,000 (first six(6) months) 
+              li Limited to first 10,000 (second six(6) months of activation) 
+              li Limited to first 1M (second year of activation) 
+              li Unlimited (after second year of activation) 
+          li 
+            u Phase III
+            span  : Open to all United States of America by project (state) listing, and resident of project state
+            ul 
+              li Limited to first 1,000 (first six(6) months) 
+              li Limited to first 10,000 (second six(6) months of activation) 
+              li Limited to first 1M (second year of activation) 
+              li Unlimited (after second year of activation) 
+          li 
+            u Phase IV
+            span  : Open internationally by project (country) listing, and resident of project country.
+            ul 
+              li Limited to first 1,000 (first six(6) months) 
+              li Limited to first 10,000 (second six(6) months of activation) 
+              li Limited to first 1M (second year of activation) 
+              li Unlimited (after second year of activation) 
+      if !loggedIn
+        br
+        div
+          a.btn.btn-primary.btn-lg(href="/loginMember") Login
+
+          a.btn.btn-primary.btn-lg(href="registerMember") Register
+        
+        p If this is your first visit please register to enter.
+
+
+  

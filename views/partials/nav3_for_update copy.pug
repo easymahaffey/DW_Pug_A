@@ -1,0 +1,86 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.text-white
+	span
+		img(src="/assets/images/logos/logo.jpg" alt="logo" height= 60)
+		a.navbar-brand(href="/finalLandingMember/" + member_id) Dreamweaver Project 
+		br
+		if admin_role !== 'Inactive'
+			span #{ admin_role } 
+		span #{ membership_role } 
+		if member_student_status === "Active"
+			span #{ student_role } 
+		br
+		span ID #{ id } 
+		br
+		span UserID #{ user_id }
+	span
+		button.btn.btn-dark.btn-outline-secondary.text-white.mr-3(onclick="darkToggle()") Dim
+		button.navbar-toggler(type="button"
+			data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+			span.navbar-toggler-icon
+	div.collapse.navbar-collapse#navbarSupportedContent
+		ul.navbar-nav.mr-auto
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Home
+					span.sr-only (current)
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/finalLandingMember/" + member_id) Home
+					hr 
+					if student_loggedIn
+						a.dropdown-item(href="/logoutStudent/" + member_id) Student Logout
+					else if loggedIn
+						a.dropdown-item(href="/logoutMember/" + member_id) Member Logout
+			if admin_role === 'Local Administrator' ||admin_role === 'Site Manager' || admin_role === 'Program Manager'
+				li.nav-item.dropdown
+					a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false") Admin
+					div.dropdown-menu(aria-labelledby="navbarDropdown") 
+						a.dropdown-item(href="/memberDatabase/" + member_id) Member Database
+						a.dropdown-item(href="/vendorDatabase/" + member_id) Services Database
+						if membership_role === 'Local Administrator'
+							hr
+							a.dropdown-item(href="/login/" + member_id) Admin Login            
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") About Us
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/company-profile/" + member_id) Project Profile
+					a.dropdown-item(href="/company-events/" + member_id ) Project Events
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Projects
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/triage-project-az-phoenix/" + member_id) Phoenix
+					a.dropdown-item(href="/triage-project-az-tucson/" + member_id) Tucson
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Dreams
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/registerDream/" + member_id) Create Dream 
+					a.dropdown-item(href="/arizonaDreams/" + member_id) Arizona Dreams 
+					a.dropdown-item(href="/dreamDatabase/" + member_id ) All Dreams 
+					hr  
+					a.dropdown-item(href="#" + member_id ) What Are Dreams
+					a.dropdown-item(href="#" + member_id ) Workgroup Developer
+					a.dropdown-item(href="#" + member_id ) Dream Forecast
+					a.dropdown-item(href="#" + member_id ) Resources
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Academy
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					hr
+					a.dropdown-item(href="/triage-challenge/" + member_id) Challenge
+					a.dropdown-item(href="/triage-my-challenge/" + member_id) My Challenge
+					if member_student_status === "Active"
+						a.dropdown-item(href="/member-challenge/" + member_id) Challenge Modules
+					hr 
+					a.dropdown-item(href="/triage-peer-training/" + member_id) Academy
+					a.dropdown-item(href="/triage-my-peer-training/" + member_id) My Academy
+					if member_student_status === "Active"
+						a.dropdown-item(href="/member-peer-training/" + member_id) Academy Modules
+						hr 
+						a.dropdown-item(href="/studentAnswers/" + member_id) Student Answers
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") My Profile
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/memberProfile/" + member_id) My Profile
+					a.dropdown-item(href="/updateMemberProfile/" + member_id) My Profile Settings

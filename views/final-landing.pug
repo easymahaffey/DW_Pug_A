@@ -1,0 +1,44 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      if vendor_status
+        h3 Welcome #{ organization_name }.
+      if loggedIn 
+        h2.display-4 Hello #{first_name} #{ name } 
+        
+      h1.display-5 Welcome to the Dreamweaver Project
+
+      p.lead A pro-social community facilitating self-actualization through service to others.
+      hr.my-4
+
+      p The 
+        em Experience:  
+        span purpose of service 
+        ul 
+          li To create a feeling of being seen 
+          li To create a feeling of being welcomed 
+          li To create a sense of belonging
+      p The Presentation: creating presence through service 
+        ul 
+          li Being present: caring so much about someone you forget all other things you need to do.
+          li Take what you do seriously, not yourself: avoid self-imposed standards. 
+          li Giving a genuine feeling of belonging: one size fits one (not all).
+          
+      p 
+        strong Treat each individual as unique.
+
+      p If this is your first visit you may want to update your
+        span 
+          if membership_role
+            a.link(href="/memberProfileSettings/" + id) profile.
+          else if userLevel
+            a.link(href="/myProfileSettings/" + id) profile.
+      
+      if member_student_status !== "Active"
+        p You can also enroll in the  
+          a.link(href="/registerStudent/" + id) Dreamweaver Academy.

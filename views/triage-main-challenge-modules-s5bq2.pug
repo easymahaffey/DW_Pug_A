@@ -1,0 +1,29 @@
+block append section 
+  link(rel="stylesheet" href="/assets/css/module_content.css")
+  section.container-2
+    h2 Dreamweaver Challenge Education (S5bQ2)
+    h3 Optimism Based on Positive Expectations
+    p Student Id: #{ student_id }
+    br
+    h3 Questions
+    br
+    h4 Question 2 of 4
+      //- span#timerDisplay Time remaining: #{ timer }
+    br
+    p#question I do these things to help me stay positive:
+    br
+    p#answer Answer below:
+    form(action="/secureMainChallengeModulesS5bq2/" + id method="post")
+      input(type="text" name="student_id" value=student_id hidden)
+      input(type="text" name="answerDate" hidden)
+      input(type="text" name="questionGroupModule" value="Challenge" hidden)
+      input(type="text" name="questionModule" value="5b" hidden)
+      input(type="text" name="questionTitle" value="S5bQ2" hidden)
+      input(type="text" name="answerTime" hidden)
+      input(type="text" name="questionNumber" value="Q2" hidden)
+      input(type="text" name="questionText" value="I do these things to help me stay positive:" hidden)
+      input.answerArea(type="textarea" name="answerText" placeholder="Answer 2 of 4")
+      br
+      button.btn.btn-primary.btn-lg.btn-module(type="submit") Submit
+    br
+

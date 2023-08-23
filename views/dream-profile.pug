@@ -1,0 +1,199 @@
+extends layout.pug
+
+block append content
+
+	p #{ message }
+
+	div.container-fluid
+
+		div.row
+			//- Left Column
+			div.col-sm-3.p-2
+
+				//- Profile
+				div.card.text-center.text-white.bg-secondary.mb-3
+					h4 #{ first_name } #{ last_name }
+					a.btn.btn-secondary(href="/assets/pages/My_Profile.html")
+						img(src="/assets/images/pics/profile1.jpg" style="height:100%;width:100%" alt="Profile Picture")
+					hr
+					h5 #{ membership_role }
+					p
+						i.fa.fa-home &nbsp#{ city },&nbsp #{ state },&nbsp #{ zipCode }
+					p Member since #{ date_member_joined.toDateString() }
+					if loggedIn 
+						h6 #{ first_name } is online now.
+					else 
+						h6 #{ first_name } is not online.
+				br
+				//- Accordian
+				div.accordion#accordion
+					div.card
+						div.card-header.bg-secondary.mb-0#headingOne
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne") My Projects
+						div#collapseOne.collapse(aria-labelledby="headingOne" data-parent="#accordion")
+							div.card-body
+								a(href="/triage-project-az-phoenix/" + id) Phoenix
+								br
+								a(href="/triage-project-az-tucson/" + id) Tucson
+
+					div.card
+						div.card-header.bg-secondary.mb-0#headingTwo
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") My Dreams
+						div#collapseTwo.collapse(aria-labelledby="headingTwo" data-parent="#accordion")
+							div.card-body
+								p Current Dreams
+								p Completed Dreams
+								p Project Events
+
+					div.card
+						div.card-header.bg-secondary.mb-0#headingThree
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree") My Photos
+						div#collapseThree.collapse(aria-labelledby="headingThree" data-parent="#accordion")
+							div.card-body
+								div.card-deck
+									div.card
+										img.img-fluid.img-thumbnail(src="/assets/images/pics/profile1.jpg").mb
+									div.card
+										img.img-fluid.img-thumbnail(src="/assets/images/pics/community_services1.jpg").mb
+									div.card
+										img.img-fluid.img-thumbnail(src="/assets/images/pics/profile1.jpg").mb
+									div.card
+										img.img-fluid.img-thumbnail(src="/assets/images/pics/community_services1.jpg").mb
+									div.card
+										img.img-fluid.img-thumbnail(src="/assets/images/pics/profile1.jpg").mb
+									div.card
+										img.img-fluid.img-thumbnail(src="/assets/images/pics/community_services1.jpg").mb
+
+					div.card
+						div.card-header.bg-secondary.mb-0#headingFour 
+							h2.mb-0
+								button.btn.btn-secondary.collapsed.text-white(type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour") My Certifications
+						div#collapseFour.collapse(aria-labelledby="headingFour" data-parent="#accordion") 
+							div.card-body
+								strong 
+									span Education 
+								br  
+								a(href="#") Challenge 
+								br 
+								a(href="#") Academy 
+								br
+								strong  
+									span Service 
+								br 
+								a(href="#") Server 
+								br 
+								a(href="#") Dreamweaver 
+								br 
+								strong 
+									span Leadership 
+								br 
+								a(href="#") Project Leader  
+				br
+				//- Feedback
+				div.container.card.white.text-center.text-white.bg-secondary.mb-3
+					div.p-3
+						h6.p-3 How's our service?
+						p(contenteditable="true").border.padding Enter questions or  comments here
+						button.btn.btn-secondary.collapsed.text-white.theme Send Message
+
+			//- Center Column
+			div.col-sm-6.p-1
+				div
+					div.row.p-2
+						div.container.card.white.text-center
+							div
+								h4 My wall
+								p(contenteditable="true").border.padding Status: I'm starting a new Dream next month! Message me if you are interested in joining my new Dream Team.
+								p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, accusantium! Maxime numquam voluptatem facere dicta. Culpa magni cum quas! Totam optio reprehenderit perspiciatis laboriosam ea hic fuga reiciendis tempore quo!
+								button.button.btn-outline-secondary(title="Post")
+									i.fa.fa-pen-fancy Post
+
+					div.row.p-2
+						div.container.card.white.text-center.mb-2
+							br
+							img(src="/assets/images/pics/profile1.jpg" alt="Avatar" style="width:60px")
+							span.text-right 1 min
+							h4 John Doe
+							br
+							hr
+							p Congratulations Paul! Good luck on your new position. Please let me know if there is anything I can do to be of assistance.
+								div.p-1
+									div
+										img(src="/assets/images/pics/community_services1.jpg" style="width:50%" alt="Northern Lights").p-1
+									button.button.btn-outline-dark(title="Like")
+										i.fa.fa-thumbs-up Like
+									button(type="button" title="Comment")
+										i.fa.fa-comment Comment
+
+						div.container.card.white.text-center.mb-2
+							br
+							img(src="/assets/images/pics/profile1.jpg" alt="Avatar" style="width:60px")
+							span.text-right 16 min
+							h4 Jane Doe
+							br
+							hr 
+							p Hi Paul! They made a great choice and I know you have been hoping for this for the past year. Good luck!
+								div.p-1
+									button.button.btn-outline-dark(title="Like")
+										i.fa.fa-thumbs-up Like
+									button(type="button" title="Comment")
+										i.fa.fa-comment Comment
+
+						div.container.card.white.text-center.mb-2
+							br
+							img(src="/assets/images/pics/profile1.jpg" alt="Avatar" style="width:60px")
+							span.text-right 1 min
+							h4 Alice Doe
+							br
+							hr
+							p I took this pic on our last trip to the west coast when we visited the Dreamweaver Project in California.
+								div.p-1
+									div
+										img(src="/assets/images/pics/community_services1.jpg" style="width:60%" alt="Northern Lights").p-1
+									button.button.btn-outline-dark(title="Like")
+										i.fa.fa-thumbs-up Like
+									button(type="button" title="Comment")
+										i.fa.fa-comment Comment
+
+			//- Right Column
+			div.col-sm-3.p-1
+
+				div.card.text-center.p-3
+					div
+						p Upcoming Events:
+						img(src="/assets/images/pics/community_services1.jpg" alt="Forest" style="width:80%;")
+						p
+							strong Dreamweaver Awards
+						p Friday 19:00
+						p Civic Center
+						p 
+							button Info
+
+				div.card.text-center.p-3
+					div
+						p Need Dreamweaver Assistance?
+							img(src="/assets/images/pics/profile1.jpg" alt="Online Volunteer" style="width:70%")
+							br
+							span I'm online now.
+							br 
+							p Jane Doe
+							div
+								div
+									button.button.btn-outline-secondary(title="Chat Request")
+										i.fa.fa-handshake Chat Request
+
+				div.card.p-3
+					div
+						p
+							i.fa.fa-calendar-alt &nbsp Dreamweaver Project community fundraiser starts next month!
+
+				div.card.p-3
+					div
+						p
+							i.fa.fa-calendar-alt &nbsp Next Academy class:
+							br 
+							p 08/20/2024
+

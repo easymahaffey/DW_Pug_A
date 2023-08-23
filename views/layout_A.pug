@@ -1,0 +1,51 @@
+doctype html 
+html 
+	head 
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet" href="/assets/css/index.css")
+		link(rel="stylesheet" href="/assets/scss/custom.css")
+		link(rel="stylesheet" href="/assets/css/nav.css")
+		link(rel="stylesheet" href="/assets/css/footer.css")
+		link(rel="stylesheet" href="/assets/css/module.css")
+		link(rel="stylesheet" href="/assets/css/user-database.css")
+		link(rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.css")
+		link(rel="stylesheet" href="/assets/vendor/font-awesome/css/all.css")
+		script(src="/assets/vendor/jquery-3.4.1.min.js" defer) 
+		script(src="/assets/vendor/bootstrap/js/bootstrap.bundle.js" defer) 
+		script(src="/assets/images/d3.js") 
+		script(src="/assets/javascript/darkToggle.js")
+		//- script(src="/assets/javascript/userFilterModal.js" defer)
+		//- script(function myFunction() {
+		//-     var element = document.body
+		//-     element.classList.toggle("dark-mode")
+		//-   	})
+		style 
+			.dark-mode(style="background-color:black	color: white")
+
+	body 
+
+		block nav 
+		if loggedIn
+			if userLevel
+				include partials/nav2.pug
+			//- if userLevel || membership_role === "Local Administrator"  //  Uncomment on new install to seed user(admin) DB.
+			//- 	include partials/nav2.pug
+			else if membership_role || student_role
+				include partials/nav3.pug
+			//- else if student_loggedIn === true
+			//- 	include partials/nav3.pug
+		else
+			include partials/nav1.pug 
+
+		block content
+		block section 
+		block footer
+
+		if loggedIn
+			include partials/footer2.pug
+		else
+			include partials/footer1.pug 
+
+		

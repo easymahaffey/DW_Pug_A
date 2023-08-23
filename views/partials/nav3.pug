@@ -1,0 +1,105 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.text-white
+	span
+		if membership_role === "Server" || membership_role === "Dreamweaver" || membership_role === 'Project Manager' || admin_role !== "Inactive" 
+			a(href="/image/" + id)
+				img(src="/assets/images/logos/animateLogo2.svg" alt="logo" height= 60)
+		else 
+			img(src="/assets/images/logos/logo.jpg" alt="logo" height= 60)
+		a.navbar-brand(href="/finalLandingMember/" + id) Dreamweaver Project 
+		br
+		if admin_role !== 'Inactive'
+			span Admin Role: #{ admin_role } | Membership Role: #{ membership_role } 
+		else 
+			span Membership Role: #{ membership_role }
+		if member_student_status === "Active"
+			span  | Student Role:  #{ student_role } 
+		//- br
+		//- span ID #{ id } 
+		//- br
+		//- span UserID #{ user_id }
+	span
+		button.btn.btn-dark.btn-outline-secondary.text-white.mr-3(onclick="darkToggle()") Dim
+		button.navbar-toggler(type="button"
+			data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+			span.navbar-toggler-icon
+	div.collapse.navbar-collapse#navbarSupportedContent
+		ul.navbar-nav.mr-auto
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Home
+					span.sr-only (current)
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/finalLandingMember/" + id) Home 
+					a.dropdown-item(href="/phases/" + id) Project Phases
+					hr 
+					if student_loggedIn
+						a.dropdown-item(href="/logoutStudent/" + id) Student Logout
+					else if loggedIn
+						a.dropdown-item(href="/logoutMember/" + id) Member Logout
+			if admin_role === 'Local Administrator' ||admin_role === 'Site Manager' || admin_role === 'Program Manager'
+				li.nav-item.dropdown
+					a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false") Admin
+					div.dropdown-menu(aria-labelledby="navbarDropdown") 
+						a.dropdown-item(href="/memberDatabase/" + id) Member Database
+						a.dropdown-item(href="/vendorDatabase/" + id) Services Database 
+						if admin_role === 'Local Administrator'
+							hr
+							a.dropdown-item(href="/login/" + id) Admin Login 
+			if loggedIn
+				li.nav-item.dropdown 
+					a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false") Members 
+					div.dropdown-menu(aria-labelledby="navbarDropdown") 
+						a.dropdown-item(href="/memberDatabasePublic/" + id) Member Profiles
+						a.dropdown-item(href="/memberDatabaseAZ/" + id) Members (AZ)      
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") About Us
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/company-profile/" + id) Project Profile
+					a.dropdown-item(href="/company-events/" + id ) Project Events
+					a.dropdown-item(href="/company-faq/" + id ) FAQs
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Projects
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/triage-project-az-phoenix/" + id) Phoenix
+					a.dropdown-item(href="/triage-project-az-tucson/" + id) Tucson
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") Dreams
+				div.dropdown-menu(aria-labelledby="navbarDropdown") 
+					a.dropdown-item(href="/registerDream/" + id) Create Dream 
+					a.dropdown-item(href="/dreamDatabaseForecastPublic/" + id ) Dream Forecast (Public)
+					if admin_role === 'Local Administrator' ||admin_role === 'Site Manager' || admin_role === 'Program Manager' 
+						a.dropdown-item(href="/dreamDatabaseForecast/" + id ) Dream Forecast (Private) 
+					//- a.dropdown-item(href="/dream-forecast/" + id ) Dream Forecast 
+					a.dropdown-item(href="/arizonaDreams/" + id) Arizona Dreams 
+					a.dropdown-item(href="/dreamDatabasePublic/" + id ) All Public Dreams 
+					if admin_role === 'Local Administrator' ||admin_role === 'Site Manager' || admin_role === 'Program Manager' 
+						a.dropdown-item(href="/dreamDatabase/" + id ) All Dreams 
+						hr  
+					a.dropdown-item(href="/what_are_dreams/" + id ) What Are Dreams
+					a.dropdown-item(href="/workgroup-developer/" + id ) Workgroup Developer
+					a.dropdown-item(href="/resources/" + id ) Resources 
+			//- li.nav-item.dropdown
+			//- 	a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+			//- 	aria-haspopup="true" aria-expanded="false") Academy
+			//- 	div.dropdown-menu(aria-labelledby="navbarDropdown") 
+			//- 		hr
+			//- 		a.dropdown-item(href="/triage-challenge/" + id) Challenge
+			//- 		a.dropdown-item(href="/triage-my-challenge/" + id) My Challenge
+			//- 		if member_student_status === "Active"
+			//- 			a.dropdown-item(href="/member-challenge/" + id) Challenge Modules
+			//- 		hr 
+			//- 		a.dropdown-item(href="/triage-peer-training/" + id) Academy
+			//- 		a.dropdown-item(href="/triage-my-peer-training/" + id) My Academy
+			//- 		if member_student_status === "Active"
+			//- 			a.dropdown-item(href="/member-peer-training/" + id) Academy Modules
+			//- 			hr 
+			//- 			a.dropdown-item(href="/studentAnswers/" + id) Student Answers
+			li.nav-item.dropdown
+				a.nav-link.dropdown-toggle(href="#" #navbarDropdown role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false") My Profile
+				div.dropdown-menu(aria-labelledby="navbarDropdown")
+					a.dropdown-item(href="/memberProfile/" + id) My Profile
+					a.dropdown-item(href="/updateMemberProfile/" + id) My Profile Settings
