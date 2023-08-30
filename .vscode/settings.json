@@ -1,5 +1,6 @@
 {
   "files.autoSave": "afterDelay",
   "editor.tabSize": 2,
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+  "livePreview.customExternalBrowser": "Chrome"
 }
