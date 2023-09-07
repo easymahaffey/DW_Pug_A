@@ -1,6 +1,6 @@
 const seedMembers = [
   {
-    "auth_register" : true,
+    "auth_register" : "Yes",
     "current_project" : "Dreamweaver Tucson",
     "first_name" : "Easy",
     "last_name" : "Mahaffey",
@@ -13,7 +13,7 @@ const seedMembers = [
     "state" : "AZ",
     "zipCode" : "85734",
     "privacy" : "Show",
-    "membership_approved": true,
+    "membership_approved": "Yes",
     "membership_status" : "Active",
     "membership_role" : "Dreamweaver",
     "admin_role" : "Site Manager",
@@ -24,7 +24,7 @@ const seedMembers = [
     "member_student_role" : "Student",
   },
   {
-    "auth_register" : true,
+    "auth_register" : "Yes",
     "current_project" : "Dreamweaver Phoenix",
     "first_name" : "Easy1",
     "last_name" : "Mahaffey",
@@ -37,7 +37,7 @@ const seedMembers = [
     "state" : "AZ",
     "zipCode" : "85120",
     "privacy" : "Show",
-    "membership_approved": true,
+    "membership_approved": "Yes",
     "membership_status" : "Active",
     "membership_role" : "Dreamweaver",
     "admin_role" : "Local Administrator",
